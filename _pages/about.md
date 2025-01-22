@@ -12,6 +12,7 @@ profile:
 news: false # includes a list of news items
 selected_papers: false  # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
+latest_post: false
 ---
 
 Hi! I am a sophmore planning on studying math and cs at the University of Washington. I am passionate about making
