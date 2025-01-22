@@ -21,6 +21,4 @@ social: true # includes social icons at the bottom of the page
 Hi! I am a sophmore planning on studying math and cs at the University of Washington. I am passionate about making
 abstract concepts more accesable to people of all backgrounds. My research focus lies in developing methods to perserve the meaning behind text while simplifying its delivery. In my free time I enjoy getting outdoors through bike riding and soccer.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I would love to talk to anyone with similar interests to that of my own, or others that have unique ideas. My email is here: `bbioren@uw.edu`.
