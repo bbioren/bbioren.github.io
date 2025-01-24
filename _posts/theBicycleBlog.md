@@ -3,8 +3,8 @@ layout: post
 title: the bicycle
 date: 2025-01-23
 description: a motif turned philosophy
-tags: formatting links
-categories: sample-posts
+tags: reflections
+categories:
 ---
 
 from as early as i can remember i have been involved with bicycles. my father was passionate about cycling and much of my childhood activities were characterized by this passion of his. i knew how to ride a bike from earlier than i can remember. for generations bicycles were seen as a child's way out. they offered the imaginative kid their first sense of freedom. with a bicycle in hand, the options and opportunities were limitless. for me, the bicycle offered a different sort of appeal. it provided me a way to share passions with my father. for this reason, i too became obsessed with the bicycle.
