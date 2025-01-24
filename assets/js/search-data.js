@@ -9,7 +9,18 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "post-a-post-with-image-galleries",
+  },{id: "post-the-bicycle",
+      
+        title: "the bicycle",
+      
+      description: "a motif turned philosophy",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2025/formatting-and-links/";
+        
+      },
+    },{id: "post-a-post-with-image-galleries",
       
         title: "a post with image galleries",
       
@@ -348,17 +359,6 @@ ninja.data = [{
       handler: () => {
         
           window.location.href = "/blog/2015/images/";
-        
-      },
-    },{id: "post-a-post-with-formatting-and-links",
-      
-        title: "a post with formatting and links",
-      
-      description: "march &amp; april, looking forward to summer",
-      section: "Posts",
-      handler: () => {
-        
-          window.location.href = "/blog/2015/formatting-and-links/";
         
       },
     },{id: "news-a-simple-inline-announcement",
