@@ -1,36 +1,18 @@
 ---
 layout: post
-title: a post with formatting and links
-date: 2015-03-15 16:40:16
-description: march & april, looking forward to summer
+title: the bicycle
+date: 2025-01-23
+description: a motif turned philosophy
 tags: formatting links
 categories: sample-posts
 ---
 
-Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. [Pinterest](https://www.pinterest.com) DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.
+from as early as i can remember i have been involved with bicycles. my father was passionate about cycling and much of my childhood activities were characterized by this passion of his. i knew how to ride a bike from earlier than i can remember. for generations bicycles were seen as a child's way out. they offered the imaginative kid their first sense of freedom. with a bicycle in hand, the options and opportunities were limitless. for me, the bicycle offered a different sort of appeal. it provided me a way to share passions with my father. for this reason, i too became obsessed with the bicycle.
 
-#### Hipster list
+at first i saw the bicycle as nothing but a mechanical means for transportation. although it was highly ingrained in my life, i used to take it for granted as simply a mechanism for transport. however, over time, the bicycle resurfaced itself in many different facets of my life. i often heard the testament, 'it's like riding a bike, once you learn it you'll never forget.' i never really understood the meaning behind this. it treated the bicycle as a conquerable obstacle, nothing but a clumsy checklist to complete. to me, the bicycle was so much more. it was a craft, an avenue to dedicate one's life towards. it's still hard for me to recall all the countless hours i spent with my father doing nothing but riding, let alone the time spent creating our vehicles for interaction. while often riding in silence, to which an outside observer would perceive as meaningless, were some of the most formative parts of my life. it is with this in mind that the sentiment that reduces such an integral aspect of my childhood down to an insignificant speck never sat quite right with me.
 
-- brunch
-- fixie
-- raybans
-- messenger bag
+yet, the bicycle persisted alongside me as i persisted towards adulthood. when i first began at the university, almost everything was different. different people, different buildings, different teachers, and different goals. however, one thing persisted, the bicycle. with all aspects of my life changing so quickly, the one constant was my ten-minute ride into class each morning. it was through this ride which i maintained a connection with my past. it allowed me to never forget all the aspects of my life, which now seem insignificant and meaningless, that used to be all i could focus on.
 
-#### Check List
+i still distinctly remember my first cs class in college. the professor begins to talk about the process of learning to program. i see a bicycle come up on the slide. while i expect to hear the ubiquitous aphorism that unsettled me so often before. but instead she shares a different perspective. she shares how learning to code is like riding a bike. learning by watching is a frivolous task, and instead it must be consistently practiced and worked at.
 
-- [x] Brush Teeth
-- [ ] Put on socks
-  - [x] Put on left sock
-  - [ ] Put on right sock
-- [x] Go to school
-
-Hoodie Thundercats retro, tote bag 8-bit Godard craft beer gastropub. Truffaut Tumblr taxidermy, raw denim Kickstarter sartorial dreamcatcher. Quinoa chambray slow-carb salvia readymade, bicycle rights 90's yr typewriter selfies letterpress cardigan vegan.
-
-<hr>
-
-Pug heirloom High Life vinyl swag, single-origin coffee four dollar toast taxidermy reprehenderit fap distillery master cleanse locavore. Est anim sapiente leggings Brooklyn ea. Thundercats locavore excepteur veniam eiusmod. Raw denim Truffaut Schlitz, migas sapiente Portland VHS twee Bushwick Marfa typewriter retro id keytar.
-
-> We do not grow absolutely, chronologically. We grow sometimes in one dimension, and not in another, unevenly. We grow partially. We are relative. We are mature in one realm, childish in another.
-> —Anais Nin
-
-Fap aliqua qui, scenester pug Echo Park polaroid irony shabby chic ex cardigan church-key Odd Future accusamus. Blog stumptown sartorial squid, gastropub duis aesthetic Truffaut vero. Pinterest tilde twee, odio mumblecore jean shorts lumbersexual.
+this idea has stuck with me ever since. the constant incompleteness of the bicycle as elucidated through the learning-to-program metaphor is the key reason why cycling remains an invaluable aspect of my being. i am drawn towards this endless imperfection. it is through such a task that one can remain happy. just as sisyphus found peace in his eternal struggle, i find joy in my eternal story.
