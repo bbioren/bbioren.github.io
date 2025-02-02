@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-visuals",
           title: "visuals",
-          description: "Math visuals I&#39;ve been working on, Manim",
+          description: "Visuals I&#39;ve been working on, Manim",
           section: "Navigation",
           handler: () => {
             window.location.href = "/visuals/";
