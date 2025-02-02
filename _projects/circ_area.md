@@ -8,12 +8,21 @@ category: intuition
 related_publications: false
 ---
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include video.liquid path="assets/video/pexels-engin-akyurt-6069112-960x540-30fps.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include video.liquid path="assets/video/pexels-engin-akyurt-6069112-960x540-30fps.mp4" class="img-fluid rounded z-depth-1" controls=true %}
+    </div>
+</div>
+
 <div class="video">
     {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
 </div>
 
 <div class="caption">
-    Animation created in Python. Hopefully this visual gives intuition on why the area of a circle is computed how it is.
+    Animation created using Manim. Hopefully this visual gives intuition on a widespread formula.
 </div>
 
 The code in Python can be found below:
