@@ -13,15 +13,11 @@ related_publications: false
     {% include video.liquid path="assets/video/circAreaVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
 </div>
 
-<div class="video">
-    {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-</div>
-
 <div class="caption">
-    Animation created using Manim. Hopefully this visual gives intuition on a widespread formula.
+    Animation created using Manim. Hopefully this visual gives intuition on the reasoning behind a common formula.
 </div>
 
-The code in Python can be found below:
+Source code:
 {% raw %}
 
 ```python
@@ -32,24 +28,22 @@ class CircleAreaProof(Scene):
     def construct(self):
         circle = Circle(radius = 2, color = BLUE)
         self.play(Create(circle))
-        #self.wait(2)
-        #self.play(circle.animate.scale(.75), run_time = 5)
-        #self.wait(0.5)
 
-        num = 30 #number of sectors
+        num = 30 # desired number of sectors
         sectors = VGroup()
         for i in range(num):
             sector = Sector(
-                radius=2,            # Radius of the sector
-                start_angle= i * (TAU / num),       # Start angle (in radians)
-                angle=TAU / num,       # Angle of the sector (in radians, e.g., 60 degrees)
-                color=RED,        # Color of the sector
-                fill_opacity=0.1,     # Fill opacity (0 is transparent, 1 is fully opaque)
+                radius=2,
+                start_angle= i * (TAU / num),  # update starting angle based on current sector
+                angle=TAU / num,
+                color=RED,
+                fill_opacity=0.1,
                 stroke_width = 4,
                 stroke_opacity = .75
             )
             sectors.add(sector)
 
+            # show the radius on the first sector
             if i == 0:
                 self.play(Create(sector))
                 radius_lable = Text("r", font_size = 25)
@@ -59,9 +53,10 @@ class CircleAreaProof(Scene):
                 self.play(FadeOut(radius_lable))
 
 
-        self.play(Create(sectors), run_time = 2)
+        self.play(Create(sectors[1:num]), run_time = 2)  # first sector already created
         self.wait(1)
 
+        # transform circumfrence to top
         l = Line(np.array([-(TAU * 2) / 2, 0, 0]), np.array([(TAU * 2) / 2, 0, 0]), color = BLUE)
         self.play(ReplacementTransform(circle, l.next_to(sectors, UP, buff = 1)), run_time = 2)
         line_label = Text("circumfrence", font_size = 25)
@@ -69,13 +64,10 @@ class CircleAreaProof(Scene):
         self.play(Create(line_label))
         self.wait(1)
 
+        # scale and line up sectors to screen
         width_sectors = 0
         for i in range(num):
             width_sectors += sectors[i].get_width() + .05
-            # print(sectors[i].get_width())
-
-        # print(width_sectors)
-        # print(config.frame_width)
 
         scaler =  (config.frame_width - 2) / width_sectors
         self.play(
@@ -83,46 +75,39 @@ class CircleAreaProof(Scene):
             run_time = 2
                   )
         
-        #print(sectors.get_width())
-        
-
-        # scale_factor = config.frame_width / sectors.get_width()
-        # self.play(sectors.animate.scale(scale_factor))
-
-        
+        # rotate sectors to position
         for i in range(num):
             if i % 2 == 0:
                 self.play(sectors[i].animate.rotate((TAU / 4)  -  ((TAU / (2 * num)) * (1 + 2 * i))), run_time = 1 / (1.2 * i + 1))
             else:
                 self.play(sectors[i].animate.rotate((TAU / 2) + (TAU / 4)  -  ((TAU / (2 * num)) * (1 + 2 * i))), run_time = 1 / (1.2 * i + 1))
 
-        #scaler = (config.frame_width - 5) / (sectors[0].get_width() * (num / 2))
+        # make rectangle
         scaler = ((TAU * 2) / 2) / (sectors[0].get_width() * (num / 2))
-
         self.play(
             sectors.animate.scale(scaler).arrange(RIGHT, buff = (- (1/2) * sectors[0].width) - .1)
                   )
         
+        # create radius line for height
         x = sectors[0].get_left()[0] - .5
         bottom = sectors[0].get_bottom()[1]
         top = sectors[0].get_top()[1]
-
         line = Line(np.array([x, bottom, 0]), np.array([x, top, 0]))
         self.play(Create(line))
         self.play(Write(MathTex(r"r").next_to(line, LEFT)))
 
+        # create half the circumfrence
         half = Line(l.get_left(), l.get_center(), color = RED)
         half_label = MathTex(r"\pi r").next_to(half, UP)
-
         halfGroup = VGroup()
         halfGroup.add(half, half_label)
         self.play(Create(halfGroup), run_time = 1.5)
 
+        # position half the circumfrence line
         self.play(halfGroup.animate.scale(sectors.get_width() / halfGroup.get_width()).next_to(sectors, UP, buff = 0.5))
 
+        # display final formula
         self.play(Write(MathTex(r"Area = \pi r^2").next_to(sectors, DOWN, buff = 1)))
-
-
         self.wait(3)
 ```
 
