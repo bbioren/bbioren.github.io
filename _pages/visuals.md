@@ -1,8 +1,8 @@
 ---
 layout: page
-title: projects
-permalink: /visual/
-description: Math visuals I've been working on
+title: visuals
+permalink: /visuals/
+description: Math visuals I've been working on, Manim
 nav: true
 nav_order: 3
 display_categories: [intuition]
