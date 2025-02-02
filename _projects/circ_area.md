@@ -8,10 +8,9 @@ category: intuition
 related_publications: false
 ---
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include video.liquid path="assets/video/circAreaVisual.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
-    </div>
+
+<div class="col-sm mt-3 mt-md-0">
+    {% include video.liquid path="assets/video/circAreaVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
 </div>
 
 <div class="video">

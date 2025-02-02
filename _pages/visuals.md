@@ -2,7 +2,7 @@
 layout: page
 title: visuals
 permalink: /visuals/
-description: Math visuals I've been working on, Manim
+description: Visuals I've been working on, Manim
 nav: true
 nav_order: 3
 display_categories: [intuition]
