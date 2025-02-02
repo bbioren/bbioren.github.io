@@ -8,14 +8,14 @@ category: intuition
 related_publications: false
 ---
 
-<div class="row mt-3">
+<!-- <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include video.html path="assets/video/circAreaVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
         {% include video.html path="assets/video/circAreaVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
     </div>
-</div>
+</div> -->
 
 <div class="caption">
     Animation created using Manim. Hopefully this visual gives intuition on why the area of a circle is computed how it is.
