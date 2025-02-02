@@ -8,69 +8,116 @@ category: intuition
 related_publications: true
 ---
 
-Below is a visualization to help understand why the area of a circle is pi r^2.
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
+<div class="video">
+    {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
 </div>
 <div class="caption">
     Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
 </div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
 
-You can also put regular text between your rows of images, even citations {% cite einstein1950meaning %}.
-Say you wanted to write a bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
+The code in Manim can be found below:
 {% raw %}
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
+```Python
+from manim import *
+import math
+
+class CircleAreaProof(Scene):
+    def construct(self):
+        circle = Circle(radius = 2, color = BLUE)
+        self.play(Create(circle))
+        #self.wait(2)
+        #self.play(circle.animate.scale(.75), run_time = 5)
+        #self.wait(0.5)
+
+        num = 30 #number of sectors
+        sectors = VGroup()
+        for i in range(num):
+            sector = Sector(
+                radius=2,            # Radius of the sector
+                start_angle= i * (TAU / num),       # Start angle (in radians)
+                angle=TAU / num,       # Angle of the sector (in radians, e.g., 60 degrees)
+                color=RED,        # Color of the sector
+                fill_opacity=0.1,     # Fill opacity (0 is transparent, 1 is fully opaque)
+                stroke_width = 4,
+                stroke_opacity = .75
+            )
+            sectors.add(sector)
+
+            if i == 0:
+                self.play(Create(sector))
+                radius_lable = Text("r", font_size = 25)
+                radius_lable.next_to(sector, UP, buff = -.1)
+                self.play(Create(radius_lable))
+                self.wait(1)
+                self.play(FadeOut(radius_lable))
+
+
+        self.play(Create(sectors), run_time = 2)
+        self.wait(1)
+
+        l = Line(np.array([-(TAU * 2) / 2, 0, 0]), np.array([(TAU * 2) / 2, 0, 0]), color = BLUE)
+        self.play(ReplacementTransform(circle, l.next_to(sectors, UP, buff = 1)), run_time = 2)
+        line_label = Text("circumfrence", font_size = 25)
+        line_label.next_to(l, DOWN, buff = .25)
+        self.play(Create(line_label))
+        self.wait(1)
+
+        width_sectors = 0
+        for i in range(num):
+            width_sectors += sectors[i].get_width() + .05
+            # print(sectors[i].get_width())
+
+        # print(width_sectors)
+        # print(config.frame_width)
+
+        scaler =  (config.frame_width - 2) / width_sectors
+        self.play(
+            sectors.animate.scale(scaler).arrange(RIGHT, buff =  0.05),
+            run_time = 2
+                  )
+        
+        #print(sectors.get_width())
+        
+
+        # scale_factor = config.frame_width / sectors.get_width()
+        # self.play(sectors.animate.scale(scale_factor))
+
+        
+        for i in range(num):
+            if i % 2 == 0:
+                self.play(sectors[i].animate.rotate((TAU / 4)  -  ((TAU / (2 * num)) * (1 + 2 * i))), run_time = 1 / (1.2 * i + 1))
+            else:
+                self.play(sectors[i].animate.rotate((TAU / 2) + (TAU / 4)  -  ((TAU / (2 * num)) * (1 + 2 * i))), run_time = 1 / (1.2 * i + 1))
+
+        #scaler = (config.frame_width - 5) / (sectors[0].get_width() * (num / 2))
+        scaler = ((TAU * 2) / 2) / (sectors[0].get_width() * (num / 2))
+
+        self.play(
+            sectors.animate.scale(scaler).arrange(RIGHT, buff = (- (1/2) * sectors[0].width) - .1)
+                  )
+        
+        x = sectors[0].get_left()[0] - .5
+        bottom = sectors[0].get_bottom()[1]
+        top = sectors[0].get_top()[1]
+
+        line = Line(np.array([x, bottom, 0]), np.array([x, top, 0]))
+        self.play(Create(line))
+        self.play(Write(MathTex(r"r").next_to(line, LEFT)))
+
+        half = Line(l.get_left(), l.get_center(), color = RED)
+        half_label = MathTex(r"\pi r").next_to(half, UP)
+
+        halfGroup = VGroup()
+        halfGroup.add(half, half_label)
+        self.play(Create(halfGroup), run_time = 1.5)
+
+        self.play(halfGroup.animate.scale(sectors.get_width() / halfGroup.get_width()).next_to(sectors, UP, buff = 0.5))
+
+        self.play(Write(MathTex(r"Area = \pi r^2").next_to(sectors, DOWN, buff = 1)))
+
+
+        self.wait(3)
 ```
 
 {% endraw %}
