@@ -5,7 +5,7 @@ description: Visual intuition for the area of a circle!
 img: assets/img/circAreaVisual.jpg
 importance: 1
 category: intuition
-related_publications: true
+related_publications: false
 ---
 
 <div class="row mt-3">
@@ -24,7 +24,7 @@ related_publications: true
 The code in Manim can be found below:
 {% raw %}
 
-```Python
+```python
 from manim import *
 import math
 
