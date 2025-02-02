@@ -45,12 +45,7 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "projects-area-of-a-circle",
-          title: 'Area of a Circle',
-          description: "visual intuition for area of a circle",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/1_project/";
-            },},{id: "projects-project-2",
+          section: "News",},{id: "projects-project-2",
           title: 'project 2',
           description: "a project with a background image and giscus comments",
           section: "Projects",handler: () => {
@@ -90,6 +85,11 @@ ninja.data = [{
           description: "another project with an image 🎉",
           section: "Projects",handler: () => {
               window.location.href = "/projects/9_project/";
+            },},{id: "projects-area-of-a-circle",
+          title: 'Area of a Circle',
+          description: "Visual intuition for the area of a circle!",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/circ_area/";
             },},{
         id: 'social-email',
         title: 'email',
