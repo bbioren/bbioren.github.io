@@ -16,12 +16,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "Math visuals I&#39;ve been working on",
+        },{id: "nav-visuals",
+          title: "visuals",
+          description: "Math visuals I&#39;ve been working on, Manim",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/visual/";
+            window.location.href = "/visuals/";
           },
         },{id: "post-the-bicycle",
       
@@ -45,9 +45,9 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "projects-project-1",
-          title: 'project 1',
-          description: "with background image",
+          section: "News",},{id: "projects-area-of-a-circle",
+          title: 'Area of a Circle',
+          description: "visual intuition for area of a circle",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
             },},{id: "projects-project-2",
