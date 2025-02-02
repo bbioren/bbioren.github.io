@@ -18,10 +18,10 @@ related_publications: false
 </div>
 
 <div class="caption">
-    Animation created in Manim. Hopefully this visual gives intuition on why the area of a circle is computed how it is.
+    Animation created using Manim. Hopefully this visual gives intuition on why the area of a circle is computed how it is.
 </div>
 
-The code in Manim can be found below:
+The code in Python can be found below:
 {% raw %}
 
 ```python
