@@ -19,3 +19,5 @@ Hi! I am a sophmore planning on studying math and cs at the University of Washin
 abstract concepts more accesable to people of all backgrounds. My research focus lies in developing methods to perserve the meaning behind text while simplifying its delivery. In my free time I enjoy getting outdoors through bike riding and soccer.
 
 If you find my work interesting, or would like to collaborate/talk more, please feel free to reach out! My email is `bbioren@uw.edu`.
+
+<a href="https://info.flagcounter.com/nPki"><img src="https://s01.flagcounter.com/count2/nPki/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
