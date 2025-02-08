@@ -14,7 +14,7 @@ github_username: bbioren # your GitHub user name
 # gitlab_username: # your GitLab user name
 # ieee_id: # your ieeexplore.ieee.org/author/id
 # inspirehep_id: 1010907 # Inspire HEP author ID                    This one was originallly in.
-instagram_id: ben_bioren # your instagram id
+# instagram_id: ben_bioren # your instagram id
 # kaggle_id: # your kaggle id
 # keybase_username: # your keybase user name
 # lastfm_id: # your lastfm id
@@ -43,7 +43,7 @@ rss_icon: false # set to true to show the RSS icon
 # wikipedia_id: # your wikipedia id (Case sensitive)
 # work_url: # work page URL
 # x_username: # your X handle
-youtube_id: benbioren # your youtube channel id (youtube.com/@<youtube_id>)
+# youtube_id: benbioren # your youtube channel id (youtube.com/@<youtube_id>)
 # zotero_username: # your zotero username
 # custom_social: # can be any name here other than the ones already defined above
 #  logo: https://www.alberteinstein.com/wp-content/uploads/2024/03/cropped-favicon-192x192.png # can be png, svg, jpg
