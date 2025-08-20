@@ -99,9 +99,9 @@ ninja.data = [{
           description: "Visual intuition for the area of a circle!",
           section: "Projects",handler: () => {
               window.location.href = "/projects/circ_area/";
-            },},{id: "projects-project-3-with-very-long-name",
-          title: 'project 3 with very long name',
-          description: "a project that redirects to another website",
+            },},{id: "projects-patch-39-n-play",
+          title: 'Patch &amp;#39;n Play',
+          description: "Community soccer net repair project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/patch_n_play/";
             },},{
