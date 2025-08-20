@@ -3,7 +3,7 @@ layout: page
 title: visuals
 permalink: /visuals/
 description: Visuals I've been working on, Manim
-nav: true
+nav: false
 nav_order: 4
 display_categories: [intuition]
 horizontal: false
