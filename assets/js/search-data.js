@@ -89,7 +89,7 @@ ninja.data = [{
               window.location.href = "/projects/9_project/";
             },},{id: "projects-crispr-apples",
           title: 'CRISPR Apples',
-          description: "AI-powered genome editing",
+          description: "Dubhacks 25 Winner",
           section: "Projects",handler: () => {
               window.location.href = "/projects/CRISPR_apples/";
             },},{id: "projects-area-of-a-circle",
