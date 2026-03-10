@@ -39,16 +39,31 @@ ninja.data = [{
           description: "Dubhacks 25 Winner",
           section: "Projects",handler: () => {
               window.location.href = "/projects/CRISPR_apples/";
+            },},{id: "projects-appmixer",
+          title: 'AppMixer',
+          description: "Per-app volume mixer for macOS using CoreAudio taps",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/app_mixer/";
             },},{id: "projects-area-of-a-circle",
           title: 'Area of a Circle',
           description: "Visual intuition for the area of a circle!",
           section: "Projects",handler: () => {
               window.location.href = "/projects/circ_area/";
+            },},{id: "projects-gradescope-extension",
+          title: 'Gradescope Extension',
+          description: "Chrome extension for viewing grade statistics on Gradescope",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/gradescope_extension/";
             },},{id: "projects-patch-39-n-play",
           title: 'Patch &amp;#39;n Play',
           description: "Community soccer net repair project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/patch_n_play/";
+            },},{id: "projects-speedup-extension",
+          title: 'Speedup Extension',
+          description: "Chrome extension to control playback speed on any website",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/speedup_extension/";
             },},{
         id: 'social-email',
         title: 'email',
