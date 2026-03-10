@@ -54,8 +54,6 @@ bib_search: true
 # Dimensions
 max_width: 930px
 
-# TODO: add layout settings (single page vs. multi-page)
-
 # -----------------------------------------------------------------------------
 # Open Graph & Schema.org
 # -----------------------------------------------------------------------------
@@ -94,7 +92,7 @@ pagination:
   enabled: true
 
 related_blog_posts:
-  enabled: false  # changed this maybe not ????
+  enabled: false
   max_related: 5
 
 # Giscus comments (RECOMMENDED)
@@ -113,8 +111,7 @@ giscus:
   lang: en
 
 # Disqus comments (DEPRECATED)
-disqus_shortname: al-folio # put your disqus shortname
-# https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+disqus_shortname: # put your disqus shortname
 
 # External sources.
 # If you have blog posts published on medium.com or other external sources,
@@ -194,7 +191,6 @@ exclude:
   - lighthouse_results/
   - package.json
   - package-lock.json
-  - _pages/about_einstein.md
   - purgecss.config.js
   - README.md
   - readme_preview/
@@ -630,6 +626,11 @@ third_party_libraries:
 jekyll_get_json:
   - data: resume
     json: assets/json/resume.json # it can also be an url
+
+jsonresume:
+  - overview
+  - education
+json # it can also be an url
 
 jsonresume:
   - overview
