@@ -8,7 +8,6 @@ category: include
 related_publications: false
 ---
 
-
 <div class="col-sm mt-3 mt-md-0">
     {% include video.liquid path="assets/video/circAreaVideo.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=true %}
 </div>
@@ -74,7 +73,7 @@ class CircleAreaProof(Scene):
             sectors.animate.scale(scaler).arrange(RIGHT, buff =  0.05),
             run_time = 2
                   )
-        
+
         # rotate sectors to position
         for i in range(num):
             if i % 2 == 0:
@@ -87,7 +86,7 @@ class CircleAreaProof(Scene):
         self.play(
             sectors.animate.scale(scaler).arrange(RIGHT, buff = (- (1/2) * sectors[0].width) - .1)
                   )
-        
+
         # create radius line for height
         x = sectors[0].get_left()[0] - .5
         bottom = sectors[0].get_bottom()[1]

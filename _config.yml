@@ -630,8 +630,3 @@ jekyll_get_json:
 jsonresume:
   - overview
   - education
-json # it can also be an url
-
-jsonresume:
-  - overview
-  - education
