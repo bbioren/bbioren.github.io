@@ -2,7 +2,7 @@
 layout: page
 title: Area of a Circle
 description: Visual intuition for the area of a circle!
-img: assets/img/circAreaVisual.jpg
+img: assets/img/circAreaVisual.png
 importance: 1
 category: include
 related_publications: false
