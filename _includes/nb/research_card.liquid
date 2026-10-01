@@ -19,6 +19,9 @@
         · <span class="stamp-inline">in progress</span>
       {%- endif %}
     </p>
+    {% if c.target %}
+      <p class="target hand">targeting {{ c.target }}</p>
+    {% endif %}
     <p>{{ c.summary }}</p>
     {% if c.links %}
       <p class="links mono">

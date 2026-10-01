@@ -948,3 +948,7 @@ blockquote {
 .opened [hidden] {
   display: none !important;
 }
+.rcard .target {
+  font-size: 20px;
+  margin: 0 0 6px;
+}

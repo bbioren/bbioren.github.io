@@ -34,29 +34,25 @@ papers:
     links:
       - label: abstract
         url: https://amportal.astro.org/sessions/pqa-05-22824/large-language-models-for-predicting-overall-survival-in-nsclc-using-pathology-reports-114117
+
+current:
   - title: "Minimal Perturbation Attacks in VLMs: Turning Embedding Distance into an Attack Metric"
-    authors: Ben Bioren, Justin Zhou
-    venue: Project report, 2026
+    where: with Justin Zhou
+    since: 2026
+    target: an ICLR 2027 workshop, then ICML 2027
     figure: /assets/img/research/typographic-attacks-grid.jpg
     figure_alt: The same photo with the text "This is a bird." pasted on at different sizes and rotations.
     summary: >-
-      Typographic attacks paste text onto an image and the model believes the text over the picture.
-      Earlier work found that how close the attacked image sits to the text in embedding space predicts
-      whether the attack works. We asked whether you could skip the visible text entirely and just
-      optimize the pixels toward that embedding.
-    findings:
-      - Across 10,800 attacks on LLaVA-1.5, BLIP-2 and Fuyu-8B, success rates differ by almost 9x between models (5.0% vs 44.2%), but the effect of font size and rotation is the same for all of them.
-      - PGD gets the perturbed image to cosine similarity 0.988 or more with the visible attack, and OCR stops seeing any text (77.3% → 6.0% detected).
-      - The model still mostly ignores it. At the largest budget the invisible version succeeds 31.3% of the time, against 98.0% for the visible text.
-    detail_figure: /assets/img/research/embedding-distance-vs-asr.png
-    detail_alt: Attack success rate falls as embedding distance grows, for all three models.
+      How close an attacked image sits to the text in embedding space predicts whether a typographic attack
+      works. So can you skip the visible text and just optimize the pixels toward that embedding? So far: PGD
+      matches the embedding almost perfectly (cosine similarity 0.988 or more) and OCR stops seeing any text
+      (77.3% → 6.0% detected), but the model mostly ignores it, 31.3% success against 98.0% for visible text.
+      Figuring out what the model reads that the embedding doesn't capture is the next step.
     links:
-      - label: pdf
+      - label: draft
         url: /assets/pdf/papers/minimal-perturbation-attacks-vlms.pdf
       - label: code
         url: https://github.com/bbioren/minimal-perturbation-typographic-attacks
-
-current:
   - title: Catching hallucinations before they happen
     where: RAIVN Lab
     since: June 2026
@@ -119,7 +115,7 @@ past:
 # "What's next" open questions, in the home page's problem style.
 next:
   - question: Matching the embedding of a visible attack wasn't enough to make the model comply. What is the language model reading off the image that the CLIP embedding doesn't capture?
-    from: the minimal perturbation paper
+    from: the minimal perturbation project
   - question: The signal that predicts a hallucination shows up while the model is still reading the image. Can we steer on it early enough that the model never commits to the wrong answer?
     from: RAIVN
   - question: Do hallucination detectors built on everyday photos still work on medical images, where a wrong answer costs much more?
