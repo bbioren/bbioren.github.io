@@ -155,6 +155,11 @@ ninja.data = [{
           description: "Why a hash ring moves far fewer keys than hash mod N when servers come and go.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/consistent-hashing/";
+            },},{id: "projects-flashattention",
+          title: 'FlashAttention',
+          description: "Exact attention without ever storing the N by N score matrix",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/flash-attention/";
             },},{id: "projects-fourier-epicycles",
           title: 'Fourier Epicycles',
           description: "spinning circles stacked end to end that trace any closed curve",
