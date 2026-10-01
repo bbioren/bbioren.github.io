@@ -19,7 +19,7 @@ from transformers import CLIPModel, CLIPProcessor
 ROOT = Path(__file__).resolve().parents[1]
 # photo id -> (file, where the name tag goes as fractions of width/height)
 PHOTOS = {
-    "beach": (ROOT / "assets/img/prof_pic_beach.jpg", (0.15, 0.63)),
+    "beach": (ROOT / "assets/img/prof_pic_beach.jpg", (0.10, 0.58)),
 }
 OUT_IMG = ROOT / "assets/img/attack"
 OUT_JSON = ROOT / "_data/clip_attack.json"
