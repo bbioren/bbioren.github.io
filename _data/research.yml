@@ -53,19 +53,6 @@ current:
         url: /assets/pdf/papers/minimal-perturbation-attacks-vlms.pdf
       - label: code
         url: https://github.com/bbioren/minimal-perturbation-typographic-attacks
-  - title: Catching hallucinations before they happen
-    where: RAIVN Lab
-    since: June 2026
-    figure: /assets/img/research/attention-decay.svg
-    figure_alt: Attention to the image drops over chain-of-thought steps.
-    summary: >-
-      Vision-language models look at the image less and less as they reason. I study how that decay and the
-      intrinsic dimension of the latent states relate to hallucination, and built a detector that flags a
-      likely hallucination during prefill with over 80% accuracy. The same signal can be used to steer the
-      model back toward the image, without retraining or extra data.
-    links:
-      - label: iclr submission
-        url: https://openreview.net/forum?id=qf5rZbeYuF
   - title: Typographic attacks on closed models
     where: Allen School, with Sewoong Oh
     since: January 2026
