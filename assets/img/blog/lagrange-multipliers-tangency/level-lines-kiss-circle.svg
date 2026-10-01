@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" width="720" height="560" font-family="Helvetica, Arial, sans-serif">
+<rect width="100%" height="100%" rx="12" fill="#ffffff"/>
+<defs>
+<marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker>
+<marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#dd6b20"/></marker>
+<marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker>
+<clipPath id="box"><rect x="72.5" y="80.0" width="562.5" height="457.5"/></clipPath>
+</defs>
+<line x1="72.5" y1="320.0" x2="635.0" y2="320.0" stroke="#a0aec0" stroke-width="1.5"/>
+<line x1="290.0" y1="537.5" x2="290.0" y2="80.0" stroke="#a0aec0" stroke-width="1.5"/>
+<line x1="72.5" y1="252.5" x2="357.5" y2="537.5" stroke="#a0aec0" stroke-width="1.5" stroke-dasharray="6 5" clip-path="url(#box)"/>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="92.5" y="266.5" font-size="15" fill="#718096">f = −1</text>
+<line x1="72.5" y1="102.5" x2="507.5" y2="537.5" stroke="#a0aec0" stroke-width="1.5" stroke-dasharray="6 5" clip-path="url(#box)"/>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="92.5" y="116.5" font-size="15" fill="#718096">f = 0</text>
+<line x1="200.0" y1="80.0" x2="635.0" y2="515.0" stroke="#a0aec0" stroke-width="2" stroke-dasharray="6 5" clip-path="url(#box)"/>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="220.0" y="94.0" font-size="15" fill="#718096">f = 1</text>
+<line x1="262.1" y1="80.0" x2="635.0" y2="452.9" stroke="#2b6cb0" stroke-width="2.5" clip-path="url(#box)"/>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="282.1" y="94.0" font-size="15" fill="#2b6cb0">f = √2</text>
+<line x1="350.0" y1="80.0" x2="635.0" y2="365.0" stroke="#a0aec0" stroke-width="1.5" stroke-dasharray="6 5" clip-path="url(#box)"/>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="370.0" y="94.0" font-size="15" fill="#718096">f = 2</text>
+<circle cx="290.0" cy="320.0" r="150" fill="none" stroke="#222" stroke-width="2.5"/>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="80.0" y="492.5" font-size="16" fill="#222">g(x,y) = x² + y² = 1</text>
+<line x1="440.0" y1="320.0" x2="494.0" y2="266.0" stroke="#2b6cb0" stroke-width="2.5" marker-end="url(#ab)"/>
+<line x1="440.0" y1="320.0" x2="440.0" y2="266.0" stroke="#dd6b20" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#ao)"/>
+<line x1="440.0" y1="320.0" x2="548.0" y2="320.0" stroke="#222" stroke-width="2" marker-end="url(#ak)"/>
+<circle cx="440.0" cy="320.0" r="5.5" fill="#222"/>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="352.0" y="344.0" font-size="16" fill="#222">P = (1, 0)</text>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="500.0" y="264.0" font-size="16" fill="#2b6cb0">∇f</text>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="554.0" y="325.0" font-size="16" fill="#222">∇g</text>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="332.0" y="270.0" font-size="15" fill="#dd6b20">tangential part</text>
+<line x1="396.1" y1="213.9" x2="472.4" y2="137.6" stroke="#222" stroke-width="2" marker-end="url(#ak)"/>
+<line x1="396.1" y1="213.9" x2="450.1" y2="159.9" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+<circle cx="396.1" cy="213.9" r="5.5" fill="#2b6cb0"/>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="246.1" y="199.9" font-size="16" fill="#2b6cb0">Q = (1/√2, 1/√2)</text>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="416.1" y="155.9" font-size="16" fill="#2b6cb0">∇f</text>
+<text paint-order="stroke" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" x="480.4" y="145.6" font-size="16" fill="#222">∇g</text>
+</svg>

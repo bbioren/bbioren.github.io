@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" font-family="Helvetica, Arial, sans-serif">
+  <rect width="100%" height="100%" rx="12" fill="#ffffff"/>
+  <!-- unit square: x 200..660, y 70..530, side 460 -->
+  <!-- sick strip: width 0.01*460 = 4.6 -->
+  <rect x="200" y="70" width="4.6" height="460" fill="#feebc8"/>
+  <rect x="200" y="116" width="4.6" height="414" fill="#dd6b20"/>
+  <!-- healthy strip: width 455.4 -->
+  <rect x="204.6" y="70" width="455.4" height="460" fill="#bee3f8"/>
+  <rect x="204.6" y="488.6" width="455.4" height="41.4" fill="#2b6cb0"/>
+  <rect x="200" y="70" width="460" height="460" fill="none" stroke="#222" stroke-width="2"/>
+
+  <!-- top labels -->
+  <text x="190" y="44" font-size="15" fill="#dd6b20" text-anchor="end">H: sick, width 0.01</text>
+  <polyline points="192,40 202.3,40 202.3,68" fill="none" stroke="#dd6b20" stroke-width="1.5"/>
+  <text x="432" y="58" font-size="15" fill="#2b6cb0" text-anchor="middle">&#172;H: healthy, width 0.99</text>
+
+  <!-- left dimension: P(E|H) -->
+  <line x1="180" y1="116" x2="180" y2="530" stroke="#222" stroke-width="1.5"/>
+  <line x1="174" y1="116" x2="186" y2="116" stroke="#222" stroke-width="1.5"/>
+  <line x1="174" y1="530" x2="186" y2="530" stroke="#222" stroke-width="1.5"/>
+  <text x="168" y="318" font-size="15" fill="#222" text-anchor="end">P(E | H)</text>
+  <text x="168" y="338" font-size="15" fill="#222" text-anchor="end">= 0.90</text>
+
+  <!-- right dimension: P(E|not H) -->
+  <line x1="680" y1="488.6" x2="680" y2="530" stroke="#222" stroke-width="1.5"/>
+  <line x1="674" y1="488.6" x2="686" y2="488.6" stroke="#222" stroke-width="1.5"/>
+  <line x1="674" y1="530" x2="686" y2="530" stroke="#222" stroke-width="1.5"/>
+  <text x="692" y="505" font-size="15" fill="#222">P(E | &#172;H)</text>
+  <text x="692" y="525" font-size="15" fill="#222">= 0.09</text>
+
+  <!-- region labels -->
+  <text x="432" y="290" font-size="16" fill="#222" text-anchor="middle">healthy and negative</text>
+  <text x="432" y="312" font-size="16" fill="#222" text-anchor="middle">area 0.99 &#215; 0.91 = 0.9009</text>
+  <text x="432" y="515" font-size="15" fill="#ffffff" text-anchor="middle">healthy and positive: 0.99 &#215; 0.09 = 0.0891</text>
+
+  <polyline points="202.3,532 202.3,556 212,556" fill="none" stroke="#dd6b20" stroke-width="1.5"/>
+  <text x="216" y="561" font-size="15" fill="#dd6b20">sick and positive: 0.01 &#215; 0.90 = 0.009 (the orange sliver)</text>
+</svg>
