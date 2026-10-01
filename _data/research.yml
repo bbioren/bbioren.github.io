@@ -39,7 +39,7 @@ current:
   - title: "Minimal Perturbation Attacks in VLMs: Turning Embedding Distance into an Attack Metric"
     where: with Justin Zhou
     since: 2026
-    target: an ICLR 2027 workshop, then ICML 2027
+    target: ICML 2027
     figure: /assets/img/research/typographic-attacks-grid.jpg
     figure_alt: The same photo with the text "This is a bird." pasted on at different sizes and rotations.
     summary: >-
