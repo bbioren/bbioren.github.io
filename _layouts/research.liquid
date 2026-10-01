@@ -47,12 +47,14 @@ layout: default
   {% endfor %}
 </div>
 
-<h2 class="label">Before that</h2>
-<div class="cards">
-  {% for c in r.past %}
-    {% include nb/research_card.liquid c=c done=true %}
-  {% endfor %}
-</div>
+{% if r.past.size > 0 %}
+  <h2 class="label">Before that</h2>
+  <div class="cards">
+    {% for c in r.past %}
+      {% include nb/research_card.liquid c=c done=true %}
+    {% endfor %}
+  </div>
+{% endif %}
 
 <h2 class="label">What's next</h2>
 <p class="hand" style="margin-top: -4px">questions I want to work on, each one left over from something above.</p>

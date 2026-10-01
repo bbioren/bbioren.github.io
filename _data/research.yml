@@ -34,6 +34,8 @@ papers:
     links:
       - label: abstract
         url: https://amportal.astro.org/sessions/pqa-05-22824/large-language-models-for-predicting-overall-survival-in-nsclc-using-pathology-reports-114117
+      - label: code
+        url: https://github.com/bbioren/TCGA-Classification
 
 current:
   - title: "Minimal Perturbation Attacks in VLMs: Turning Embedding Distance into an Attack Metric"
@@ -83,21 +85,7 @@ current:
       - label: boyd in lean
         url: https://github.com/bbioren/lean-gcd-convex-opt
 
-past:
-  - title: Pathology reports to predictions
-    where: Department of Radiation Oncology, with Sunan Cui and Jie Fu
-    since: Feb 2024 – Dec 2025
-    figure: /assets/img/research/report-to-prediction.svg
-    figure_alt: A pathology report turns into structured features and then a prediction.
-    summary: >-
-      NLP pipelines that pull clinically relevant features out of unstructured pathology reports, and
-      multi-task sequence models that line up with how oncologists reason, for interpretable tumor
-      characterization.
-    links:
-      - label: astro 2026 poster
-        url: https://amportal.astro.org/sessions/pqa-05-22824/large-language-models-for-predicting-overall-survival-in-nsclc-using-pathology-reports-114117
-      - label: tcga code
-        url: https://github.com/bbioren/TCGA-Classification
+past: []
 
 # "What's next" open questions, in the home page's problem style.
 next:
