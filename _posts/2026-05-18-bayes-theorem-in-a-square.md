@@ -1,7 +1,7 @@
 ---
 layout: post
 title: bayes' theorem in a square
-date: 2026-09-26
+date: 2026-05-18
 description: conditioning is zooming in, and the base rate decides what you see when you get there
 tags: visual-proofs probability bayes
 categories: math

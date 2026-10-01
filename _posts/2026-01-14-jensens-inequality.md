@@ -1,7 +1,7 @@
 ---
 layout: post
 title: jensen's inequality is a picture
-date: 2026-09-21
+date: 2026-01-14
 description: chords lie above convex curves, and that is the whole inequality
 tags: visual-proofs probability convexity
 categories: math

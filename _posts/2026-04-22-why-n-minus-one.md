@@ -1,7 +1,7 @@
 ---
 layout: post
 title: why n minus one
-date: 2026-09-25
+date: 2026-04-22
 description: the degree of freedom you lose to the sample mean is literally a dimension
 tags: visual-proofs statistics linear-algebra
 categories: math

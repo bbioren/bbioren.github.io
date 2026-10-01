@@ -1,7 +1,7 @@
 ---
 layout: post
 title: why the gradient points uphill
-date: 2026-09-22
+date: 2026-02-09
 description: the vector of partials is the steepest direction because, up close, every function is a plane
 tags: visual-proofs calculus optimization
 categories: math

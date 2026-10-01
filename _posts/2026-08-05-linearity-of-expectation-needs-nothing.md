@@ -1,7 +1,7 @@
 ---
 layout: post
 title: linearity of expectation needs nothing
-date: 2026-09-29
+date: 2026-08-05
 description: why adding expectations never requires independence, and how indicator variables turn hard counting into bookkeeping
 tags: visual-proofs probability combinatorics
 categories: math

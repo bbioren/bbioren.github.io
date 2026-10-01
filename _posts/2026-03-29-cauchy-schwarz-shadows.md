@@ -1,7 +1,7 @@
 ---
 layout: post
 title: cauchy–schwarz is a shadow
-date: 2026-09-24
+date: 2026-03-29
 description: why a projection is never longer than the vector it came from
 tags: visual-proofs linear-algebra inequalities
 categories: math

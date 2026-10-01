@@ -1,7 +1,7 @@
 ---
 layout: post
 title: the convex conjugate is a list of supporting lines
-date: 2026-09-30
+date: 2026-09-02
 description: for each slope, how far down do you have to push a line so it supports the graph?
 tags: visual-proofs convex-optimization duality
 categories: math

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: where the root pi comes from
-date: 2026-09-27
+date: 2026-06-11
 description: the gaussian integral, and the circle hiding inside every bell curve
 tags: visual-proofs calculus probability
 categories: math

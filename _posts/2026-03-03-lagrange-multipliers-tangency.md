@@ -1,7 +1,7 @@
 ---
 layout: post
 title: lagrange multipliers are a tangency condition
-date: 2026-09-23
+date: 2026-03-03
 description: why the gradients line up at a constrained optimum, and what the multiplier is actually measuring
 tags: visual-proofs optimization calculus
 categories: math

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: which way does kl point?
-date: 2026-09-28
+date: 2026-07-08
 description: forward kl covers every mode, reverse kl picks one, and the two most common objectives in machine learning point in opposite directions
 tags: visual-proofs information-theory machine-learning
 categories: math
