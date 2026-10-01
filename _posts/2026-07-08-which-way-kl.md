@@ -2,33 +2,25 @@
 layout: post
 title: which way does kl point?
 date: 2026-07-08
-description: forward kl covers every mode, reverse kl picks one, and the two most common objectives in machine learning point in opposite directions
+description: forward and reverse kl fit the same bimodal target in very different ways, and ml uses both
 tags: visual-proofs information-theory machine-learning
 categories: math
 related_posts: false
 ---
 
-KL divergence is usually introduced as "a distance between distributions," and the very next sentence says it isn't one, because it isn't symmetric. Then the course moves on. But the asymmetry is the whole story: swapping the arguments changes what a fitted model looks like, and the two most common objectives in machine learning sit on opposite sides of that swap.
+KL divergence usually gets introduced as a distance between distributions, and then the next sentence says it isn't really one because it isn't symmetric. Then everyone moves on. I think that asymmetry deserves more attention than it gets, because which way you write it changes what your fitted model looks like, and the two most common objectives in machine learning use opposite directions.
 
-## The statement
-
-For distributions $$p$$ and $$q$$ on the same space,
+Here's the definition. For distributions $$p$$ and $$q$$,
 
 $$
 \mathrm{KL}(p \Vert q) = \mathbb{E}_{x \sim p}\left[\log \frac{p(x)}{q(x)}\right] \ge 0,
 $$
 
-with equality iff $$p = q$$. This is Gibbs' inequality, and it takes one line of Jensen (log is concave):
+with equality only when $$p = q$$. The thing to remember is that the expectation is under the _first_ argument. You only pay where $$p$$ puts mass. Wherever $$p(x) = 0$$ the integrand gets weighted by zero, and $$q$$ can do whatever it wants there. So if you swap the arguments, you swap whose support counts.
 
-$$
--\mathrm{KL}(p \Vert q) = \mathbb{E}_{p}\left[\log \frac{q}{p}\right] \le \log \mathbb{E}_{p}\left[\frac{q}{p}\right] = \log \int_{p \gt 0} q \, dx \le \log 1 = 0.
-$$
+## Two directions in the wild
 
-The heuristic to keep in mind is that the expectation is taken under the _first_ argument. You only pay where the first distribution puts mass. Wherever $$p(x) = 0$$, the integrand is weighted by zero and $$q$$ can do whatever it likes there. Swap the arguments and you swap whose support counts.
-
-## Why it matters
-
-Take data $$x_1, \dots, x_n$$ drawn from $$p_{\text{data}}$$ and a model $$q_\theta$$. The average log-likelihood is a Monte Carlo estimate of an expectation under the data:
+Say you have data $$x_1, \dots, x_n$$ from $$p_{\text{data}}$$ and a model $$q_\theta$$. The average log-likelihood estimates an expectation under the data, and you can split it up like this:
 
 $$
 \begin{aligned}
@@ -38,25 +30,25 @@ $$
 \end{aligned}
 $$
 
-The entropy doesn't depend on $$\theta$$, so maximum likelihood (equivalently, minimizing cross-entropy) is minimizing $$\mathrm{KL}(p_{\text{data}} \Vert q_\theta)$$. That's the **forward** KL, with the data first.
+The entropy term doesn't depend on $$\theta$$, so maximum likelihood is the same as minimizing $$\mathrm{KL}(p_{\text{data}} \Vert q_\theta)$$. That's forward KL, with the data in the first slot.
 
-Now variational inference. We want the posterior $$p(z \mid x)$$, can't compute it, and pick an approximation $$q(z)$$ from a tractable family. Expanding $$\log p(x,z) = \log p(z \mid x) + \log p(x)$$ inside an expectation over $$q$$ gives
+Now think about variational inference. You want a posterior $$p(z \mid x)$$ that you can't compute, so you pick some tractable $$q(z)$$ to approximate it. If you expand $$\log p(x,z) = \log p(z \mid x) + \log p(x)$$ inside an expectation over $$q$$, you get
 
 $$
 \log p(x) = \underbrace{\mathbb{E}_{q}\left[\log \frac{p(x,z)}{q(z)}\right]}_{\text{ELBO}} + \mathrm{KL}\big(q(z) \Vert p(z \mid x)\big).
 $$
 
-The left side is fixed, so maximizing the ELBO is minimizing $$\mathrm{KL}(q \Vert p)$$, the **reverse** KL with the approximation first. It has to be this way round: the expectation must be under $$q$$, because $$q$$ is the only thing we can sample from. So the most common way to fit a model and the most common way to approximate a posterior minimize the same quantity with the arguments switched.
+The left side is a fixed number, so pushing the ELBO up pushes $$\mathrm{KL}(q \Vert p)$$ down. This is reverse KL, with the approximation first. And it pretty much has to go this way, since the expectation needs to be under $$q$$, which is the only thing you can sample from. So fitting a model and approximating a posterior minimize the same quantity with the arguments flipped. Does that matter?
 
-## The picture
+## One target, two fits
 
-Here is what the switch does. The target is a bimodal mixture
+Let's try it. Take a bimodal target
 
 $$
 p = \tfrac12 \mathcal{N}(-2, 0.6^2) + \tfrac12 \mathcal{N}(2, 0.6^2),
 $$
 
-and we fit a single Gaussian $$q = \mathcal{N}(\mu, \sigma^2)$$ to it, once in each direction.
+and fit a single Gaussian $$q = \mathcal{N}(\mu, \sigma^2)$$ to it, once in each direction.
 
 <div class="row justify-content-center mt-3">
   <div class="col-sm-10 mt-3 mt-md-0">
@@ -64,23 +56,25 @@ and we fit a single Gaussian $$q = \mathcal{N}(\mu, \sigma^2)$$ to it, once in e
   </div>
 </div>
 <div class="caption">
-  The bimodal target (black, shaded) with the best single Gaussian under each direction of KL. Forward KL (blue) covers both modes and puts mass in the empty valley; reverse KL (orange, dashed) sits on one mode and ignores the other. All curves are exact densities.
+  The bimodal target (black) and the best single Gaussian in each direction. Forward KL is blue, reverse KL is orange and dashed.
 </div>
 
-**Forward, $$\mathrm{KL}(p \Vert q)$$.** The integrand is $$p \log(p/q)$$. Look at either black bump: if $$q$$ were tiny there, $$\log(p/q)$$ would be huge, and it gets weighted by $$p$$, which is not tiny. So $$q$$ can't afford to be near zero anywhere $$p$$ has mass. This is the zero-avoiding (or mass-covering) behavior. Putting mass in the valley at $$x = 0$$ costs nothing, because there the integrand is weighted by $$p \approx 0$$. So the blue curve spreads out to cover both modes and spills into the gap.
+Start with forward, $$\mathrm{KL}(p \Vert q)$$, where the integrand is $$p \log(p/q)$$. If $$q$$ were tiny on either black bump, $$\log(p/q)$$ would blow up, and it's being weighted by $$p$$, which isn't small there. So $$q$$ can't go near zero anywhere $$p$$ has mass. Putting mass in the empty valley around $$x = 0$$ is free, though, because $$p \approx 0$$ there. People call this mass-covering, and you can see it in the blue curve, which stretches over both modes and spills into the gap.
 
-For a Gaussian $$q$$ the optimum can be written down exactly. Up to a constant,
+For Gaussian $$q$$ you can actually solve this. Up to a constant,
 
 $$
 \mathrm{KL}(p \Vert q) = \log \sigma + \frac{\mathbb{E}_p[(x - \mu)^2]}{2\sigma^2},
 $$
 
-which is minimized at $$\mu = \mathbb{E}_p[x]$$ and $$\sigma^2 = \mathrm{Var}_p(x)$$. That's just moment matching. Here $$\mathbb{E}_p[x] = 0$$ and $$\mathrm{Var}_p(x) = 0.6^2 + 2^2 = 4.36$$ (within-component variance plus the spread of the means), so the blue curve is $$\mathcal{N}(0, 4.36)$$ with $$\sigma \approx 2.088$$. More generally, when $$q$$ ranges over an exponential family, the forward-KL fit matches the expected sufficient statistics.
+which is minimized at $$\mu = \mathbb{E}_p[x]$$ and $$\sigma^2 = \mathrm{Var}_p(x)$$, so it's just moment matching. Here the mean is $$0$$ and the variance is $$0.6^2 + 2^2 = 4.36$$, giving $$\sigma \approx 2.09$$.
 
-**Reverse, $$\mathrm{KL}(q \Vert p)$$.** Now the integrand is $$q \log(q/p)$$, weighted by $$q$$. The danger has moved: wherever $$q \gt 0$$ but $$p \approx 0$$, you pay $$\log(q/p) \to \infty$$. The valley is now the expensive place to be, and the blue curve would be heavily penalized for its mass there. Missing a mode costs nothing, because there the integrand is weighted by $$q \approx 0$$. This is the zero-forcing (or mode-seeking) behavior: $$q$$ goes to zero wherever $$p$$ does, and the cheapest way to do that with one bump is to hide inside a single mode. Minimizing numerically gives $$\mu \approx 2$$, $$\sigma \approx 0.6$$, which is the orange curve. By symmetry $$\mathcal{N}(-2, 0.6^2)$$ is an equally good optimum, so reverse KL isn't even convex here and the mode you get depends on initialization.
+Reverse, $$\mathrm{KL}(q \Vert p)$$, has integrand $$q \log(q/p)$$, and now the danger is somewhere else. Anywhere $$q \gt 0$$ but $$p \approx 0$$ costs you a lot, so the valley becomes the worst place to put mass. Meanwhile missing a mode entirely costs nothing, since the integrand is weighted by $$q \approx 0$$ there. With only one bump to work with, the cheapest option is to sit inside a single mode. Minimizing numerically gives $$\mu \approx 2$$ and $$\sigma \approx 0.6$$, which is the orange curve. The mirror image at $$-2$$ is just as good, so which mode you land on depends on where you start.
 
-The numbers back up the picture. The blue fit has $$\mathrm{KL}(p \Vert q) \approx 0.555$$ but $$\mathrm{KL}(q \Vert p) \approx 1.27$$. The orange fit has $$\mathrm{KL}(q \Vert p) \approx 0.692$$, almost exactly $$\log 2$$, since on its mode $$p \approx q/2$$. But its forward KL is about $$10.4$$, because it assigns almost no probability to half the data.
+The numbers match the picture. The blue fit has forward KL about $$0.555$$ and reverse KL about $$1.27$$. The orange fit has reverse KL about $$0.692$$, which is basically $$\log 2$$ (on its mode, $$p \approx q/2$$), but its forward KL is around $$10.4$$ because it gives almost no probability to half the data.
 
-## The part that gets missed
+## Overconfident posteriors
 
-Neither fit is the "right" answer. Each one answers a different question. Forward KL asks for a $$q$$ that never misses anything $$p$$ can produce, which is what you want from a density model of data. Reverse KL asks for a $$q$$ that never produces anything $$p$$ wouldn't, which is what you want from a sampler you plan to trust. Choosing a direction is a modeling decision, not a technicality. And it has a predictable cost that the usual presentation of variational inference glosses over: reverse KL **underestimates uncertainty**. That isn't specific to multimodal targets. Even for a correlated Gaussian posterior with precision matrix $$\Lambda$$, the mean-field reverse-KL fit gets the means exactly right but sets each variance to $$1/\Lambda_{ii}$$, the conditional variance, which is never larger (and usually strictly smaller) than the true marginal variance $$(\Lambda^{-1})_{ii}$$. So VI posteriors come out overconfident by construction. When a variational posterior looks reassuringly tight, the first thing to remember is which way the KL pointed.
+Neither fit is wrong. Forward KL wants a $$q$$ that never misses anything $$p$$ could produce, which is what you'd want from a density model. Reverse KL wants a $$q$$ that never produces anything $$p$$ wouldn't, which is closer to what you'd want from a sampler.
+
+The thing I'd keep in mind is that reverse KL tends to underestimate uncertainty, and you don't need multiple modes for that to happen. Take a correlated Gaussian posterior with precision matrix $$\Lambda$$ and fit a mean-field (fully factorized) $$q$$. The means come out exactly right, but each variance comes out as $$1/\Lambda_{ii}$$, the conditional variance, and that's never bigger than the true marginal variance $$(\Lambda^{-1})_{ii}$$ and is usually smaller. So variational posteriors tend to look tighter than they should, and if one looks surprisingly confident, remember which direction the KL went.

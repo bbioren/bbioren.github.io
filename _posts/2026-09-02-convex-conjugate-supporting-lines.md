@@ -2,57 +2,39 @@
 layout: post
 title: the convex conjugate is a list of supporting lines
 date: 2026-09-02
-description: for each slope, how far down do you have to push a line so it supports the graph?
+description: for each slope, how far down do you push a line before it fits under the graph?
 tags: visual-proofs convex-optimization duality
 categories: math
 related_posts: false
 ---
 
-The convex conjugate shows up in Boyd and Vandenberghe (§3.3) as a one-line definition, $$f^*(y) = \sup_x \left( y^T x - f(x) \right)$$, and it looks like it came out of nowhere. Why subtract $$f$$ from a linear function? Why take a sup? The answer is that the conjugate isn't really a new function. It's the same convex function written down a different way: you describe it by its tangent lines instead of by its points.
-
-## The statement
-
-Stay in one dimension so you can picture everything. For a function $$f : \mathbb{R} \to \mathbb{R}$$, the conjugate is
+The convex conjugate shows up in Boyd and Vandenberghe (§3.3) as a one-line definition,
 
 $$
-f^*(y) = \sup_{x} \big( yx - f(x) \big).
+f^*(y) = \sup_x \big( y^T x - f(x) \big),
 $$
 
-Here's the heuristic I'll spend the rest of the post justifying. Fix a slope $$y$$. Among all lines of slope $$y$$ that lie entirely below the graph of $$f$$, take the highest one. Its equation is
+and on first read it's hard to see why anyone would write that down. Why subtract $$f$$ from a linear function, and why take a sup? I think the definition makes a lot more sense once you draw it. The short version is that $$f^*$$ describes the same convex function as $$f$$, except by its tangent lines instead of by its points.
+
+## Pushing a line down
+
+Let's stay in one dimension so everything fits in a picture. Fix a slope $$y$$ and look at all the lines $$yx + b$$ with that slope. If $$b$$ is very negative the line sits below the graph of $$f$$, and as you raise $$b$$ it eventually bumps into the graph. So what's the highest line of slope $$y$$ that still stays below?
+
+A line $$yx + b$$ is below $$f$$ when $$yx + b \le f(x)$$ for every $$x$$, so when $$b \le f(x) - yx$$ for every $$x$$. The largest such $$b$$ is
+
+$$
+b = \inf_x \big( f(x) - yx \big) = -\sup_x \big( yx - f(x) \big) = -f^*(y).
+$$
+
+So the highest supporting line of slope $$y$$ is
 
 $$
 \ell_y(x) = yx - f^*(y),
 $$
 
-so **the intercept of the best supporting line of slope $$y$$ is $$-f^*(y)$$**. The conjugate is a table that maps each slope to how far you have to slide a line of that slope to make it touch the graph from below.
+and $$f^*(y)$$ is minus its intercept. You can think of the conjugate as a table where you give it a slope and it tells you how far down a line of that slope has to go to fit under the graph.
 
-As a quick sanity check, the units work out. $$yx$$ and $$f(x)$$ are both measured in "height," so $$f^*(y)$$ is a height too, which is exactly what an intercept should be.
-
-## Why it matters
-
-Take $$f(x) = x^2/2$$. Then $$yx - x^2/2$$ is a downward parabola in $$x$$ with its peak at $$x = y$$, so
-
-$$
-f^*(y) = y \cdot y - \tfrac{1}{2} y^2 = \tfrac{1}{2} y^2.
-$$
-
-The function is its own conjugate. Read geometrically, the supporting line of slope $$y$$ touches the parabola at $$x = y$$, and its intercept is $$-y^2/2$$.
-
-Now take $$f(x) = e^x$$, where something more interesting happens. For $$y \gt 0$$, set the derivative of $$yx - e^x$$ to zero to get $$x = \log y$$, so $$f^*(y) = y \log y - y$$. For $$y = 0$$ the supremum of $$-e^x$$ is $$0$$, which you approach as $$x \to -\infty$$ but never reach. For $$y \lt 0$$, $$yx - e^x \to +\infty$$ as $$x \to -\infty$$, so $$f^*(y) = +\infty$$. That last case has a picture: no line with negative slope fits under $$e^x$$, however far down you push it, because the curve flattens out toward $$0$$ on the left while the line keeps climbing.
-
-You also get one inequality for free. Since $$f^*(y)$$ is a supremum over $$x$$, it is at least the value at any particular $$x$$:
-
-$$
-f(x) + f^*(y) \ge xy \quad \text{for all } x, y.
-$$
-
-That's the Fenchel–Young inequality. It's the statement "the supporting line lies below the graph" with the terms moved around. With $$f = x^2/2$$ it becomes $$\tfrac{1}{2}x^2 + \tfrac{1}{2}y^2 \ge xy$$, which is AM–GM.
-
-Do it twice and something even better happens: if $$f$$ is closed and convex, then $$f^{**} = f$$. You can rebuild the function from its table of supporting lines alone. And this is the engine of Lagrange duality. In §5.1.6, Boyd writes the dual function of a linearly constrained problem directly in terms of $$f_0^*$$.
-
-## The visual proof
-
-Here is the picture for $$f(x) = e^x$$ and slope $$y = 4$$.
+Here's what that looks like for $$f(x) = e^x$$ with slope $$4$$.
 
 <div class="row justify-content-center mt-3">
   <div class="col-sm-10 mt-3 mt-md-0">
@@ -60,32 +42,38 @@ Here is the picture for $$f(x) = e^x$$ and slope $$y = 4$$.
   </div>
 </div>
 <div class="caption">
-  Lines of slope 4 next to the graph of e^x. The orange vertical segment is the largest gap 4x − e^x, reached at x* = ln 4. Pushing the orange line y = 4x down by exactly that gap gives the blue supporting line, which is tangent at x* and has intercept −f*(4) = 4 − 4 ln 4 ≈ −1.55.
+  Lines of slope 4 next to e^x. The orange segment is the biggest gap 4x − e^x, at x* = ln 4. Shifting the orange line down by that much gives the blue supporting line, with intercept 4 − 4 ln 4 ≈ −1.55.
 </div>
 
-Start with the orange line $$y = 4x$$ through the origin. Over the shaded region it sits above $$e^x$$, and the vertical gap between them at a point $$x$$ is $$4x - e^x$$. That expression is the thing inside the sup. So $$f^*(4)$$ is literally the tallest vertical segment you can fit between the line and the curve, and it's drawn in orange at $$x^* = \log 4$$, where it has length $$4 \log 4 - 4 \approx 1.55$$.
+Start with the orange line $$4x$$ through the origin. On the shaded stretch it's above $$e^x$$, and the vertical gap at a point $$x$$ is $$4x - e^x$$, which is exactly the thing inside the sup. So $$f^*(4)$$ is the length of the tallest vertical segment you can fit between the line and the curve. That happens at $$x^* = \log 4$$, where the gap is $$4 \log 4 - 4 \approx 1.55$$. If you push the orange line down by that amount, the biggest gap closes to zero and you get the blue line, which touches the curve at $$x^*$$ and stays under it everywhere else. Push it down any less and it still cuts into the graph (the upper dashed line), and push it more and there's room to spare (the lower one).
 
-Now slide the line down. A line $$4x + b$$ lies below the graph exactly when $$4x + b \le e^x$$ for every $$x$$, which means $$b \le e^x - 4x$$ for every $$x$$, which means
+Where does the line touch? At the point that maximized the gap, and if $$f$$ is differentiable that's where $$y - f'(x) = 0$$. So the supporting line of slope $$y$$ is the tangent line at the point where $$f$$ has slope $$y$$. For a convex function every tangent line lies below the graph, which is why this works out so cleanly.
 
-$$
-b \le \inf_x \big( e^x - 4x \big) = -\sup_x \big( 4x - e^x \big) = -f^*(4).
-$$
+Doing this for every slope gives the whole conjugate of $$e^x$$. For $$y \gt 0$$ the tangent point is $$x = \log y$$, and $$f^*(y) = y \log y - y$$. For $$y \lt 0$$ you get $$+\infty$$, and the picture tells you why. A line with negative slope keeps climbing as you go left while $$e^x$$ flattens out toward zero, so no amount of pushing down gets it under the curve. (The borderline case is $$y = 0$$, where $$f^*(0) = 0$$ and the supporting line is the asymptote.)
 
-So the highest admissible intercept is $$-f^*(4)$$. Getting there means pushing the orange line down by exactly the length of the largest gap, which closes that gap to zero. The result is the blue line. It lies below the curve and touches it at $$x^*$$. Lines above it, like the upper dashed one, cut into the graph. Lines below it, like the lower dashed one, leave room to spare.
+Let's do one more. For $$f(x) = x^2/2$$, the gap $$yx - x^2/2$$ peaks at $$x = y$$, so $$f^*(y) = y^2/2$$ and the function is its own conjugate.
 
-Where does it touch? At the point that maximized the gap, and for differentiable $$f$$ that's where $$\frac{d}{dx}(yx - f(x)) = 0$$, that is, $$f'(x^*) = y$$. The supporting line of slope $$y$$ is the tangent line at the point where the curve has slope $$y$$. For a convex function every tangent line is a supporting line, so this always works. That's why the conjugate re-encodes $$f$$ by its tangents.
+## Going back
 
-Running the argument in reverse gives $$f^{**}$$:
+Since the conjugate is a sup over $$x$$, it's at least as big as the value at any particular $$x$$, which gives
 
 $$
-f^{**}(x) = \sup_y \big( xy - f^*(y) \big) = \sup_y \ell_y(x).
+f(x) + f^*(y) \ge xy \quad \text{for all } x, y.
 $$
 
-That is the upper envelope of all the supporting lines. For a closed convex function, the supporting hyperplane theorem says those lines hug the graph everywhere, so their envelope is $$f$$ itself.
+This is the Fenchel–Young inequality, and it's the statement "$$\ell_y$$ lies below $$f$$" with the terms moved around. For $$x^2/2$$ it says $$\tfrac{1}{2}x^2 + \tfrac{1}{2}y^2 \ge xy$$, which is the usual AM–GM inequality.
 
-## The part that gets missed
+You can also run the construction backwards. Taking the conjugate of $$f^*$$ gives
 
-Two facts usually get skipped, and both come straight from the picture. First, **$$f^*$$ is always convex, even when $$f$$ is not.** For each fixed $$x$$, the expression $$yx - f(x)$$ is an affine function of $$y$$, and a pointwise supremum of affine functions is convex. You never need to check convexity of $$f$$ to know $$f^*$$ is convex. Second, $$f^{**} = f$$ needs $$f$$ to be closed and convex. Drop that and you get the largest closed convex function lying below $$f$$, which is the (closed) convex envelope:
+$$
+f^{**}(x) = \sup_y \big( xy - f^*(y) \big) = \sup_y \ell_y(x),
+$$
+
+which is the upper envelope of all the supporting lines. If $$f$$ is convex (and closed, which rules out some bad behavior at the edge of its domain), those lines hug the graph everywhere and the envelope is $$f$$ again. So you really can rebuild the function from its table of slopes and intercepts.
+
+## When f isn't convex
+
+What happens if $$f$$ isn't convex? The definition still makes sense, and $$f^*$$ still comes out convex, because for each fixed $$x$$ the expression $$yx - f(x)$$ is affine in $$y$$ and a sup of affine functions is convex. But now $$f^{**}$$ isn't $$f$$ anymore. Here's a double well:
 
 <div class="row justify-content-center mt-3">
   <div class="col-sm-10 mt-3 mt-md-0">
@@ -93,7 +81,9 @@ Two facts usually get skipped, and both come straight from the picture. First, *
   </div>
 </div>
 <div class="caption">
-  The double well f(x) = (x² − 1)² and a few of its supporting lines (blue). Every line that stays below f also stays below the flat segment joining the two minima. So the envelope of supporting lines, f**, is 0 on [−1, 1] and agrees with f outside that interval. The shaded bump is information that f* never records.
+  The double well f(x) = (x² − 1)² with a few supporting lines. None of them can get into the bump between the minima, so f** is 0 on [−1, 1] and equals f outside. The shaded region never shows up in f*.
 </div>
 
-Supporting lines have to stay under the whole graph, so none of them can climb into the bump between the two wells. The conjugate simply never sees that part of $$f$$. Two functions with the same convex envelope have the same conjugate. That's the real content behind duality giving _lower bounds_. Through the conjugate, the dual problem sees only $$f^{**} \le f$$, so in effect it solves the convexified problem, and the best it can certify is a value at or below the true optimum. When $$f$$ is convex, the convexification loses nothing and (under a constraint qualification) the bound is tight. When it isn't, the shaded region is exactly what gets lost, and the space between $$f$$ and $$f^{**}$$ is where duality gaps come from.
+A supporting line has to stay under the whole graph, so none of them can reach up into the bump between the two wells. The conjugate never sees that part of $$f$$, and what you get back as $$f^{**}$$ is the convex envelope, which is flat across the middle and matches $$f$$ outside. Any two functions with the same convex envelope have the same conjugate.
+
+I think this is the clearest way to see why Lagrange duality gives lower bounds. Boyd writes the dual function in terms of conjugates (§5.1.6), so the dual problem only ever sees $$f^{**}$$, which sits below $$f$$, and in effect it's solving the convexified problem. When $$f$$ is convex nothing is lost, and with a constraint qualification the bound is tight. When it isn't, the dual can come out strictly below the true optimum, and in this picture the difference comes from that shaded bump.
