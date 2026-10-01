@@ -39,7 +39,7 @@ papers:
 
 current:
   - title: "Minimal Perturbation Attacks in VLMs: Turning Embedding Distance into an Attack Metric"
-    where: Allen School, with Justin Zhou, advised by Sewoong Oh
+    where: Allen School, with Justin Zhou
     since: 2026
     target: ICML 2027
     figure: /assets/img/research/typographic-attacks-grid.jpg

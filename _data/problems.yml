@@ -2,7 +2,7 @@
 - where: RAIVN Lab
   question: Can we tell a vision-language model is about to hallucinate while it is still reading the image, before it says anything?
   status: in progress
-- where: with Sewoong Oh
+- where: with Justin Zhou
   question: How small can a typographic attack be and still transfer to closed models like GPT-4o, Gemini and Claude?
   status: in progress
 - where: Math AI Lab
