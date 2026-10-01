@@ -2,45 +2,45 @@
 layout: post
 title: why n minus one
 date: 2026-04-22
-description: the degree of freedom you lose is a direction you can draw
+description: the lost degree of freedom is a direction you can draw
 tags: visual-proofs statistics linear-algebra
 categories: math
 related_posts: false
 ---
 
-Every intro stats class gets to the sample variance and puts an $$n-1$$ in the denominator where everyone expected an $$n$$. Then someone says "you lose a degree of freedom," and the class moves on. I don't think that phrase means much the first time you hear it. It does mean something, though, and it's pretty concrete. The degree of freedom is an actual direction in $$\mathbb{R}^n$$, and you can draw a picture of it.
-
-Here's the setup. Let $$X_1, \dots, X_n$$ be iid with mean $$\mu$$ and variance $$\sigma^2$$, with $$n \ge 2$$, and write $$\bar X = \frac{1}{n}\sum_i X_i$$. The claim is that
+Let $$X_1, \dots, X_n$$ be iid with mean $$\mu$$ and variance $$\sigma^2$$, with $$n \ge 2$$, and let $$\bar X = \frac{1}{n}\sum_i X_i$$ be the sample mean. The sample variance is
 
 $$
 S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar X)^2
 $$
 
-has $$\mathbb{E}[S^2] = \sigma^2$$, and that dividing by $$n$$ would come out too small on average.
+Why is the denominator $$n-1$$ and not $$n$$? The claim is that $$\mathbb{E}[S^2] = \sigma^2$$, and that dividing by $$n$$ would come out too small on average. The usual explanation is that you "lose a degree of freedom." That's true, but on its own it doesn't explain much. It turns out the lost degree of freedom is an actual direction in $$\mathbb{R}^n$$, and you can draw a picture of it.
 
-Before doing any math, you can guess which way the correction should go. If we knew $$\mu$$, we'd average $$(X_i - \mu)^2$$ and that would be exactly unbiased. We don't know $$\mu$$, so we plug in $$\bar X$$. But $$\bar X$$ is the number $$c$$ that minimizes $$\sum_i (X_i - c)^2$$ (set the derivative to zero and see). So the squared deviations around $$\bar X$$ are never bigger than the ones around $$\mu$$, and usually they're smaller. You're measuring spread around a center you fit to the same data, so the data looks a bit tighter than it really is, and dividing by something less than $$n$$ makes up for that. The question is why it's exactly $$n-1$$.
+You can guess which way the correction goes before doing any math. If we knew $$\mu$$, we would just average the $$(X_i - \mu)^2$$, and that would be exactly unbiased. But we don't know $$\mu$$, so we plug in $$\bar X$$ instead. Now, $$\bar X$$ is the number $$c$$ that minimizes $$\sum_i (X_i - c)^2$$. (Set the derivative $$-2\sum_i (X_i - c)$$ to zero and you get $$c = \bar X$$.) So the squared deviations around $$\bar X$$ are never bigger than the ones around $$\mu$$, and usually they're smaller. We fit the center to the same data we're measuring the spread of, so the data looks a little tighter than it really is. Dividing by something less than $$n$$ makes up for that. But why exactly $$n-1$$?
 
-## Pythagoras
-
-Write $$X_i - \mu = (X_i - \bar X) + (\bar X - \mu)$$, square it, and sum over $$i$$. The cross term is $$2(\bar X - \mu)\sum_i (X_i - \bar X)$$, which is zero because deviations from the mean add up to zero. So
+For that we need an identity. Write $$X_i - \mu = (X_i - \bar X) + (\bar X - \mu)$$, square both sides, and sum over $$i$$. The cross term is $$2(\bar X - \mu)\sum_i (X_i - \bar X)$$. This is zero, because deviations from the mean always add up to zero. So we have that
 
 $$
 \sum_{i=1}^n (X_i - \mu)^2 = \sum_{i=1}^n (X_i - \bar X)^2 + n(\bar X - \mu)^2 .
 $$
 
-Take expectations. The left side is $$n\sigma^2$$. Since $$\operatorname{Var}(\bar X) = \sigma^2/n$$, the last term has expectation $$\sigma^2$$. That leaves
+Now take expectations. The left side is $$n\sigma^2$$. Since $$\operatorname{Var}(\bar X) = \sigma^2/n$$, the last term has expectation $$n \cdot \sigma^2/n = \sigma^2$$. Moving it over to the other side, we're left with
 
 $$
 \mathbb{E}\Big[\sum_{i=1}^n (X_i - \bar X)^2\Big] = (n-1)\sigma^2 ,
 $$
 
-and you divide by $$n-1$$. So the missing $$\sigma^2$$ is the variance of the sample mean. The residuals can't see how far $$\bar X$$ landed from $$\mu$$, because they're measured from $$\bar X$$.
+and dividing by $$n-1$$ gives $$\sigma^2$$. So where did the missing $$\sigma^2$$ go? It's the variance of the sample mean. The residuals are measured from $$\bar X$$, so they can't see how far $$\bar X$$ landed from $$\mu$$.
 
-That identity is Pythagoras, and I think it's much easier to believe once you draw it.
+## The same identity as a right triangle
 
-## Counting directions
+The identity above is really just Pythagoras, and I find it a lot easier to believe once it's drawn. Treat the whole sample as one vector $$X = (X_1, \dots, X_n)$$ in $$\mathbb{R}^n$$, and let $$\mathbf{1} = (1, \dots, 1)$$. If we project $$X$$ onto the line through $$\mathbf{1}$$, the coefficient is
 
-Treat the whole sample as one vector $$X = (X_1, \dots, X_n)$$ in $$\mathbb{R}^n$$, and let $$\mathbf{1} = (1, \dots, 1)$$. Projecting $$X$$ onto the line through $$\mathbf{1}$$ gives coefficient $$\langle X, \mathbf{1}\rangle / \langle \mathbf{1}, \mathbf{1}\rangle = \bar X$$, so $$\bar X\mathbf{1}$$ is that projection. The residual $$X - \bar X\mathbf{1}$$ is then perpendicular to $$\mathbf{1}$$, which is the same fact as "deviations sum to zero." For $$n = 2$$ the line through $$\mathbf{1}$$ is the diagonal, and it looks like this.
+$$
+\frac{\langle X, \mathbf{1}\rangle}{\langle \mathbf{1}, \mathbf{1}\rangle} = \frac{\sum_i X_i}{n} = \bar X ,
+$$
+
+so the projection is $$\bar X\mathbf{1}$$. The residual $$X - \bar X\mathbf{1}$$ is perpendicular to $$\mathbf{1}$$. That's the same fact as the deviations summing to zero, just said with geometry. When $$n = 2$$, the line through $$\mathbf{1}$$ is the diagonal of the plane, which is the case drawn below.
 
 <div class="row justify-content-center mt-3">
   <div class="col-sm-10 mt-3 mt-md-0">
@@ -48,33 +48,35 @@ Treat the whole sample as one vector $$X = (X_1, \dots, X_n)$$ in $$\mathbb{R}^n
   </div>
 </div>
 <div class="caption">
-  The error X − μ1 splits into a blue piece along the diagonal and an orange piece perpendicular to it. The sample variance only sees the orange one.
+  The error X − μ1 split into a blue piece along the diagonal and an orange piece perpendicular to it. The sample variance only sees the orange piece.
 </div>
 
-The black vector $$X - \mu\mathbf{1}$$ is the one we'd like to measure. Both $$\mu\mathbf{1}$$ and $$\bar X\mathbf{1}$$ sit on the diagonal, so the blue leg runs along $$\mathbf{1}$$ and the orange leg is perpendicular to it. That's a right triangle, and
+The black vector $$X - \mu\mathbf{1}$$ is the error we'd actually like to measure. Both $$\mu\mathbf{1}$$ and $$\bar X\mathbf{1}$$ sit on the diagonal, so the blue leg runs along $$\mathbf{1}$$ and the orange leg is perpendicular to it. Together they make a right triangle, and Pythagoras gives
 
 $$
-\Vert X - \mu\mathbf{1} \Vert^2 = \Vert (\bar X - \mu)\mathbf{1} \Vert^2 + \Vert X - \bar X\mathbf{1} \Vert^2
+\Vert X - \mu\mathbf{1} \Vert^2 = \Vert (\bar X - \mu)\mathbf{1} \Vert^2 + \Vert X - \bar X\mathbf{1} \Vert^2 .
 $$
 
-is the same identity as before, just written with lengths.
+This is the identity from before, written with lengths instead of sums.
 
-Now count. The noise $$X - \mu\mathbf{1}$$ has independent coordinates with variance $$\sigma^2$$ each, so its covariance is $$\sigma^2 I$$, and it doesn't prefer any direction. Pick any unit vector $$u$$ and the noise has variance $$\sigma^2$$ along it. So take an orthonormal basis made of $$\mathbf{1}/\sqrt{n}$$ plus $$n-1$$ vectors perpendicular to it. Each direction carries $$\sigma^2$$ of expected squared length. The blue leg gets one direction, so it has expected squared length $$\sigma^2$$, and the orange leg gets the other $$n-1$$, so it has $$(n-1)\sigma^2$$. If you like it in one line, with $$P$$ the projection onto $$\mathbf{1}^\perp$$,
+The picture also explains the count. Why should every direction get the same share of the noise? Well, the noise $$X - \mu\mathbf{1}$$ has independent coordinates, each with variance $$\sigma^2$$. So its covariance is $$\sigma^2 I$$, and it doesn't prefer any direction over another. Along any unit vector $$u$$, the noise has variance $$\sigma^2$$. Now pick an orthonormal basis made of $$\mathbf{1}/\sqrt{n}$$ together with $$n-1$$ vectors perpendicular to it. Each of these directions carries $$\sigma^2$$ of expected squared length. The blue leg only gets one direction, so its expected squared length is $$\sigma^2$$. The orange leg gets the other $$n-1$$, so its expected squared length is $$(n-1)\sigma^2$$. If $$P$$ is the projection onto $$\mathbf{1}^\perp$$, we can write this in one line as
 
 $$
-\mathbb{E}\Vert P(X - \mu\mathbf{1})\Vert^2 = \sigma^2 \operatorname{tr}(P) = (n-1)\sigma^2 ,
+\mathbb{E}\Vert P(X - \mu\mathbf{1})\Vert^2 = \sigma^2 \operatorname{tr}(P) = (n-1)\sigma^2 .
 $$
 
-and $$P(X - \mu\mathbf{1})$$ is exactly the residual $$X - \bar X\mathbf{1}$$, since $$P$$ kills $$\mu\mathbf{1}$$.
+Here $$P(X - \mu\mathbf{1})$$ is exactly the residual $$X - \bar X\mathbf{1}$$, because $$P$$ sends $$\mu\mathbf{1}$$ to zero.
 
-So that's the lost degree of freedom. It's the direction along $$\mathbf{1}$$. Fitting the mean uses it up, and the residuals are stuck living in the other $$n-1$$ dimensions. This only needed the covariance to be $$\sigma^2 I$$, nothing Gaussian. (With Gaussian data you get more, like the $$\chi^2_{n-1}$$ distribution and the $$n-1$$ in the $$t$$-test, but I'll skip that.)
+So the degree of freedom that gets lost is the direction along $$\mathbf{1}$$. Fitting the mean uses it up, and the residuals live in the other $$n-1$$ dimensions. Notice that none of this needed the data to be Gaussian. We only used that the covariance is $$\sigma^2 I$$. With Gaussian data you get more out of the picture, like the $$\chi^2_{n-1}$$ distribution and the $$n-1$$ in the $$t$$-test, but I won't go into those here.
 
-## What it doesn't fix
+## The standard deviation is still biased
 
-One thing that bugs me is that the $$n-1$$ makes $$S^2$$ unbiased, but almost nobody reports $$S^2$$. They report $$S$$. And the square root is concave, so by Jensen
+There's a catch, though. The $$n-1$$ makes $$S^2$$ unbiased, but $$S^2$$ is almost never the number people report. They report $$S$$. The square root is concave, so by Jensen we have that
 
 $$
 \mathbb{E}[S] \lt \sqrt{\mathbb{E}[S^2]} = \sigma
 $$
 
-whenever $$S^2$$ is actually random. For tiny samples the gap is pretty big. For Gaussian data with $$n = 2$$, $$\mathbb{E}[S] = \sqrt{2/\pi}\,\sigma \approx 0.80\,\sigma$$. So the correction gets the average of the variance exactly right and the standard deviation still comes out low. It's also not obvious that unbiased is what you want in the first place. For Gaussian data the plain $$1/n$$ version has smaller mean squared error than the $$1/(n-1)$$ one, for every $$n$$.
+whenever $$S^2$$ is actually random. For small samples the gap is pretty big. For Gaussian data with $$n = 2$$ it works out to $$\mathbb{E}[S] = \sqrt{2/\pi}\,\sigma \approx 0.80\,\sigma$$. So the correction gets the average of the variance exactly right, and the standard deviation still comes out low.
+
+It's also not obvious that unbiased is what you want in the first place. For Gaussian data, the plain $$1/n$$ version has a smaller mean squared error than the $$1/(n-1)$$ version, for every $$n$$.

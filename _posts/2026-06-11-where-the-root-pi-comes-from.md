@@ -2,39 +2,39 @@
 layout: post
 title: where the root pi comes from
 date: 2026-06-11
-description: why there's a pi in the normal distribution, and the circle you can see from above
+description: where the pi in the normal distribution comes from
 tags: visual-proofs calculus probability
 categories: math
 related_posts: false
 ---
 
-If you've taken a stats class, you've seen the normal density, and you've probably wondered at some point about the constant out front, $$\frac{1}{\sqrt{2\pi}}$$. The $$e^{-x^2/2}$$ part is reasonable enough, it's a bump that dies off fast. But why $$\pi$$? Nothing about a bell curve looks like it has anything to do with circles. The usual explanation is that the constant makes the area come out to 1, which is true, but it doesn't tell you why that number in particular has a $$\pi$$ in it.
-
-Everything comes down to one integral:
+The integral of $$e^{-x^2}$$ over the whole real line comes out to exactly $$\sqrt{\pi}$$:
 
 $$
 I = \int_{-\infty}^{\infty} e^{-x^2}\, dx = \sqrt{\pi}.
 $$
 
-Before proving it, is that even a believable number? $$e^{-x^2}$$ is at most 1, and by $$x = 2$$ it's already under $$0.02$$, so the area should be somewhere a bit under 2. And $$\sqrt{\pi} \approx 1.772$$, so that seems about right.
+Why would there be a $$\pi$$ in there? The function is just a bump that dies off fast, and nothing about it looks like it has anything to do with circles. Before worrying about that, it's worth checking that the number is at least reasonable. The function $$e^{-x^2}$$ is never bigger than 1, and by $$x = 2$$ it's already under $$0.02$$. So the area should be a bit under 2, and $$\sqrt{\pi} \approx 1.772$$ fits.
 
-Once you know this, the normal density follows from a substitution. Setting $$t = (x-\mu)/(\sigma\sqrt{2})$$, so $$dx = \sigma\sqrt{2}\, dt$$, gives
+This integral is also where the $$\frac{1}{\sqrt{2\pi}}$$ in front of the normal density comes from. If we set $$t = (x-\mu)/(\sigma\sqrt{2})$$, then $$dx = \sigma\sqrt{2}\, dt$$, and we have that
 
 $$
 \int_{-\infty}^{\infty} e^{-(x-\mu)^2/(2\sigma^2)}\, dx = \sigma\sqrt{2} \int_{-\infty}^{\infty} e^{-t^2}\, dt = \sigma\sqrt{2\pi}.
 $$
 
-So the $$\sqrt{2\pi}$$ is the $$\sqrt{\pi}$$ from $$I$$, along with a $$\sqrt{2}$$ that's only there because we like writing $$2\sigma^2$$ in the exponent. The question is where the $$\sqrt{\pi}$$ comes from.
+So the $$\sqrt{2\pi}$$ in the normal distribution is really just the $$\sqrt{\pi}$$ from $$I$$. The extra $$\sqrt{2}$$ only shows up because people like to write the exponent with a $$2\sigma^2$$ in it. That means if we can figure out where the $$\sqrt{\pi}$$ in $$I$$ comes from, we've also figured it out for the normal distribution.
 
-## Going up a dimension
+## Squaring the integral
 
-The first thing you'd try is finding an antiderivative of $$e^{-x^2}$$, and that doesn't work, because there isn't an elementary one. So instead we do something that seems like it should make things worse, which is to square the integral and write it as a double integral:
+The obvious first thing to try is finding an antiderivative of $$e^{-x^2}$$. Well, there isn't an elementary one, so that goes nowhere. What works instead looks like it should only make things worse. We multiply the integral by itself and write the product as a double integral:
 
 $$
 I^2 = \left(\int_{-\infty}^{\infty} e^{-x^2}\, dx\right)\left(\int_{-\infty}^{\infty} e^{-y^2}\, dy\right) = \iint_{\mathbb{R}^2} e^{-(x^2+y^2)}\, dx\, dy.
 $$
 
-Now $$I^2$$ is the volume under the surface $$z = e^{-(x^2+y^2)}$$, which is a bell curve spun around the $$z$$-axis. The height only depends on $$x^2 + y^2$$, the squared distance from the origin, so if you look straight down at it, the level sets are circles. That's where the circle is. And since the surface is round, it makes more sense to chop the plane into thin rings than into the usual grid of little squares.
+Calling the variable $$y$$ in the second copy doesn't change its value, but it lets us treat the product as one integral over the plane.
+
+Now $$I^2$$ is the volume under the surface $$z = e^{-(x^2+y^2)}$$, which is the bell curve spun around the $$z$$-axis. The height only depends on $$x^2 + y^2$$, the squared distance from the origin. So if you look down at the surface from above, its level sets are circles. The surface is round, so it makes more sense to chop the plane into thin rings than into the usual grid of little squares.
 
 <div class="row justify-content-center mt-3">
   <div class="col-sm-10 mt-3 mt-md-0">
@@ -45,21 +45,21 @@ Now $$I^2$$ is the volume under the surface $$z = e^{-(x^2+y^2)}$$, which is a b
   The surface e^(−(x²+y²)) seen from above. A thin ring of radius r, cut open and straightened, is nearly a rectangle of length 2πr, and the surface has height e^(−r²) all the way around it.
 </div>
 
-Take the ring between radius $$r$$ and $$r + dr$$, the orange one in the picture. If you cut it at one point and straighten it out, you get something that's almost a rectangle, with length $$2\pi r$$ (the circumference) and width $$dr$$. So its area is about $$2\pi r\, dr$$, and the surface sits at height $$e^{-r^2}$$ over the whole ring, which means the volume above it is
+Take the ring between radius $$r$$ and $$r + dr$$ (the orange one in the picture). If you cut the ring at one point and straighten it out, you get something that's almost a rectangle. Its length is the circumference $$2\pi r$$ and its width is $$dr$$, so its area is about $$2\pi r\, dr$$. The surface has the same height $$e^{-r^2}$$ all the way around the ring. So the volume sitting above the ring is about
 
 $$
 e^{-r^2} \cdot 2\pi r\, dr.
 $$
 
-(The ring isn't exactly a rectangle and the height isn't exactly constant across it, but those errors are higher order in $$dr$$ and go away in the limit.) Adding up all the rings from the center out,
+The ring isn't exactly a rectangle, and the height isn't exactly constant across it. Both of these errors are higher order in $$dr$$, so they go away in the limit. I'm not going to be more careful than that here. Adding up all the rings from the center outward, we get
 
 $$
 I^2 = \int_0^\infty e^{-r^2}\, 2\pi r\, dr.
 $$
 
-That factor of $$r$$ is what you'd normally call the Jacobian for polar coordinates, and I think it's usually presented as something to memorize. The picture makes it obvious, though. Rings farther out are longer, so a ring at radius 2 has twice as much area as one at radius 1 and should count twice as much.
+The factor of $$r$$ in there is what's usually called the Jacobian for polar coordinates. In a class it's often something you're just told to memorize. In the picture it says that rings farther out are longer. A ring at radius 2 has twice the area of a ring at radius 1, so it should count for twice as much volume.
 
-It's also exactly what saves us. We couldn't integrate $$e^{-r^2}$$ by itself, but $$2r\, e^{-r^2}$$ is the derivative of $$-e^{-r^2}$$. With $$u = r^2$$,
+That same factor of $$r$$ is also what lets us finish. We couldn't integrate $$e^{-r^2}$$ on its own, but $$2r\, e^{-r^2}$$ is the derivative of $$-e^{-r^2}$$. So if we pull the $$\pi$$ out front and substitute $$u = r^2$$, so that $$du = 2r\, dr$$, we have that
 
 $$
 I^2 = \pi \int_0^\infty e^{-u}\, du = \pi.
@@ -74,10 +74,14 @@ $$
   How much volume each ring contributes, 2πr e^(−r²), as a function of r. The shaded area is π. The dashed curve is the height e^(−r²) on its own.
 </div>
 
-The plot above shows the tradeoff. Rings near the center are too short to hold much volume, and rings far out are too low, so most of it comes from somewhere in between. Anyway, $$I$$ is positive, so $$I = \sqrt{\pi}$$. The $$\pi$$ is the $$\pi$$ from the circumference $$2\pi r$$, and the square root is there because we had to square $$I$$ to get a circle to show up at all.
+The plot above shows how much volume each ring contributes. Rings near the center are too short to hold much, and rings far out are too low, so most of the volume comes from somewhere in between. Since $$I$$ is positive, taking the square root gives $$I = \sqrt{\pi}$$.
 
-## Why only the Gaussian
+So where did the $$\pi$$ come from? It's the same $$\pi$$ that's in the circumference $$2\pi r$$ of each ring. The square root is there because we had to square $$I$$ before any circles showed up.
 
-You might wonder if this works for other bumps. Try $$e^{-\vert x \vert}$$. The product $$e^{-\vert x \vert - \vert y \vert}$$ has level sets shaped like diamonds, not circles, so slicing into rings doesn't buy you anything.
+## Why it only works for the Gaussian
 
-In fact the Gaussian is basically the only function where the trick works. Suppose $$f$$ is positive and $$f(x) f(y)$$ only depends on $$x^2 + y^2$$. If you set $$h(s) = \log f(\sqrt{s}) - \log f(0)$$, you can check that $$h(s) + h(t) = h(s + t)$$, and with a mild assumption like continuity that forces $$h$$ to be linear, so $$f(x) = C e^{-a x^2}$$. In probability language, if a random vector has independent coordinates and its distribution looks the same in every direction, the coordinates have to be centered Gaussians with the same variance (this is called the Herschel–Maxwell theorem). So the circle we used to compute the integral was always going to be there, and you'd get the same kind of rings if you tried this with independent Gaussians in three or more dimensions.
+You might wonder if the same trick works for other bumps, like $$e^{-\vert x \vert}$$. It doesn't, at least not with rings. The product $$e^{-\vert x \vert - \vert y \vert}$$ has level sets shaped like diamonds instead of circles, so cutting the plane into rings doesn't help at all.
+
+In fact the Gaussian is pretty much the only function this works for. Suppose $$f$$ is positive and $$f(x) f(y)$$ only depends on $$x^2 + y^2$$. Set $$h(s) = \log f(\sqrt{s}) - \log f(0)$$. Then you can check that $$h(s) + h(t) = h(s + t)$$. With a mild assumption like continuity, this forces $$h$$ to be linear, which means $$f(x) = C e^{-a x^2}$$.
+
+In probability language, this says the following. If a random vector has independent coordinates and its distribution looks the same in every direction, then the coordinates have to be centered Gaussians with the same variance. This is called the Herschel–Maxwell theorem.

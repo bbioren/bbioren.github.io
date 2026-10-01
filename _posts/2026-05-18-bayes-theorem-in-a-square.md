@@ -8,35 +8,45 @@ categories: math
 related_posts: false
 ---
 
-Bayes' theorem usually gets taught as a formula to memorize, which is a little strange, since it's one line of algebra away from the definition of conditional probability. Take a hypothesis $$H$$ (say "sick") and some evidence $$E$$ (say "tested positive"). You can write $$P(H \cap E)$$ as $$P(H \mid E)\,P(E)$$ or as $$P(E \mid H)\,P(H)$$, and if you set those equal and divide by $$P(E)$$ you get
+Say a disease affects 1% of people. There's a test for it that comes back positive for 90% of the people who have it, and for 9% of the people who don't. If you test positive, what is the chance you actually have the disease?
+
+People do badly on this question. That includes doctors, who have been asked versions of it in studies and often answer much too high. The real answer is about 9%.
+
+Where does the 9% come from? Bayes' theorem, which is just the definition of conditional probability written two ways. Let $$H$$ be the event that you're sick and $$E$$ the event that you tested positive (I'll write $$\neg H$$ for "not sick"). Then the probability of both is
 
 $$
-P(H \mid E) = \frac{P(E \mid H)\, P(H)}{P(E)}, \qquad P(E) = P(E \mid H)\,P(H) + P(E \mid \neg H)\,P(\neg H).
+P(H \cap E) = P(H \mid E)\,P(E) = P(E \mid H)\,P(H).
 $$
 
-So the algebra is easy. The intuition is what's hard, and the standard question shows it. You test positive for a rare disease, so how worried should you be? People are bad at this one, and that includes doctors, who've been asked versions of it in studies and often answer way too high.
+Dividing by $$P(E)$$ gives
 
-## The test
+$$
+P(H \mid E) = \frac{P(E \mid H)\, P(H)}{P(E)}.
+$$
 
-Say the disease has prevalence $$P(H) = 0.01$$, the test has sensitivity $$P(E \mid H) = 0.90$$, and its false positive rate is $$P(E \mid \neg H) = 0.09$$. You test positive. Plugging in,
+To get $$P(E)$$, split into the two cases, sick and not sick:
+
+$$
+P(E) = P(E \mid H)\,P(H) + P(E \mid \neg H)\,P(\neg H).
+$$
+
+In our example, the prevalence is $$P(H) = 0.01$$, the sensitivity is $$P(E \mid H) = 0.90$$ and the false positive rate is $$P(E \mid \neg H) = 0.09$$. Plugging in gives
 
 $$
 P(H \mid E) = \frac{0.90 \times 0.01}{0.90 \times 0.01 + 0.09 \times 0.99} = \frac{0.009}{0.009 + 0.0891} = \frac{0.009}{0.0981} \approx 0.0917.
 $$
 
-That's about 9.2%. A test that catches 90% of sick people and clears 91% of healthy people still leaves you with less than a one-in-ten chance of being sick after a positive result. If that seems wrong to you, you're in good company.
+So about 9.2%. And this is with a test that catches 90% of sick people and clears 91% of healthy people, which sounds like a pretty good test.
 
-There's a nicer way to run this computation. Write Bayes' theorem for $$H$$ and for $$\neg H$$ and divide one by the other. The $$P(E)$$ cancels and you're left with
+The odds form of the theorem makes this less surprising. Write Bayes' theorem once for $$H$$ and once for $$\neg H$$, and divide the first by the second. The $$P(E)$$ is the same in both, so it cancels and we're left with
 
 $$
 \underbrace{\frac{P(H \mid E)}{P(\neg H \mid E)}}_{\text{posterior odds}} = \underbrace{\frac{P(E \mid H)}{P(E \mid \neg H)}}_{\text{likelihood ratio}} \times \underbrace{\frac{P(H)}{P(\neg H)}}_{\text{prior odds}}.
 $$
 
-For our test the likelihood ratio is $$0.90 / 0.09 = 10$$ and the prior odds are $$1 : 99$$, so the posterior odds are $$10 : 99$$ and $$P(H \mid E) = 10/109 \approx 0.0917$$. Same answer, and nothing to expand. I like this version a lot more. The whole test gets boiled down to one number, and a positive result multiplies your odds by that number. Starting from $$1 : 99$$, multiplying by 10 just doesn't get you very far.
+For this test the likelihood ratio is $$0.90 / 0.09 = 10$$ and the prior odds are $$1 : 99$$. So the posterior odds are $$10 : 99$$, which means $$P(H \mid E) = 10/109 \approx 0.0917$$. That's the same answer, without expanding $$P(E)$$. I like this form because it boils the whole test down to one number. A positive result multiplies your odds by 10, and if you start at $$1 : 99$$, multiplying by 10 just doesn't get you very far.
 
-## The square
-
-OK, so let's draw it. Take the unit square as the set of all outcomes, with area as probability. Draw a vertical line at $$x = P(H)$$, so the thin strip on the left is the sick people and the wide strip on the right is the healthy people. Then in each strip shade the bottom part, where the test comes back positive. The shaded height is $$P(E \mid H)$$ on the left and $$P(E \mid \neg H)$$ on the right. Each shaded piece is a rectangle, so its area is width times height, which is exactly $$P(H \cap E) = P(H)\,P(E \mid H)$$ on the left and $$P(\neg H \cap E) = P(\neg H)\,P(E \mid \neg H)$$ on the right.
+We can also draw the same computation. Take the unit square to be the set of all outcomes, and let area be probability. Draw a vertical line at $$x = P(H)$$. The thin strip on the left is the sick people and the wide strip on the right is the healthy people. In each strip, shade the bottom part, where the test comes back positive. The shading goes up to height $$P(E \mid H)$$ on the left and $$P(E \mid \neg H)$$ on the right. Each shaded piece is a rectangle, so the left one has area $$P(H \cap E) = P(H)\,P(E \mid H)$$ and the right one has area $$P(\neg H \cap E) = P(\neg H)\,P(E \mid \neg H)$$.
 
 <div class="row justify-content-center mt-3">
   <div class="col-sm-10 mt-3 mt-md-0">
@@ -44,12 +54,12 @@ OK, so let's draw it. Take the unit square as the set of all outcomes, with area
   </div>
 </div>
 <div class="caption">
-  The square drawn to scale for prevalence 1%, sensitivity 90%, false positive rate 9%. The positive-test region is the orange sliver plus the dark blue band.
+  The square drawn to scale for prevalence 1%, sensitivity 90% and false positive rate 9%. The positive test region is the orange sliver together with the dark blue band.
 </div>
 
-I drew it to scale on purpose, and you can see the sick strip is so thin it's barely there. The positive region is made of two rectangles, an orange one that's tall and skinny and a blue one that's short and wide. If you compare their areas instead of their heights, the blue one wins by almost a factor of ten ($$0.0891$$ versus $$0.009$$).
+I drew it to scale on purpose, so the sick strip is barely visible. The orange rectangle is tall and skinny. The blue one is short and wide. If you compare areas, though, the blue one is bigger by almost a factor of ten ($$0.0891$$ versus $$0.009$$).
 
-Conditioning on $$E$$ means zooming in. Throw away everything that isn't shaded, and rescale what's left so it has area 1 again.
+Conditioning on $$E$$ means throwing away everything that isn't shaded, then rescaling what's left so it has area 1 again.
 
 <div class="row justify-content-center mt-3">
   <div class="col-sm-10 mt-3 mt-md-0">
@@ -60,18 +70,14 @@ Conditioning on $$E$$ means zooming in. Throw away everything that isn't shaded,
   Zoomed in to the positive region. The sick share is 0.009 out of 0.0981, about 9.2%.
 </div>
 
-The fraction of this new world that's orange is
+What fraction of this new square is orange? Well, it's the orange area divided by the total shaded area:
 
 $$
-P(H \mid E) = \frac{\text{area of orange rectangle}}{\text{total shaded area}} = \frac{P(H)\,P(E \mid H)}{P(H)\,P(E \mid H) + P(\neg H)\,P(E \mid \neg H)},
+P(H \mid E) = \frac{\text{area of orange rectangle}}{\text{total shaded area}} = \frac{P(H)\,P(E \mid H)}{P(H)\,P(E \mid H) + P(\neg H)\,P(E \mid \neg H)}.
 $$
 
-and that's Bayes' theorem, read off the picture. The odds form is in there too, since the ratio of the two shaded areas is the ratio of the widths times the ratio of the heights, which is prior odds times likelihood ratio.
+That's Bayes' theorem, read straight off the picture. The odds form is in there too. The ratio of the two shaded areas is the ratio of their widths times the ratio of their heights, which is the prior odds times the likelihood ratio.
 
-The picture also shows what goes wrong when someone guesses 90%. $$P(E \mid H)$$ is a _height_ inside one strip, and $$P(H \mid E)$$ is a _share of area_ across both strips. Mixing them up is common enough that it has names (confusion of the inverse, or the prosecutor's fallacy when it happens in a courtroom). The heights tell you how good the test is, but they say nothing about how wide the strips are, and when the disease is rare the width wins.
+The picture also shows where a guess of 90% comes from. $$P(E \mid H)$$ is a _height_ inside one strip. $$P(H \mid E)$$ is a _share of area_ across both strips. Mixing the two up is common enough that it has names: confusion of the inverse, or the prosecutor's fallacy when it happens in a courtroom. The heights tell you how good the test is. They say nothing about how wide the strips are, and when the disease is rare it's the width that decides the answer.
 
-## Testing twice
-
-So what do you do after a positive result? Get tested again. If the second test also comes back positive, the odds get multiplied by 10 again, from $$10 : 99$$ to $$100 : 99$$, so $$P(H \mid E_1, E_2) = 100/199 \approx 50\%$$. In the picture, you zoom into the shaded region, then shade and zoom a second time.
-
-There's one catch, and it's the step people forget. Multiplying by the likelihood ratio twice assumes the two results are conditionally independent given whether you're actually sick. If your false positive came from something about you (some other condition the test happens to react to, say), a retest is probably going to pick that up again. Then the second positive tells you a lot less than the formula says, and you shouldn't count it as another factor of 10.
+So what should you do after a positive result? The natural thing is to get tested again. If the second test is also positive, the odds get multiplied by 10 again, from $$10 : 99$$ to $$100 : 99$$. That gives $$P(H \mid E_1, E_2) = 100/199 \approx 50\%$$. This assumes the two results are conditionally independent given whether you're actually sick, and that's not always a safe assumption. Say your false positive came from something about you, like some other condition the test happens to react to. Then a retest will probably pick that up again, and the second positive shouldn't count as another factor of 10.
