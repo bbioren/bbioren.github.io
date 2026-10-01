@@ -51,7 +51,9 @@ layout: default
           </ul>
         {% endif %}
         {% if b.link %}
-          <p class="mono"><a href="{{ b.link }}">course page →</a></p>
+          <p class="mono">
+            <a href="{{ b.link }}">{{ b.link_label | default: 'course page' }} →</a>
+          </p>
         {% endif %}
       </div>
     </div>
