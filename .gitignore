@@ -10,4 +10,5 @@ Gemfile.lock
 assets/libs/
 node_modules/
 vendor
-.idea__pycache__/
+.idea
+__pycache__/

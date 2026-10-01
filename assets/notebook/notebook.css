@@ -690,3 +690,16 @@ blockquote {
 #attack-img {
   cursor: pointer;
 }
+
+/* ---------- video ---------- */
+.post-body video,
+.page-body video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
+}
+.post-body figure {
+  max-width: 100%;
+}
