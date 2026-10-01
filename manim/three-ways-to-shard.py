@@ -5,17 +5,17 @@ Render (720p30):
 """
 
 from manim import *
+from manim.animation.animation import prepare_animation
 
-config.background_color = "#fdfdfb"
-
-INK = "#1d2a44"
-BLUE_PEN = "#2456a6"
-ORANGE = "#dd6b20"
-SOFT_BLUE = "#bee3f8"
-SOFT_ORANGE = "#feebc8"
-GRAY = "#a0aec0"
-GRID = "#dbe5f2"
-MARGIN = "#e9a5a5"
+INK = WHITE
+BLUE_PEN = "#58C4DD"   # Manim BLUE_C
+ORANGE = "#FC6255"     # Manim RED, used for highlights
+SOFT_BLUE = "#58C4DD"  # fills use the stroke color at low opacity
+SOFT_ORANGE = "#FC6255"
+GREEN = "#83C167"      # Manim GREEN_C
+GRAY = "#d0d0d0"       # secondary labels
+CELL = "#888888"       # grid lines and idle cells
+FO = 0.3               # fill opacity
 FONT = "Helvetica"
 
 Text.set_default(color=INK, font=FONT)
@@ -31,21 +31,24 @@ def T(s, size=28, **kw):
     return Text(s, font_size=size, **kw)
 
 
-class ThreeWaysToShard(Scene):
-    # ---------- helpers ----------
-    def paper(self):
-        lines = VGroup()
-        x = -7.5
-        while x <= 7.5:
-            lines.add(Line([x, -4.2, 0], [x, 4.2, 0], stroke_width=1, color=GRID))
-            x += 0.5
-        y = -4.0
-        while y <= 4.0:
-            lines.add(Line([-7.3, y, 0], [7.3, y, 0], stroke_width=1, color=GRID))
-            y += 0.5
-        margin = Line([-6.6, -4.2, 0], [-6.6, 4.2, 0], stroke_width=2, color=MARGIN)
-        self.add(lines, margin)
+SLOW = 1.4        # global pacing factor
+MIN_RT = 1.5      # shortest animation
+MIN_WAIT = 1.5    # shortest pause between beats
 
+
+class ThreeWaysToShard(Scene):
+    # ---------- pacing ----------
+    def play(self, *anims, **kw):
+        rt = kw.pop("run_time", None)
+        if rt is None:
+            rt = max([prepare_animation(a).run_time for a in anims] or [1.0])
+        kw["run_time"] = max(MIN_RT, rt * SLOW)
+        super().play(*anims, **kw)
+
+    def wait(self, duration=1.0, **kw):
+        super().wait(max(MIN_WAIT, duration), **kw)
+
+    # ---------- helpers ----------
     def devices(self, height=2.6):
         boxes = VGroup()
         labels = VGroup()
@@ -69,7 +72,6 @@ class ThreeWaysToShard(Scene):
 
     # ---------- scene ----------
     def construct(self):
-        self.paper()
         self.bg = list(self.mobjects)
 
         title = T("Three ways to split a network", 44, weight=BOLD)
@@ -98,7 +100,7 @@ class ThreeWaysToShard(Scene):
             bars = VGroup(*[
                 RoundedRectangle(corner_radius=0.05, width=1.7, height=0.22,
                                  stroke_color=BLUE_PEN, fill_color=SOFT_BLUE,
-                                 fill_opacity=1, stroke_width=2)
+                                 fill_opacity=FO, stroke_width=2)
                 for _ in range(3)
             ]).arrange(DOWN, buff=0.1).move_to(b.get_center() + DOWN * 0.25)
             models.add(bars)
@@ -108,7 +110,7 @@ class ThreeWaysToShard(Scene):
 
         # batch of 8 examples, 2 per device
         batch = VGroup(*[
-            Square(0.4, stroke_color=ORANGE, fill_color=SOFT_ORANGE, fill_opacity=1, stroke_width=2)
+            Square(0.4, stroke_color=ORANGE, fill_color=SOFT_ORANGE, fill_opacity=FO, stroke_width=2)
             for _ in range(8)
         ]).arrange(RIGHT, buff=0.12).move_to([0, 2.2, 0])
         blabel = T("batch", 26).next_to(batch, LEFT, buff=0.3)
@@ -145,17 +147,17 @@ class ThreeWaysToShard(Scene):
                   *[FadeOut(g) for g in grads], run_time=1.5)
         self.play(*[Indicate(f, color=ORANGE) for f in finals],
                   Transform(cap, self.caption("Same gradient everywhere, so the copies stay identical")))
-        self.wait(1)
+        self.wait(3)
 
     # ---------- 2. tensor parallel ----------
     def tensor_parallel(self):
         head = self.header("2. Tensor parallel")
         self.play(FadeIn(head))
 
-        fills = [SOFT_BLUE, SOFT_ORANGE, SOFT_BLUE, SOFT_ORANGE]
+        fills = [BLUE_PEN, GREEN, BLUE_PEN, GREEN]
         cols = VGroup(*[
-            Rectangle(width=0.55, height=1.4, stroke_color=BLUE_PEN, stroke_width=2,
-                      fill_color=fills[i], fill_opacity=1)
+            Rectangle(width=0.55, height=1.4, stroke_color=fills[i], stroke_width=2,
+                      fill_color=fills[i], fill_opacity=FO)
             for i in range(4)
         ]).arrange(RIGHT, buff=0).move_to([0.6, 1.9, 0])
         wlab = MathTex("W", font_size=44).next_to(cols, LEFT, buff=0.3)
@@ -181,7 +183,7 @@ class ThreeWaysToShard(Scene):
         for i, b in enumerate(boxes):
             c = cols[i]
             y = Rectangle(width=0.55, height=1.4, stroke_color=ORANGE, stroke_width=2,
-                          fill_color=SOFT_ORANGE, fill_opacity=1).move_to(b.get_center() + RIGHT * 0.75 + DOWN * 0.15)
+                          fill_color=SOFT_ORANGE, fill_opacity=FO).move_to(b.get_center() + RIGHT * 0.75 + DOWN * 0.15)
             a = Arrow(c.get_right(), y.get_left(), buff=0.1, stroke_width=3, color=INK,
                       max_tip_length_to_length_ratio=0.3)
             xl = MathTex(f"XW_{i}", font_size=26).next_to(a, UP, buff=0.05)
@@ -198,7 +200,7 @@ class ThreeWaysToShard(Scene):
         ycopy = VGroup(*[VGroup(y, l).copy() for y, l in zip(ys, ylabs)])
         targets = VGroup(*[
             Rectangle(width=0.55, height=1.4, stroke_color=ORANGE, stroke_width=2,
-                      fill_color=SOFT_ORANGE, fill_opacity=1)
+                      fill_color=SOFT_ORANGE, fill_opacity=FO)
             for _ in range(4)
         ]).arrange(RIGHT, buff=0).move_to([0.6, 1.9, 0])
         tl = VGroup(*[MathTex(f"Y_{i}", font_size=30, color=ORANGE).next_to(t, UP, buff=0.1) for i, t in enumerate(targets)])
@@ -209,7 +211,7 @@ class ThreeWaysToShard(Scene):
                   run_time=1.8)
         self.wait(0.6)
         self.play(Transform(cap, self.caption("This happens inside every split layer, so it talks a lot")))
-        self.wait(1.2)
+        self.wait(3)
 
     # ---------- 3. pipeline parallel ----------
     def pipeline_parallel(self):
@@ -221,7 +223,7 @@ class ThreeWaysToShard(Scene):
         stages = VGroup()
         for i, b in enumerate(boxes):
             r = RoundedRectangle(corner_radius=0.08, width=2.0, height=0.7, stroke_color=BLUE_PEN,
-                                 fill_color=SOFT_BLUE, fill_opacity=1, stroke_width=2).move_to(b)
+                                 fill_color=SOFT_BLUE, fill_opacity=FO, stroke_width=2).move_to(b)
             l = T(f"layers {2*i+1}-{2*i+2}", 24).move_to(r)
             stages.add(VGroup(r, l))
         cap = self.caption("8 layers, cut into 4 stages: 2 layers per device")
@@ -248,7 +250,7 @@ class ThreeWaysToShard(Scene):
         grid = VGroup()
         for d in range(P):
             for t in range(Tn):
-                c = Rectangle(width=cw, height=ch, stroke_color=GRAY, stroke_width=1.5)
+                c = Rectangle(width=cw, height=ch, stroke_color=CELL, stroke_width=1.5)
                 c.move_to([x0 + t * cw, y0 - d * ch, 0])
                 cells[(d, t)] = c
                 grid.add(c)
@@ -258,18 +260,18 @@ class ThreeWaysToShard(Scene):
         tlab = T("time", 24).next_to(tarrow, DOWN, buff=0.1)
         self.play(Create(grid), FadeIn(rlabs), GrowArrow(tarrow), FadeIn(tlab), run_time=1.5)
 
-        fills = [SOFT_BLUE, SOFT_ORANGE, SOFT_BLUE, SOFT_ORANGE]
+        fills = [BLUE_PEN, GREEN, BLUE_PEN, GREEN]
         for t in range(Tn):
             step = []
             for d in range(P):
                 m = t - d
                 if 0 <= m < M:
                     c = cells[(d, t)]
-                    blk = Rectangle(width=cw, height=ch, stroke_color=BLUE_PEN, stroke_width=1.5,
-                                    fill_color=fills[m], fill_opacity=1).move_to(c)
+                    blk = Rectangle(width=cw, height=ch, stroke_color=fills[m], stroke_width=1.5,
+                                    fill_color=fills[m], fill_opacity=FO).move_to(c)
                     lab = T(f"mb {m+1}", 24).move_to(c)
                     step.append(FadeIn(VGroup(blk, lab)))
-            self.play(*step, run_time=0.45)
+            self.play(*step, run_time=0.9)
         self.wait(0.4)
 
         idle = VGroup()
@@ -277,7 +279,7 @@ class ThreeWaysToShard(Scene):
             for t in range(Tn):
                 m = t - d
                 if not (0 <= m < M):
-                    idle.add(Rectangle(width=cw, height=ch, stroke_width=0, fill_color=GRAY,
+                    idle.add(Rectangle(width=cw, height=ch, stroke_width=0, fill_color=CELL,
                                        fill_opacity=0.45).move_to(cells[(d, t)]))
         self.play(FadeIn(idle),
                   Transform(cap, self.caption("Gray slots are idle: the pipeline bubble (12 of 28 here)")),
@@ -285,9 +287,10 @@ class ThreeWaysToShard(Scene):
         self.wait(0.6)
         frac = MathTex(r"\text{idle fraction} = \frac{P-1}{M+P-1} = \frac{3}{7}", font_size=36).move_to([0, -1.9, 0])
         pm = T("P = 4 stages, M = 4 micro-batches (forward pass shown)", 24, color=GRAY).next_to(frac, DOWN, buff=0.2)
-        self.play(Write(frac), FadeIn(pm), run_time=1.2)
+        self.play(Write(frac), FadeIn(pm), run_time=1.6)
+        self.wait(3)
         self.play(Transform(cap, self.caption("More micro-batches (bigger M) make the bubble smaller")))
-        self.wait(1.5)
+        self.wait(3)
 
     # ---------- summary ----------
     def summary(self):
@@ -319,4 +322,4 @@ class ThreeWaysToShard(Scene):
         cards.arrange(RIGHT, buff=0.3).move_to([0, -0.6, 0])
         self.play(FadeIn(head), run_time=1)
         self.play(LaggedStart(*[FadeIn(c, shift=UP * 0.2) for c in cards], lag_ratio=0.3), run_time=2.2)
-        self.wait(4)
+        self.wait(5)

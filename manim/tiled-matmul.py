@@ -6,17 +6,15 @@ Render (720p30):
 
 from manim import *
 
-config.background_color = "#fdfdfb"
-
-INK = "#1d2a44"
-BLUE_PEN = "#2456a6"
-ORANGE = "#dd6b20"
-SOFT_BLUE = "#bee3f8"
-SOFT_ORANGE = "#feebc8"
-GRAY = "#a0aec0"
-PAPER = "#fdfdfb"
-GRID = "#dbe5f2"
-MARGIN = "#e9a5a5"
+INK = "#FFFFFF"
+BLUE_PEN = "#58C4DD"
+ORANGE = "#FC6255"
+SOFT_BLUE = "#58C4DD"
+SOFT_ORANGE = "#FC6255"
+YELLOW_HL = "#F9D84A"
+LIGHT = "#d0d0d0"
+GRAY = "#888888"
+PAPER = "#000000"
 
 Text.set_default(color=INK, font="Helvetica")
 MathTex.set_default(color=INK)
@@ -27,25 +25,11 @@ CELL = 0.32
 NOTE_POS = np.array([-3.6, -3.4, 0])
 
 
-def graph_paper():
-    lines = VGroup()
-    x = -7.5
-    while x <= 7.5:
-        lines.add(Line([x, -4.5, 0], [x, 4.5, 0], stroke_width=1, color=GRID))
-        x += 0.5
-    y = -4.5
-    while y <= 4.5:
-        lines.add(Line([-7.5, y, 0], [7.5, y, 0], stroke_width=1, color=GRID))
-        y += 0.5
-    margin = Line([-6.6, -4.5, 0], [-6.6, 4.5, 0], stroke_width=2, color=MARGIN)
-    return VGroup(lines, margin)
-
-
 def make_grid(center, n=N, cell=CELL):
     g = VGroup()
     for r in range(n):
         for c in range(n):
-            sq = Square(side_length=cell, stroke_color=INK, stroke_width=1.2)
+            sq = Square(side_length=cell, stroke_color=LIGHT, stroke_width=1.2)
             sq.set_fill(PAPER, opacity=1)
             sq.move_to(
                 center + np.array([(c - (n - 1) / 2) * cell, ((n - 1) / 2 - r) * cell, 0])
@@ -78,9 +62,16 @@ def tile_lines(g, n=N, cell_size=CELL):
 
 
 class TiledMatmul(Scene):
-    def construct(self):
-        self.add(graph_paper())
+    # Calm pacing: every animation is stretched ~1.8x (at least 1.5 s),
+    # and every pause is doubled (at least 1.5 s).
+    def play(self, *args, run_time=None, **kwargs):
+        rt = 1.0 if run_time is None else run_time
+        super().play(*args, run_time=max(1.5, 1.8 * rt), **kwargs)
 
+    def wait(self, duration=1.0, *args, **kwargs):
+        super().wait(max(1.5, 2 * duration), *args, **kwargs)
+
+    def construct(self):
         title = Text("Why tiling makes matrix multiply fast", font_size=40)
         title.to_edge(UP, buff=0.4)
         self.play(Write(title), run_time=1.5)
@@ -111,9 +102,9 @@ class TiledMatmul(Scene):
         slow_box = RoundedRectangle(
             width=5.0, height=1.5, corner_radius=0.15,
             stroke_color=INK, stroke_width=2,
-        ).set_fill(GRAY, opacity=0.18).move_to([-3.6, 2.15, 0])
+        ).set_fill(GRAY, opacity=0.2).move_to([-3.6, 2.15, 0])
         slow_lab = Text("slow memory (off-chip)", font_size=28).move_to(slow_box.get_center() + UP * 0.25)
-        slow_sub = Text("big, but every read is expensive", font_size=24, color=BLUE_PEN)
+        slow_sub = Text("big, but every read is expensive", font_size=24, color=LIGHT)
         slow_sub.next_to(slow_lab, DOWN, buff=0.15)
 
         counter_lab = Text("reads from slow memory:", font_size=28).move_to([-4.0, -2.7, 0])
@@ -136,15 +127,15 @@ class TiledMatmul(Scene):
         self.play(cell(C, i, j).animate.set_fill(ORANGE, opacity=0.8), run_time=0.6)
         for k in range(N):
             self.play(
-                cell(A, i, k).animate.set_fill(SOFT_BLUE, opacity=1),
-                cell(B, k, j).animate.set_fill(SOFT_BLUE, opacity=1),
+                cell(A, i, k).animate.set_fill(SOFT_BLUE, opacity=0.35),
+                cell(B, k, j).animate.set_fill(SOFT_BLUE, opacity=0.35),
                 ChangeDecimalToValue(counter, 2 * (k + 1)),
-                run_time=0.28,
+                run_time=0.75,
             )
         note = MathTex(r"n + n = 2n = 16 \text{ reads for one output}", font_size=32)
         note.move_to([-3.6, -0.2, 0])
-        self.play(Write(note), run_time=1.2)
-        self.wait(0.8)
+        self.play(Write(note), run_time=1.5)
+        self.wait(1.5)
 
         # two more outputs, quickly
         done = [cell(C, i, j)]
@@ -152,14 +143,14 @@ class TiledMatmul(Scene):
             old = [cell(A, i, k) for k in range(N)] + [cell(B, k, j) for k in range(N)]
             self.play(
                 *reset_fill(old),
-                done[-1].animate.set_fill(SOFT_ORANGE, opacity=1),
+                done[-1].animate.set_fill(SOFT_ORANGE, opacity=0.25),
                 run_time=0.4,
             )
             i, j = i2, j2
             self.play(
                 cell(C, i, j).animate.set_fill(ORANGE, opacity=0.8),
-                *[cell(A, i, k).animate.set_fill(SOFT_BLUE, opacity=1) for k in range(N)],
-                *[cell(B, k, j).animate.set_fill(SOFT_BLUE, opacity=1) for k in range(N)],
+                *[cell(A, i, k).animate.set_fill(SOFT_BLUE, opacity=0.35) for k in range(N)],
+                *[cell(B, k, j).animate.set_fill(SOFT_BLUE, opacity=0.35) for k in range(N)],
                 ChangeDecimalToValue(counter, total),
                 run_time=0.9,
             )
@@ -173,7 +164,7 @@ class TiledMatmul(Scene):
         note3 = Text("The same row of A is read again\nfor every output in that row.",
                      font_size=24, color=ORANGE)
         note3.next_to(note2, DOWN, buff=0.3)
-        self.play(Write(note2), run_time=1.2)
+        self.play(Write(note2), run_time=1.5)
         self.play(FadeIn(note3))
         self.wait(1.5)
 
@@ -188,11 +179,11 @@ class TiledMatmul(Scene):
         # ---------- tiled ----------
         sram_box = RoundedRectangle(
             width=5.0, height=2.5, corner_radius=0.15,
-            stroke_color=ORANGE, stroke_width=3,
-        ).set_fill(SOFT_ORANGE, opacity=0.35)
+            stroke_color=YELLOW_HL, stroke_width=3,
+        ).set_fill(YELLOW_HL, opacity=0.1)
         sram_box.stretch_to_fit_height(2.6).move_to([-3.6, -0.85, 0])
-        sram_lab = Text("SRAM / on-chip", font_size=28, color=ORANGE)
-        sram_sub = Text("(small, fast)", font_size=24, color=INK)
+        sram_lab = Text("SRAM / on-chip", font_size=28, color=YELLOW_HL)
+        sram_sub = Text("(small, fast)", font_size=24, color=LIGHT)
         VGroup(sram_lab, sram_sub).arrange(RIGHT, buff=0.25).move_to(sram_box.get_top() + DOWN * 0.35)
         load_arrow = Arrow(
             slow_box.get_bottom(), sram_box.get_top(), buff=0.05,
@@ -211,7 +202,7 @@ class TiledMatmul(Scene):
         self.add_foreground_mobjects(tiles_A, tiles_B, tiles_C)
 
         c_tile = block(C, 0, 0)
-        self.play(c_tile.animate.set_fill(SOFT_ORANGE, opacity=1), run_time=0.8)
+        self.play(c_tile.animate.set_fill(SOFT_ORANGE, opacity=0.25), run_time=0.8)
 
         small = 0.25
         a_slot = np.array([-4.8, -1.05, 0])
@@ -225,8 +216,8 @@ class TiledMatmul(Scene):
             a_blk = block(A, 0, k0)
             b_blk = block(B, k0, 0)
             prev = [m for m in loaded]
-            anims = [a_blk.animate.set_fill(SOFT_BLUE, opacity=1),
-                     b_blk.animate.set_fill(SOFT_BLUE, opacity=1)]
+            anims = [a_blk.animate.set_fill(SOFT_BLUE, opacity=0.35),
+                     b_blk.animate.set_fill(SOFT_BLUE, opacity=0.35)]
             if step > 0:
                 anims += reset_fill(list(block(A, 0, 0)) + list(block(B, 0, 0)))
                 anims.append(FadeOut(loaded))
@@ -255,6 +246,7 @@ class TiledMatmul(Scene):
                 reuse = Text("each loaded value is used T = 4 times", font_size=24, color=ORANGE)
                 reuse.move_to(NOTE_POS)
                 self.play(
+                    FadeOut(load_note),
                     a_val.animate.set_fill(ORANGE, opacity=1),
                     cell(A, 0, 0).animate.set_fill(ORANGE, opacity=1),
                     run_time=0.6,
@@ -266,22 +258,22 @@ class TiledMatmul(Scene):
                 self.play(
                     LaggedStart(*[Create(l) for l in lines], lag_ratio=0.3),
                     LaggedStart(*[m.animate.set_fill(ORANGE, opacity=0.8) for m in row_c], lag_ratio=0.3),
-                    FadeOut(load_note), FadeIn(reuse),
+                    FadeIn(reuse),
                     run_time=1.6,
                 )
                 self.wait(1)
                 self.play(
                     FadeOut(lines), FadeOut(reuse),
-                    a_val.animate.set_fill(SOFT_BLUE, opacity=1),
-                    cell(A, 0, 0).animate.set_fill(SOFT_BLUE, opacity=1),
-                    *[m.animate.set_fill(SOFT_ORANGE, opacity=1) for m in row_c],
+                    a_val.animate.set_fill(SOFT_BLUE, opacity=0.35),
+                    cell(A, 0, 0).animate.set_fill(SOFT_BLUE, opacity=0.35),
+                    *[m.animate.set_fill(SOFT_ORANGE, opacity=0.25) for m in row_c],
                     run_time=0.8,
                 )
                 acc = MathTex(r"C_{\text{tile}} \mathrel{+}= A_{\text{tile}} \cdot B_{\text{tile}}",
                               font_size=30)
                 acc.move_to(NOTE_POS)
-                self.play(Write(acc), c_tile.animate.set_fill(ORANGE, opacity=0.45), run_time=1.2)
-                self.wait(0.6)
+                self.play(Write(acc), c_tile.animate.set_fill(ORANGE, opacity=0.45), run_time=1.5)
+                self.wait(1.5)
             else:
                 k_note = Text("next k tile, keep accumulating", font_size=24, color=BLUE_PEN)
                 k_note.move_to(NOTE_POS)
@@ -294,7 +286,7 @@ class TiledMatmul(Scene):
             font_size=30,
         ).move_to(NOTE_POS)
         self.play(FadeOut(k_note), run_time=0.5)
-        self.play(Write(tally), run_time=1.2)
+        self.play(Write(tally), run_time=1.5)
         self.wait(1.5)
 
         # ---------- summary ----------
@@ -314,8 +306,10 @@ class TiledMatmul(Scene):
         s1.align_to(s_head, LEFT).shift(RIGHT * 0.6)
         s2.align_to(s1, LEFT)
         self.play(FadeIn(s_head))
-        self.play(Write(s1), run_time=1)
-        self.play(Write(s2), run_time=1)
+        self.play(Write(s1), run_time=1.5)
+        self.wait(0.5)
+        self.play(Write(s2), run_time=1.5)
+        self.wait(1.5)
         self.play(FadeIn(s3))
         self.play(FadeIn(s4))
-        self.wait(3)
+        self.wait(2.5)

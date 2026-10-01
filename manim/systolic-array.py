@@ -6,16 +6,14 @@ Render (720p30):
 
 from manim import *
 
-config.background_color = "#fdfdfb"
-
-INK = "#1d2a44"
-PEN = "#2456a6"
-ORANGE = "#dd6b20"
-SOFT_BLUE = "#bee3f8"
-SOFT_ORANGE = "#feebc8"
-GRAY = "#a0aec0"
-GRID = "#dbe5f2"
-MARGIN = "#e9a5a5"
+INK = "#FFFFFF"
+PEN = "#58C4DD"  # Manim BLUE_C
+ORANGE = "#F9D84A"  # highlight (Manim yellow)
+SOFT_BLUE = "#58C4DD"
+SOFT_ORANGE = "#83C167"  # GREEN_C, secondary fill
+FLASH = "#F9D84A"
+GRAY = "#d0d0d0"
+BACK = "#FC6255"  # Manim RED
 
 Text.set_default(color=INK, font="Helvetica")
 MathTex.set_default(color=INK)
@@ -59,22 +57,9 @@ def psum_pos(m, n, r):
 
 
 class SystolicArray(Scene):
-    def graph_paper(self):
-        lines = VGroup()
-        x = -7.5
-        while x <= 7.5:
-            lines.add(Line([x, -4.5, 0], [x, 4.5, 0], stroke_width=1, color=GRID))
-            x += 0.5
-        y = -4.5
-        while y <= 4.5:
-            lines.add(Line([-7.5, y, 0], [7.5, y, 0], stroke_width=1, color=GRID))
-            y += 0.5
-        lines.add(Line([-6.6, -4.5, 0], [-6.6, 4.5, 0], stroke_width=1.5, color=MARGIN))
-        self.add(lines)
-
     def token(self, m, k):
         circ = Circle(radius=0.19, color=TOKEN_EDGE[m], stroke_width=2.5)
-        circ.set_fill(TOKEN_FILL[m], opacity=1)
+        circ.set_fill(TOKEN_EDGE[m], opacity=0.3)
         lab = Text(str(X[m][k]), font_size=24)
         return VGroup(circ, lab)
 
@@ -82,22 +67,22 @@ class SystolicArray(Scene):
         return Text(str(psum_value(m, n, r)), font_size=26, weight=BOLD, color=TOKEN_EDGE[m])
 
     def construct(self):
-        self.graph_paper()
 
         # ---- title -------------------------------------------------------
         title = Text("How a systolic array multiplies matrices", font_size=40)
         sub = Text("the core of ML accelerators", font_size=28, color=PEN)
         head = VGroup(title, sub).arrange(DOWN, buff=0.3)
-        self.play(FadeIn(head, shift=UP * 0.2), run_time=1.2)
-        self.wait(1)
-        self.play(FadeOut(head), run_time=0.8)
+        self.play(FadeIn(head, shift=UP * 0.2), run_time=2)
+        self.wait(2.5)
+        self.play(FadeOut(head), run_time=1.5)
 
         # ---- right panel -------------------------------------------------
         px = 4.75
         eq = MathTex(r"Y = X\,W", font_size=44).move_to([px, 3.1, 0])
         dims = Text("X: 2 rows of 4    W: 4 x 4", font_size=24, color=PEN)
         dims.next_to(eq, DOWN, buff=0.2)
-        self.play(Write(eq), FadeIn(dims), run_time=1.2)
+        self.play(Write(eq), FadeIn(dims), run_time=2.5)
+        self.wait(2)
 
         steps_txt = [
             "1. Weights load into\n    cells and stay put",
@@ -115,13 +100,13 @@ class SystolicArray(Scene):
         for k in range(4):
             for c in range(4):
                 sq = Square(CELL, color=INK, stroke_width=2)
-                sq.set_fill(SOFT_BLUE, opacity=0.25)
+                sq.set_fill(SOFT_BLUE, opacity=0.2)
                 sq.move_to(cell_center(k, c))
                 cells.add(sq)
         cell_cap = Text("4 x 4 multiply-accumulate cells", font_size=24, color=PEN)
         cell_cap.next_to(cells, UP, buff=0.12)
-        self.play(Create(cells), FadeIn(cell_cap), run_time=1.5)
-        self.wait(0.5)
+        self.play(Create(cells), FadeIn(cell_cap), run_time=2.5)
+        self.wait(1.5)
 
         # step 1: weights
         wlabels = VGroup()
@@ -131,8 +116,8 @@ class SystolicArray(Scene):
                 w.move_to(cell_center(k, c) + np.array([-0.24, 0.37, 0]))
                 wlabels.add(w)
         steps[0].set_color(ORANGE)
-        self.play(FadeIn(steps[0]), LaggedStartMap(FadeIn, wlabels, lag_ratio=0.05), run_time=1.8)
-        self.wait(0.8)
+        self.play(FadeIn(steps[0]), LaggedStartMap(FadeIn, wlabels, lag_ratio=0.05), run_time=3)
+        self.wait(2.5)
 
         # step 2: skewed inputs
         tokens = {}
@@ -157,9 +142,9 @@ class SystolicArray(Scene):
             LaggedStart(*[FadeIn(tokens[(m, k)], shift=RIGHT * 0.3)
                           for k in range(4) for m in range(M)], lag_ratio=0.08),
             FadeIn(legend),
-            run_time=2,
+            run_time=3.5,
         )
-        self.wait(1)
+        self.wait(2.5)
 
         # output row labels
         out_labels = VGroup(
@@ -198,7 +183,7 @@ class SystolicArray(Scene):
             if t == 4:
                 move += [steps[2].animate.set_color(INK), FadeIn(steps[3]), FadeIn(out_labels)]
                 steps[3].set_color(ORANGE)
-            slow = 0.8 if t < 3 else 0.5
+            slow = 1.5 if t < 3 else 1.2
             self.play(*move, run_time=slow)
 
             # phase A2: partial sums step down (tokens sit still on the left)
@@ -225,13 +210,13 @@ class SystolicArray(Scene):
                             psums[(m, n)] = new
                             compute.append(FadeIn(new, scale=0.6))
             if compute:
-                flash = [c.animate.set_fill(SOFT_ORANGE, opacity=0.9) for c in active]
-                self.play(*compute, *flash, run_time=0.7 if t < 3 else 0.5)
-                self.play(*[c.animate.set_fill(SOFT_BLUE, opacity=0.25) for c in active],
-                          run_time=0.25)
-            self.wait(0.6 if t < 3 else 0.15)
+                flash = [c.animate.set_fill(FLASH, opacity=0.35) for c in active]
+                self.play(*compute, *flash, run_time=1.5 if t < 3 else 1.2)
+                self.play(*[c.animate.set_fill(SOFT_BLUE, opacity=0.2) for c in active],
+                          run_time=0.5)
+            self.wait(1.5 if t < 3 else 0.8)
 
-        self.play(steps[3].animate.set_color(INK), run_time=0.5)
+        self.play(steps[3].animate.set_color(INK), run_time=1.5)
 
         # check against Y = X W
         ycheck = MathTex(
@@ -241,8 +226,8 @@ class SystolicArray(Scene):
             VGroup(*[psums[(m, n)] for m in range(M) for n in range(N)]),
             color=ORANGE, buff=0.12, corner_radius=0.08,
         )
-        self.play(Create(box), FadeOut(cyc_group), FadeIn(ycheck), run_time=1.2)
-        self.wait(2)
+        self.play(Create(box), FadeOut(cyc_group), FadeIn(ycheck), run_time=2.5)
+        self.wait(3.5)
 
         # ---- zoom out to an accelerator ---------------------------------
         keep = cells
@@ -250,11 +235,11 @@ class SystolicArray(Scene):
             wlabels, out_labels, legend, box, eq, dims, steps, ycheck,
             *psums.values(), *tokens.values(),
         )
-        self.play(FadeOut(others), run_time=1)
+        self.play(FadeOut(others), run_time=1.8)
 
         def block(label, w, h, fill, pos):
             r = RoundedRectangle(width=w, height=h, corner_radius=0.15, color=INK, stroke_width=2.5)
-            r.set_fill(fill, opacity=0.6).move_to(pos)
+            r.set_fill(fill, opacity=0.25).move_to(pos)
             t = VGroup(*[Text(l, font_size=24, color=INK) for l in label.split("\n")])
             t.arrange(DOWN, buff=0.14)
             if t.width > w - 0.3:
@@ -265,16 +250,17 @@ class SystolicArray(Scene):
         y0 = 0.9
         sram = block("on-chip\nSRAM buffer", 2.0, 3.2, SOFT_ORANGE, [-5.4, y0, 0])
         arr_box = RoundedRectangle(width=2.6, height=3.2, corner_radius=0.15, color=INK, stroke_width=2.5)
-        arr_box.set_fill(SOFT_BLUE, opacity=0.25).move_to([-1.8, y0, 0])
+        arr_box.set_fill(SOFT_BLUE, opacity=0.2).move_to([-1.8, y0, 0])
         arr_lab = Text("systolic array", font_size=24, color=PEN).next_to(arr_box, DOWN, buff=0.15)
         acc = block("accumulation\nbuffer", 2.2, 1.4, SOFT_ORANGE, [1.55, y0, 0])
         vec = block("vector unit", 2.0, 1.4, SOFT_BLUE, [5.2, y0, 0])
 
         self.play(
             cells.animate.scale(0.5).move_to(arr_box.get_center() + UP * 0.1),
-            run_time=1.5,
+            run_time=2.5,
         )
-        self.play(FadeIn(arr_box), FadeIn(arr_lab), run_time=0.8)
+        self.play(FadeIn(arr_box), FadeIn(arr_lab), run_time=1.5)
+        self.wait(1.5)
 
         def arrow(a, b, **kw):
             return Arrow(a, b, buff=0.08, color=INK, stroke_width=3,
@@ -287,37 +273,38 @@ class SystolicArray(Scene):
         a2 = arrow(arr_box.get_right(), acc.get_left())
         a3 = arrow(acc.get_right(), vec.get_left())
 
-        self.play(FadeIn(sram), Create(a1), Create(a1b), FadeIn(l1), FadeIn(l1b), run_time=1.3)
-        self.wait(0.4)
-        self.play(Create(a2), FadeIn(acc), run_time=1.2)
+        self.play(FadeIn(sram), Create(a1), Create(a1b), FadeIn(l1), FadeIn(l1b), run_time=2.3)
+        self.wait(1.5)
+        self.play(Create(a2), FadeIn(acc), run_time=2)
         acc_note = Text("partial sums add up\nacross tiles here", font_size=24,
                         line_spacing=0.9, color=PEN).next_to(acc, UP, buff=0.3)
-        self.play(FadeIn(acc_note), run_time=0.8)
-        self.wait(0.6)
-        self.play(Create(a3), FadeIn(vec), run_time=1.2)
+        self.play(FadeIn(acc_note), run_time=1.5)
+        self.wait(2)
+        self.play(Create(a3), FadeIn(vec), run_time=2)
         vec_note = Text("elementwise ops:\nadd, ReLU, scale", font_size=24,
                         line_spacing=0.9, color=PEN).next_to(vec, UP, buff=0.3)
-        self.play(FadeIn(vec_note), run_time=0.8)
+        self.play(FadeIn(vec_note), run_time=1.5)
+        self.wait(2)
 
         # results go back to SRAM
         bot = y0 - 2.5
-        back = VMobject(color=ORANGE, stroke_width=3).set_points_as_corners([
+        back = VMobject(color=BACK, stroke_width=3).set_points_as_corners([
             vec.get_bottom() + DOWN * 0.05,
             [vec.get_center()[0], bot, 0],
             [sram.get_center()[0], bot, 0],
         ])
         back_tip = Arrow([sram.get_center()[0], bot, 0], sram.get_bottom() + DOWN * 0.05,
-                         buff=0, color=ORANGE, stroke_width=3,
+                         buff=0, color=BACK, stroke_width=3,
                          max_tip_length_to_length_ratio=0.5)
-        back_lab = Text("results written back for the next layer", font_size=24, color=ORANGE)
+        back_lab = Text("results written back for the next layer", font_size=24, color=BACK)
         back_lab.next_to([0, bot, 0], DOWN, buff=0.12)
-        self.play(Create(back), run_time=1.2)
-        self.play(Create(back_tip), FadeIn(back_lab), run_time=0.8)
-        self.wait(0.8)
+        self.play(Create(back), run_time=2)
+        self.play(Create(back_tip), FadeIn(back_lab), run_time=1.5)
+        self.wait(2)
 
         trn = VGroup(
             Text("AWS Trainium's NeuronCore: a systolic-array tensor engine,", font_size=26),
             Text("plus vector and scalar engines", font_size=26),
         ).arrange(DOWN, buff=0.16).move_to([0, -3.2, 0])
-        self.play(FadeIn(trn, shift=UP * 0.2), run_time=1.2)
-        self.wait(3)
+        self.play(FadeIn(trn, shift=UP * 0.2), run_time=2)
+        self.wait(5)

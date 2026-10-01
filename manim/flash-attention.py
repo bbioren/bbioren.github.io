@@ -6,37 +6,23 @@ Render (720p30):
 
 from manim import *
 
-INK = "#1d2a44"
-PEN = "#2456a6"
-ORANGE = "#dd6b20"
-SOFT_BLUE = "#bee3f8"
-SOFT_ORANGE = "#feebc8"
-GRAY = "#a0aec0"
-GRID = "#dbe5f2"
-MARGIN = "#e9a5a5"
+INK = "#FFFFFF"  # text and structure
+PEN = "#58C4DD"  # Manim BLUE_C, main objects
+ORANGE = "#F9D84A"  # Manim YELLOW, the highlight
+# fills: the stroke color at 0.3 opacity over black, pre-blended so blocks stay
+# opaque (moving copies can then slide behind the HBM box cleanly)
+SOFT_BLUE = "#1a3b42"
+SOFT_ORANGE = "#4b4116"
+GRAY = "#a0a0a0"
+HBM_FILL = "#161616"
+SRAM_FILL = "#1f1b0a"
 
-config.background_color = "#fdfdfb"
 Text.set_default(color=INK, font="Helvetica")
 MathTex.set_default(color=INK)
 Tex.set_default(color=INK)
 
 
-def graph_paper():
-    lines = VGroup()
-    w, h = config.frame_width / 2, config.frame_height / 2
-    x = -7.5
-    while x <= 7.5:
-        lines.add(Line([x, -h, 0], [x, h, 0], stroke_width=1, color=GRID))
-        x += 0.5
-    y = -4.0
-    while y <= 4.0:
-        lines.add(Line([-w, y, 0], [w, y, 0], stroke_width=1, color=GRID))
-        y += 0.5
-    lines.add(Line([-6.25, -h, 0], [-6.25, h, 0], stroke_width=1.5, color=MARGIN))
-    return lines
-
-
-def cell_grid(rows, cols, size, fill, stroke=PEN, opacity=0.9):
+def cell_grid(rows, cols, size, fill, stroke=PEN, opacity=1):
     g = VGroup()
     for r in range(rows):
         for c in range(cols):
@@ -71,8 +57,21 @@ def column(n_blocks, w, bh, fill, name, highlight=None):
 
 
 class FlashAttention(Scene):
+    # Calm pacing: every animation is stretched 1.8x (at least 1.5 s) and every
+    # pause is at least 1.5 s. Pass raw=True to keep an exact time.
+    SLOW = 1.7
+
+    def play(self, *anims, run_time=1.0, raw=False, **kw):
+        if not raw:
+            run_time = max(1.5, run_time * self.SLOW)
+        super().play(*anims, run_time=run_time, **kw)
+
+    def wait(self, duration=1.0, raw=False, **kw):
+        if not raw:
+            duration = max(1.5, duration * self.SLOW)
+        super().wait(duration, **kw)
+
     def construct(self):
-        self.add(graph_paper())
 
         # ---------- Title ----------
         title = Text("FlashAttention", font_size=56)
@@ -99,7 +98,7 @@ class FlashAttention(Scene):
         # HBM box on the right
         hbm = RoundedRectangle(width=4.6, height=4.9, corner_radius=0.15,
                                stroke_color=INK, stroke_width=2)
-        hbm.set_fill("#edf2f7", opacity=1).move_to([4.4, -0.6, 0])
+        hbm.set_fill(HBM_FILL, opacity=1).move_to([4.4, -0.6, 0])
         hbm_lab = Text("HBM (big, slow)", font_size=26).next_to(hbm, UP, buff=0.12)
         self.play(FadeIn(hbm), FadeIn(hbm_lab))
 
@@ -132,10 +131,10 @@ class FlashAttention(Scene):
         cost.next_to(nn, DOWN, buff=0.15)
         cost.move_to([S.get_center()[0], -3.55, 0])
         self.play(FadeOut(nn), Write(cost))
-        self.wait(1)
+        self.wait(3, raw=True)
 
         self.play(*[FadeOut(m) for m in [head, S, Q, KT, s_lab, hbm, hbm_lab, S_h, S_h_lab,
-                                         P_h, P_h_lab, arrow_sp, sm, pv, w1, cost]])
+                                         P_h, P_h_lab, arrow_sp, sm, pv, w1, cost]], run_time=1.2, raw=True)
 
         # ---------- Part 2: FlashAttention tiling ----------
         head2 = Text("FlashAttention: tile and stream", font_size=34).to_edge(UP, buff=0.35)
@@ -143,11 +142,11 @@ class FlashAttention(Scene):
 
         hbm2 = RoundedRectangle(width=5.0, height=5.6, corner_radius=0.15,
                                 stroke_color=INK, stroke_width=2)
-        hbm2.set_fill("#edf2f7", opacity=1).move_to([-3.75, -0.75, 0])
+        hbm2.set_fill(HBM_FILL, opacity=1).move_to([-3.75, -0.75, 0])
         hbm2_lab = Text("HBM (big, slow)", font_size=26).next_to(hbm2, UP, buff=0.1)
         sram = RoundedRectangle(width=6.2, height=5.6, corner_radius=0.15,
                                 stroke_color=ORANGE, stroke_width=3)
-        sram.set_fill("#fffaf0", opacity=1).move_to([3.2, -0.75, 0])
+        sram.set_fill(SRAM_FILL, opacity=1).move_to([3.2, -0.75, 0])
         sram_lab = Text("SRAM (on-chip, small, fast)", font_size=26, color=ORANGE)
         sram_lab.next_to(sram, UP, buff=0.1)
 
@@ -155,7 +154,7 @@ class FlashAttention(Scene):
         Qc, Ql = column(nb, bw, bh, SOFT_BLUE, "Q", highlight=1)
         Kc, Kl = column(nb, bw, bh, SOFT_BLUE, "K")
         Vc, Vl = column(nb, bw, bh, SOFT_BLUE, "V")
-        Oc, Ol = column(nb, bw, bh, "#ffffff", "O")
+        Oc, Ol = column(nb, bw, bh, "#000000", "O")
         cols = VGroup(VGroup(Qc, Ql), VGroup(Kc, Kl), VGroup(Vc, Vl), VGroup(Oc, Ol))
         cols.arrange(RIGHT, buff=0.45).move_to(hbm2.get_center() + DOWN * 0.15)
 
@@ -195,10 +194,10 @@ class FlashAttention(Scene):
             vb = Vc[j].copy().set_stroke(ORANGE)
             kb.set_z_index(0)
             vb.set_z_index(0)
-            rt = 0.9 if j else 1.2
+            rt = 1.5 if j else 2.0
             self.play(kb.animate.move_to(k_dest), vb.animate.move_to(v_dest),
                       Kc[j].animate.set_fill(SOFT_ORANGE), Vc[j].animate.set_fill(SOFT_ORANGE),
-                      run_time=rt)
+                      run_time=rt, raw=True)
             kl = MathTex(f"K_{j + 1}", font_size=26).move_to(kb)
             vl = MathTex(f"V_{j + 1}", font_size=26).move_to(vb)
             tile = cell_grid(3, 3, 0.33, SOFT_ORANGE, stroke=ORANGE).move_to(tile_center)
@@ -212,16 +211,16 @@ class FlashAttention(Scene):
                 counter = new_counter
             else:
                 anims.append(Transform(counter, new_counter))
-            self.play(*anims, run_time=rt)
+            self.play(*anims, run_time=1.5, raw=True)
             if j == 0:
-                note = Text("tile lives only here", font_size=24, color=ORANGE)
+                note = Text("tile lives\nonly here", font_size=24, color=ORANGE, line_spacing=0.8)
                 note.next_to(tl, DOWN, buff=0.08)
                 self.play(FadeIn(note), run_time=0.8)
                 self.wait(0.6)
                 self.play(FadeOut(note), run_time=0.5)
-            self.play(*[FadeOut(m) for m in [kb, vb, kl, vl, tile, tl]], run_time=0.5)
-            self.play(Kc[j].animate.set_fill(SOFT_BLUE), Vc[j].animate.set_fill(SOFT_BLUE),
-                      run_time=0.2)
+            self.play(*[FadeOut(m) for m in [kb, vb, kl, vl, tile, tl]],
+                      Kc[j].animate.set_fill(SOFT_BLUE), Vc[j].animate.set_fill(SOFT_BLUE),
+                      run_time=1.2, raw=True)
 
         # write O_i back once
         o_out = Rectangle(width=bw, height=bh, stroke_color=ORANGE, stroke_width=2)
@@ -233,10 +232,10 @@ class FlashAttention(Scene):
         wr = Text("written once", font_size=24, color=ORANGE).set_z_index(3)
         wr.move_to([hbm2.get_center()[0], Oc.get_bottom()[1] - 0.25, 0])
         self.play(FadeIn(oil), FadeIn(wr))
-        self.wait(1)
+        self.wait(3, raw=True)
 
         self.play(*[FadeOut(m) for m in [head2, hbm2, hbm2_lab, sram, sram_lab, cols, q_box,
-                                         q_lab, stays, stats, stats_box, counter, o_out, oil, wr]])
+                                         q_lab, stays, stats, stats_box, counter, o_out, oil, wr]], run_time=1.2, raw=True)
 
         # ---------- Part 3: online softmax math ----------
         head3 = Text("Online softmax, one new block", font_size=34).to_edge(UP, buff=0.35)
@@ -260,25 +259,26 @@ class FlashAttention(Scene):
         eqs.move_to(DOWN * 0.15)
 
         self.play(FadeIn(init), run_time=0.8)
-        self.play(Write(e1), run_time=1.2)
-        self.play(Write(e2), run_time=1.5)
-        self.play(Write(e3), run_time=1.8)
-        self.play(Write(e4), run_time=1.8)
-        self.wait(0.5)
+        self.play(Write(e1), run_time=2.5, raw=True)
+        self.play(Write(e2), run_time=2.5, raw=True)
+        self.play(Write(e3), run_time=3, raw=True)
+        self.wait(1.5, raw=True)
+        self.play(Write(e4), run_time=3, raw=True)
+        self.wait(3, raw=True)
         self.play(e3[1].animate.set_color(ORANGE), e4[1].animate.set_color(ORANGE))
         boxes = VGroup(SurroundingRectangle(e3[1], color=ORANGE, buff=0.06),
                        SurroundingRectangle(e4[1], color=ORANGE, buff=0.06))
         why = Text("a new max shrinks the old terms to the new scale",
                    font_size=26, color=ORANGE).to_edge(DOWN, buff=0.3)
         self.play(Create(boxes), FadeIn(why), run_time=1)
-        self.wait(1.2)
+        self.wait(3, raw=True)
         ex = MathTex(r"\text{e.g. } m: 3 \to 5 \;\Rightarrow\; \ell, O \text{ times } e^{3-5}",
                      font_size=30, color=ORANGE).to_edge(DOWN, buff=0.3)
-        self.play(Transform(why, ex))
-        self.wait(1.2)
-        self.play(Write(e5), run_time=1.2)
-        self.wait(1)
-        self.play(*[FadeOut(m) for m in [head3, eqs, boxes, why]])
+        self.play(Transform(why, ex), run_time=2.5, raw=True)
+        self.wait(3, raw=True)
+        self.play(Write(e5), run_time=2.5, raw=True)
+        self.wait(3, raw=True)
+        self.play(*[FadeOut(m) for m in [head3, eqs, boxes, why]], run_time=1.2, raw=True)
 
         # ---------- Part 4: summary ----------
         head4 = Text("Same answer, less memory traffic", font_size=36).to_edge(UP, buff=0.5)
@@ -295,10 +295,10 @@ class FlashAttention(Scene):
         rows.move_to(DOWN * 0.1)
         card = SurroundingRectangle(rows, color=INK, buff=0.4, stroke_width=2,
                                     corner_radius=0.12)
-        card.set_fill("#ffffff", opacity=0.85)
+        card.set_fill("#000000", opacity=0.85)
         self.play(FadeIn(head4))
         self.play(FadeIn(card))
         for r in [r1, r2, r3, r4]:
             self.play(FadeIn(r, shift=RIGHT * 0.2), run_time=1)
-            self.wait(0.3)
-        self.wait(2)
+            self.wait(1.5, raw=True)
+        self.wait(5, raw=True)

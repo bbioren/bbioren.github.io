@@ -8,16 +8,22 @@ Render (720p30):
 import numpy as np
 from manim import *
 
-config.background_color = "#fdfdfb"
 
-INK = "#1d2a44"
-BLUE = "#2456a6"
-ORANGE = "#dd6b20"
-SOFT_BLUE = "#bee3f8"
-SOFT_ORANGE = "#feebc8"
-GRAY = "#a0aec0"
-GRID = "#dbe5f2"
-MARGIN = "#e9a5a5"
+INK = "#FFFFFF"
+BLUE = "#58C4DD"
+ORANGE = "#FC6255"
+GREEN = "#83C167"
+LIGHT = "#d0d0d0"
+
+
+def dim(c, k=0.72):
+    """Stroke color at low intensity: same look as ~0.28 opacity on black, but opaque."""
+    return interpolate_color(ManimColor(c), ManimColor("#000000"), k)
+
+
+SOFT_BLUE = dim(BLUE)
+SOFT_ORANGE = dim(ORANGE)
+GRAY = "#888888"
 
 Text.set_default(color=INK, font="Helvetica")
 MathTex.set_default(color=INK)
@@ -41,6 +47,17 @@ def owner(theta, servers):
 
 
 class ConsistentHashing(Scene):
+    # Slow, readable pacing: every animation ~1.8x longer (at least 1.5 s),
+    # and every pause at least 1.5 s (key results get 3 s).
+    SLOW = 1.8
+
+    def play(self, *anims, run_time=None, **kw):
+        rt = 1.0 if run_time is None else run_time
+        super().play(*anims, run_time=max(1.5, rt * self.SLOW), **kw)
+
+    def wait(self, duration=1.0, **kw):
+        super().wait(max(1.5, duration * 2), **kw)
+
     def ring_point(self, theta, r=None):
         r = self.R if r is None else r
         t = np.deg2rad(theta)
@@ -58,7 +75,6 @@ class ConsistentHashing(Scene):
         )
 
     def construct(self):
-        self.background()
 
         title = Text("Consistent hashing", font_size=48).to_edge(UP, buff=0.5)
         sub = Text("spreading keys across servers", font_size=30, color=BLUE)
@@ -73,15 +89,6 @@ class ConsistentHashing(Scene):
         self.part_summary()
 
     # ------------------------------------------------------------------
-    def background(self):
-        lines = VGroup()
-        for x in np.arange(-7.5, 7.51, 0.5):
-            lines.add(Line([x, -4.2, 0], [x, 4.2, 0], stroke_color=GRID, stroke_width=1))
-        for y in np.arange(-4.0, 4.01, 0.5):
-            lines.add(Line([-7.5, y, 0], [7.5, y, 0], stroke_color=GRID, stroke_width=1))
-        margin = Line([-6.4, -4.2, 0], [-6.4, 4.2, 0], stroke_color=MARGIN, stroke_width=2)
-        self.add(lines, margin)
-
     # ------------------------------------------------------------------
     def part_mod(self):
         head = Text("Naive: server = hash(key) mod N", font_size=34).to_edge(UP, buff=0.4)
@@ -110,7 +117,7 @@ class ConsistentHashing(Scene):
         for h in HASHES:
             box = RoundedRectangle(width=1.0, height=0.48, corner_radius=0.08,
                                    stroke_color=INK, stroke_width=1.5,
-                                   fill_color=WHITE, fill_opacity=1)
+                                   fill_color="#000000", fill_opacity=1)
             lab = Text(str(h), font_size=24)
             k = VGroup(box, lab)
             s = h % 4
@@ -317,7 +324,7 @@ class ConsistentHashing(Scene):
         ring = Circle(radius=self.R, stroke_color=INK, stroke_width=3).move_to(self.C)
         cap = Text("one spot per server: uneven arcs, uneven load", font_size=26, color=BLUE)
         cap.to_edge(DOWN, buff=0.35)
-        styles = {"A": (BLUE, SOFT_BLUE), "B": (ORANGE, SOFT_ORANGE), "C": (INK, "#e2e8f0")}
+        styles = {"A": (BLUE, SOFT_BLUE), "B": (GREEN, dim(GREEN)), "C": (LIGHT, dim(LIGHT))}
 
         single = {"A": [40], "B": [95], "C": [230]}
         many = {"A": [5, 95, 182, 268], "B": [38, 118, 214, 305], "C": [62, 155, 243, 330]}
@@ -362,7 +369,7 @@ class ConsistentHashing(Scene):
         def panel(name, formula, note, color, fill):
             box = RoundedRectangle(width=5.4, height=3.6, corner_radius=0.2,
                                    stroke_color=color, stroke_width=3,
-                                   fill_color=fill, fill_opacity=0.6)
+                                   fill_color=fill, fill_opacity=1)
             t = Text(name, font_size=32, weight=BOLD, color=color)
             f = MathTex(formula, font_size=56)
             n = Text(note, font_size=26)
@@ -377,4 +384,4 @@ class ConsistentHashing(Scene):
         self.play(FadeIn(head))
         self.play(FadeIn(left, shift=0.2 * UP), run_time=1.2)
         self.play(FadeIn(right, shift=0.2 * UP), run_time=1.2)
-        self.wait(3)
+        super().wait(5)
