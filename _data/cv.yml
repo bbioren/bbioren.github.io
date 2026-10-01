@@ -3,26 +3,77 @@
   contents:
     - name: Full Name
       value: Ben Bioren
+    - name: Email
+      value: bbioren@cs.washington.edu
     - name: Languages
       value: English
 
 - title: Education
   type: time_table
   contents:
-    - title: B.S. Computer Science and Mathematics
+    - title: B.S./M.S. Computer Science, B.A. Mathematics (combined BS/MS)
       institution: University of Washington, Seattle, WA
-      year: 2023 - present
+      year: 2023 - 2028 (expected)
       description:
         - Minor in Philosophy
-        - "Research: Applied machine learning in the Department of Radiation Oncology"
+        - "GPA: 3.98"
+        - "Coursework: Graduate ML, Graduate Algorithms, Deep Learning, NLP, Probability & Statistics, Modern Parallelism"
 
 - title: Research Experience
   type: time_table
   contents:
-    - title: Undergraduate Research Assistant
+    - title: Undergraduate Researcher
+      institution: RAIVN Lab, University of Washington
+      year: June 2026 - present
+      description:
+        - Hallucination mechanisms in vision-language models; inference-time hallucination detection and activation steering
+    - title: Research Intern
+      institution: Paul G. Allen School, University of Washington
+      year: January 2026 - present
+      description:
+        - Advised by Prof. Sewoong Oh
+        - Typographic adversarial attacks on VLMs and detection-aware defenses
+    - title: Formalization Researcher
+      institution: Math AI Lab, University of Washington
+      year: January 2026 - present
+      description:
+        - A mathematician-friendly abstraction layer over Lean 4 for LLM-generated proofs
+    - title: ML Research Assistant
       institution: Department of Radiation Oncology, University of Washington
-      year: present
+      year: February 2024 - December 2025
       description:
         - Advised by Sunan Cui and Jie Fu
-        - Designing multi-modal models for cancer progression prediction
-        - Integration of ML models into patient treatment workflows
+        - NLP pipelines for pathology reports; interpretable multi-task models for tumor characterization
+
+- title: Industry Experience
+  type: time_table
+  contents:
+    - title: ML Kernel Engineering Intern
+      institution: Annapurna Labs (Amazon Web Services), Cupertino, CA
+      year: June 2026 - September 2026
+      description:
+        - Quantized attention and transformer kernels (MXFP8) for native Trainium execution of Qwen 3 models
+    - title: GenAI Alignment Intern
+      institution: Scale AI, San Francisco, CA
+      year: March 2026 - June 2026
+      description:
+        - Adversarial evaluations of long-horizon web agents
+    - title: Software Engineering Intern
+      institution: HueIQ, Seattle, WA
+      year: June 2025 - September 2025
+      description:
+        - Real-time computer-vision body tracking for retail AR
+
+- title: Teaching & Mentorship
+  type: time_table
+  contents:
+    - title: Teaching Assistant & Lead Tutor
+      institution: University of Washington
+      year: September 2023 - present
+      description:
+        - CSE 422 (Advanced Algorithms), CSE 332 (Data Structures & Parallelism, x2); Lead Tutor, Calculus Series (x3)
+    - title: SROP Research Mentor
+      institution: Seattle Science Lab
+      year: August 2025 - present
+      description:
+        - Weekly sessions guiding high school students through a hands-on robotics research project

@@ -22,7 +22,7 @@ where $$\Vert u \Vert = \sqrt{\langle u, u \rangle}$$. Equality holds exactly wh
 
 In $$\mathbb{R}^2$$ there's nothing to prove: $$\langle u, v \rangle = \Vert u \Vert \Vert v \Vert \cos\theta$$, so the inequality says $$\vert \cos\theta \vert \le 1$$, with equality when $$\theta = 0$$ or $$\pi$$. Both sides also double when $$u$$ does, so the inequality is about directions, not sizes.
 
-The point is that it holds in *any* inner product space: functions with $$\langle f, g \rangle = \int f g$$, random variables, matrices. There nobody hands you an angle. You *define* it by
+The point is that it holds in _any_ inner product space: functions with $$\langle f, g \rangle = \int f g$$, random variables, matrices. There nobody hands you an angle. You _define_ it by
 
 $$
 \cos\theta = \frac{\langle u, v \rangle}{\Vert u \Vert \, \Vert v \Vert},
@@ -118,4 +118,4 @@ the squared dashed leg. Minimizing $$\Vert u - t v \Vert$$ finds the point on th
 
 ## The part that gets missed
 
-So the trick proof isn't a trick: it's the projection argument with the picture removed, and $$t^* v$$ is the foot of the perpendicular. That also makes the equality case obvious, which the discriminant version usually states without explanation. Equality holds exactly when $$\Vert u - p \Vert = 0$$, i.e. the dashed leg vanishes and $$u$$ already lies on the line through $$v$$, so $$u$$ and $$v$$ are linearly dependent. One more subtlety is often skipped: the inequality never uses that $$\langle w, w \rangle = 0$$ forces $$w = 0$$, only that $$\langle w, w \rangle \ge 0$$. (If $$\Vert v \Vert = 0$$, the "quadratic" is linear in $$t$$, and a nonnegative line is flat, so $$\langle u, v \rangle = 0$$.) The equality case does use definiteness, which is why $$\vert \rho \vert = 1$$ only gives $$Y - \mathbb{E}Y = c\,(X - \mathbb{E}X)$$ *almost surely*: a leg of length zero in $$L^2$$ is zero only almost everywhere.
+So the trick proof isn't a trick: it's the projection argument with the picture removed, and $$t^* v$$ is the foot of the perpendicular. That also makes the equality case obvious, which the discriminant version usually states without explanation. Equality holds exactly when $$\Vert u - p \Vert = 0$$, i.e. the dashed leg vanishes and $$u$$ already lies on the line through $$v$$, so $$u$$ and $$v$$ are linearly dependent. One more subtlety is often skipped: the inequality never uses that $$\langle w, w \rangle = 0$$ forces $$w = 0$$, only that $$\langle w, w \rangle \ge 0$$. (If $$\Vert v \Vert = 0$$, the "quadratic" is linear in $$t$$, and a nonnegative line is flat, so $$\langle u, v \rangle = 0$$.) The equality case does use definiteness, which is why $$\vert \rho \vert = 1$$ only gives $$Y - \mathbb{E}Y = c\,(X - \mathbb{E}X)$$ _almost surely_: a leg of length zero in $$L^2$$ is zero only almost everywhere.

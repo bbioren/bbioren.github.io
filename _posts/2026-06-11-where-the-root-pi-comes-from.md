@@ -8,7 +8,7 @@ categories: math
 related_posts: false
 ---
 
-Everyone who has taken a statistics class has memorized the normal density, and with it the odd constant out front: $$\frac{1}{\sqrt{2\pi}}$$. The $$e^{-x^2/2}$$ part makes sense, since it's a bump that dies off fast. But what is $$\pi$$ doing there? There are no circles anywhere in sight. The usual answer is "it makes the total area equal to 1," which is true and explains nothing. The real answer is that there *is* a circle in the bell curve. You just have to look at it from above.
+Everyone who has taken a statistics class has memorized the normal density, and with it the odd constant out front: $$\frac{1}{\sqrt{2\pi}}$$. The $$e^{-x^2/2}$$ part makes sense, since it's a bump that dies off fast. But what is $$\pi$$ doing there? There are no circles anywhere in sight. The usual answer is "it makes the total area equal to 1," which is true and explains nothing. The real answer is that there _is_ a circle in the bell curve. You just have to look at it from above.
 
 ## the statement
 

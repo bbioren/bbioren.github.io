@@ -18,7 +18,7 @@ $$
 \nabla f(x^*, y^*) = \lambda\, \nabla g(x^*, y^*).
 $$
 
-(Setting $$\nabla \mathcal{L} = 0$$ says exactly this, plus the constraint itself.) Why should it be true? The gradient $$\nabla f$$ points in the direction where $$f$$ increases fastest. If it had any component *along* the constraint curve, you could slide a little along the curve in that direction and make $$f$$ bigger, all while staying feasible. So at an optimum, $$\nabla f$$ has no component along the curve, which means it is perpendicular to the curve. And $$\nabla g$$ is perpendicular to the curve too, since the curve is a level set of $$g$$. Two vectors that are both perpendicular to the same curve in the plane are parallel.
+(Setting $$\nabla \mathcal{L} = 0$$ says exactly this, plus the constraint itself.) Why should it be true? The gradient $$\nabla f$$ points in the direction where $$f$$ increases fastest. If it had any component _along_ the constraint curve, you could slide a little along the curve in that direction and make $$f$$ bigger, all while staying feasible. So at an optimum, $$\nabla f$$ has no component along the curve, which means it is perpendicular to the curve. And $$\nabla g$$ is perpendicular to the curve too, since the curve is a level set of $$g$$. Two vectors that are both perpendicular to the same curve in the plane are parallel.
 
 ## What it buys you
 
@@ -51,7 +51,7 @@ My favorite way to see the theorem is a second example: maximize $$f(x,y) = x + 
   Level lines of f = x + y and the constraint circle. At P the level line f = 1 cuts across the circle, and ∇f has a nonzero tangential part (orange), so sliding up the circle increases f. At Q the level line f = √2 just touches the circle, and ∇f and ∇g point the same way.
 </div>
 
-Start at $$P = (1, 0)$$, where $$f = 1$$. The line $$x + y = 1$$ *crosses* the circle there, so on one side of $$P$$ the circle climbs into territory where $$f$$ is bigger. In terms of vectors, split $$\nabla f = (1,1)$$ into a part normal to the circle and a part tangent to it. At $$P$$ the normal direction is $$\nabla g = (2, 0)$$, so
+Start at $$P = (1, 0)$$, where $$f = 1$$. The line $$x + y = 1$$ _crosses_ the circle there, so on one side of $$P$$ the circle climbs into territory where $$f$$ is bigger. In terms of vectors, split $$\nabla f = (1,1)$$ into a part normal to the circle and a part tangent to it. At $$P$$ the normal direction is $$\nabla g = (2, 0)$$, so
 
 $$
 \nabla f = \underbrace{(1, 0)}_{\text{normal}} + \underbrace{(0, 1)}_{\text{tangent}}.

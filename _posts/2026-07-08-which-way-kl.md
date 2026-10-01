@@ -24,7 +24,7 @@ $$
 -\mathrm{KL}(p \Vert q) = \mathbb{E}_{p}\left[\log \frac{q}{p}\right] \le \log \mathbb{E}_{p}\left[\frac{q}{p}\right] = \log \int_{p \gt 0} q \, dx \le \log 1 = 0.
 $$
 
-The heuristic to keep in mind is that the expectation is taken under the *first* argument. You only pay where the first distribution puts mass. Wherever $$p(x) = 0$$, the integrand is weighted by zero and $$q$$ can do whatever it likes there. Swap the arguments and you swap whose support counts.
+The heuristic to keep in mind is that the expectation is taken under the _first_ argument. You only pay where the first distribution puts mass. Wherever $$p(x) = 0$$, the integrand is weighted by zero and $$q$$ can do whatever it likes there. Swap the arguments and you swap whose support counts.
 
 ## Why it matters
 
