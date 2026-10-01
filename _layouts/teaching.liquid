@@ -55,6 +55,11 @@ layout: default
             <a href="{{ b.link }}">{{ b.link_label | default: 'course page' }} →</a>
           </p>
         {% endif %}
+        {% for l in b.links %}
+          <p class="mono">
+            <a href="{{ l.url }}">{{ l.label }} →</a>
+          </p>
+        {% endfor %}
       </div>
     </div>
   {% endfor %}

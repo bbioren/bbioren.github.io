@@ -39,3 +39,17 @@
   marble: true
   about: Weekly sessions guiding high school students from underrepresented backgrounds through a hands-on robotics research project.
   notes: []
+- spine: Robinson
+  title: Summer Stretch & Summer Challenge
+  role: Teaching assistant
+  where: UW Robinson Center for Young Scholars
+  color: "#5b4b8a"
+  height: 198
+  width: 62
+  about: Accelerated summer classes on the UW campus. Summer Challenge is for grades 5 and 6, and Summer Stretch is for grades 7 to 10.
+  links:
+    - label: summer stretch
+      url: https://robinsoncenter.uw.edu/programs/summer-programs/summer-stretch/
+    - label: summer challenge
+      url: https://robinsoncenter.uw.edu/programs/summer-programs/summer-challenge/
+  notes: []
