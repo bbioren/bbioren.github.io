@@ -1,6 +1,39 @@
 # Research page content. Each list renders as figure-led cards on /research/.
 
 papers:
+  - title: "Hidden States, Open Secrets: Recognizing VLM Failures During Visual Prefill"
+    authors: Kai Hidajat, Zayeed Saffat, Ben Bioren, Zixian Ma, Ranjay Krishna
+    venue: Under review at ICLR 2027
+    figure: /assets/img/research/prefill-angular-distance.svg
+    figure_alt: Image-token states from inputs the model usually gets right cluster together; a likely failure sits at a larger angle from its nearest correct neighbor.
+    summary: >-
+      Vision-language models sometimes answer wrong even when the right visual information is still in their
+      hidden states. We look at visual prefill, the image-token states formed before the model has even seen
+      the question, and ask whether a failure is already visible there. Collecting the states that usually lead
+      to correct answers gives a reference for what good visual representations look like, and we measure how
+      far a new input lands from its nearest reference neighbors.
+    findings:
+      - On ScienceQA and ChartQA, inputs the model usually gets wrong sit clearly farther, in angle, from the correct references.
+      - On POPE and CV-Bench the separation is much weaker.
+      - The pattern holds across different vision architectures and shows up within the first quarter of the visual-token positions.
+    links:
+      - label: openreview
+        url: https://openreview.net/forum?id=qf5rZbeYuF
+  - title: Large Language Models for Predicting Overall Survival in NSCLC Using Pathology Reports
+    authors: S. Cui, B. Bioren, J. Hellerstein, F. Yaseen, J. Kang, Y. He, S. R. Bowen, J. Fu
+    venue: ASTRO 2026 Annual Meeting, poster
+    figure: /assets/img/research/report-to-prediction.svg
+    figure_alt: A pathology report turns into structured features and then a survival prediction.
+    summary: >-
+      Can the free-text pathology report alone predict overall survival for non-small cell lung cancer? We
+      compared a zero-shot LLM against text embeddings, with and without fine-tuning.
+    findings:
+      - Zero-shot Gemini reached an AUC of 0.641 (95% CI 0.524–0.757).
+      - Pre-trained Jina-V3 embeddings reached 0.615, and fine-tuning them raised it to 0.675 (95% CI 0.558–0.793).
+      - The differences between the models were not statistically significant.
+    links:
+      - label: abstract
+        url: https://amportal.astro.org/sessions/pqa-05-22824/large-language-models-for-predicting-overall-survival-in-nsclc-using-pathology-reports-114117
   - title: "Minimal Perturbation Attacks in VLMs: Turning Embedding Distance into an Attack Metric"
     authors: Ben Bioren, Justin Zhou
     venue: Project report, 2026
@@ -34,6 +67,9 @@ current:
       intrinsic dimension of the latent states relate to hallucination, and built a detector that flags a
       likely hallucination during prefill with over 80% accuracy. The same signal can be used to steer the
       model back toward the image, without retraining or extra data.
+    links:
+      - label: iclr submission
+        url: https://openreview.net/forum?id=qf5rZbeYuF
   - title: Typographic attacks on closed models
     where: Allen School, with Sewoong Oh
     since: January 2026
@@ -75,6 +111,8 @@ past:
       multi-task sequence models that line up with how oncologists reason, for interpretable tumor
       characterization.
     links:
+      - label: astro 2026 poster
+        url: https://amportal.astro.org/sessions/pqa-05-22824/large-language-models-for-predicting-overall-survival-in-nsclc-using-pathology-reports-114117
       - label: tcga code
         url: https://github.com/bbioren/TCGA-Classification
 

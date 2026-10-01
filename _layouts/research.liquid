@@ -8,14 +8,15 @@ layout: default
   <span class="hand">{{ page.description }}</span>
 </div>
 
-<h2 class="label">Written up</h2>
+<h2 class="label">Papers</h2>
 {% for p in r.papers %}
   <article class="paper">
     <figure class="paper-fig"><img src="{{ p.figure | relative_url }}" alt="{{ p.figure_alt }}" loading="lazy"></figure>
     <div class="paper-body">
       <h3>{{ p.title }}</h3>
       <p class="authors">
-        {{ p.authors | replace: 'Ben Bioren', '<b>Ben Bioren</b>' }} · <span class="venue">{{ p.venue }}</span>
+        {{ p.authors | replace: 'Ben Bioren', '<b>Ben Bioren</b>' | replace: 'B. Bioren', '<b>B. Bioren</b>' }} ·
+        <span class="venue">{{ p.venue }}</span>
       </p>
       <p>{{ p.summary }}</p>
       <ul class="findings">
