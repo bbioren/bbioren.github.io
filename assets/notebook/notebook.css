@@ -954,3 +954,22 @@ blockquote {
   font-size: 20px;
   margin: 0 0 6px;
 }
+
+/* paper figures: small, beside the text */
+@media (min-width: 680px) {
+  .paper {
+    grid-template-columns: 260px 1fr;
+    gap: 22px;
+    align-items: start;
+  }
+}
+.paper-fig img {
+  aspect-ratio: 8 / 5;
+  object-fit: contain;
+  transform: rotate(-1deg);
+}
+@media (max-width: 679px) {
+  .paper-fig img {
+    max-width: 360px;
+  }
+}
