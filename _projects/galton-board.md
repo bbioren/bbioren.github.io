@@ -9,7 +9,7 @@ math: true
 ---
 
 <div class="viz" id="galton-board"></div>
-<script src="{{ '/assets/notebook/viz/galton-board.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/notebook/viz/galton-board.js' | relative_url | bust_file_cache }}" defer></script>
 
 Each ball falls through $$n$$ rows of pegs. At every peg it goes right with probability $$p$$ and left with probability $$1-p$$, independently of everything else. The bin it lands in is just the number of times it went right. Call that $$X$$.
 

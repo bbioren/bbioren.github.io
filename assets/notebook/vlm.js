@@ -22,21 +22,36 @@
     });
   });
 
-  function render() {
-    img.src = base + photo + "-" + tag + ".jpg";
+  // Rows stay in one fixed order (by score on the clean photo) so you can
+  // watch probability move between labels when a name tag goes on.
+  var rows = {};
+  function buildRows() {
     bars.innerHTML = "";
-    data.photos[photo][tag].slice(0, 3).forEach(function (s, i) {
+    rows = {};
+    data.photos[photo].clean.forEach(function (s) {
       var li = document.createElement("li");
-      if (i === 0) li.className = "top";
-      var pct = Math.round(s.p * 100);
-      li.innerHTML =
-        '<span class="lab"></span><span class="bar"><span style="width:' +
-        Math.max(pct, 1) +
-        '%"></span></span><span class="pct">' +
-        pct +
-        "%</span>";
+      li.innerHTML = '<span class="lab"></span><span class="bar"><span></span></span><span class="pct"></span>';
       li.querySelector(".lab").textContent = s.label;
       bars.appendChild(li);
+      rows[s.label] = li;
+    });
+  }
+
+  function render() {
+    img.src = base + photo + "-" + tag + ".jpg";
+    if (!bars.dataset.photo || bars.dataset.photo !== photo) {
+      buildRows();
+      bars.dataset.photo = photo;
+    }
+    var scores = data.photos[photo][tag];
+    var best = scores[0].label;
+    scores.forEach(function (s) {
+      var li = rows[s.label];
+      if (!li) return;
+      var pct = Math.round(s.p * 100);
+      li.querySelector(".bar span").style.width = Math.max(pct, 1) + "%";
+      li.querySelector(".pct").textContent = pct + "%";
+      li.className = s.label === best ? "top" : "";
     });
     buttons.forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.key === tag));

@@ -9,7 +9,7 @@ math: true
 ---
 
 <div class="viz" id="pythagoras-rearrangement"></div>
-<script src="{{ '/assets/notebook/viz/pythagoras-rearrangement.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/notebook/viz/pythagoras-rearrangement.js' | relative_url | bust_file_cache }}" defer></script>
 
 Take a right triangle with legs $$a$$ and $$b$$ and hypotenuse $$c$$. Make four copies and put them inside a square of side $$a + b$$.
 

@@ -9,7 +9,7 @@ math: true
 ---
 
 <div class="viz" id="fourier-epicycles"></div>
-<script src="{{ '/assets/notebook/viz/fourier-epicycles.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/notebook/viz/fourier-epicycles.js' | relative_url | bust_file_cache }}" defer></script>
 
 Think of a closed curve as a point $$z(t)$$ moving in the complex plane, going once around as $$t$$ runs from 0 to 1. Any such curve can be written as a sum of rotating vectors:
 

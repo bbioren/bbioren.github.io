@@ -9,7 +9,7 @@ math: true
 ---
 
 <div class="viz" id="buffons-needle"></div>
-<script src="{{ '/assets/notebook/viz/buffons-needle.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/notebook/viz/buffons-needle.js' | relative_url | bust_file_cache }}" defer></script>
 
 Draw parallel lines $$d$$ apart and drop a needle of length $$\ell \le d$$ on them. Its center lands at a uniform random spot and it points in a uniform random direction. Needles that cross a line are orange, the rest are blue. What is the chance a needle crosses a line?
 
