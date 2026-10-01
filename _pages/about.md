@@ -14,6 +14,6 @@ My research is on making multimodal and reasoning models more reliable. In the [
 
 This past summer I was an ML kernel engineering intern at Annapurna Labs (AWS), writing quantized transformer kernels for Trainium. Before that, I was a GenAI alignment intern at Scale AI. I'm also a TA for the Allen School and occasionally write about [visual proofs](/blog/).
 
-If you have similar interests, or would like to talk more about other things, please feel free to reach out! My email is `bbioren@uw.edu`.
+If you have similar interests, or would like to talk more about other things, please feel free to reach out! My email is [bbioren@uw.edu](mailto:bbioren@uw.edu).
 
 _Proof._ See the open problems below, and the sketchbook for things I like explaining. <span class="qed">∎</span>
