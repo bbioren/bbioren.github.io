@@ -1,9 +1,9 @@
 {
   "model": "openai/clip-vit-base-patch32",
-  "labels": ["a college student", "a person at the beach", "a sunset", "a potato", "a golden retriever", "a toaster"],
+  "labels": ["a college student", "a person at the beach", "a sunset", "a potato", "a dog", "a toaster"],
   "stickers": {
     "potato": "potato",
-    "retriever": "golden retriever",
+    "dog": "dog",
     "toaster": "toaster"
   },
   "photos": {
@@ -11,105 +11,105 @@
       "clean": [
         {
           "label": "a person at the beach",
-          "p": 0.8839
+          "p": 0.8261
         },
         {
           "label": "a college student",
-          "p": 0.0787
+          "p": 0.1238
         },
         {
           "label": "a sunset",
-          "p": 0.032
+          "p": 0.0416
         },
         {
           "label": "a potato",
-          "p": 0.0023
-        },
-        {
-          "label": "a golden retriever",
-          "p": 0.0016
+          "p": 0.0042
         },
         {
           "label": "a toaster",
-          "p": 0.0015
+          "p": 0.0022
+        },
+        {
+          "label": "a dog",
+          "p": 0.002
         }
       ],
       "potato": [
         {
           "label": "a potato",
-          "p": 0.9731
-        },
-        {
-          "label": "a person at the beach",
-          "p": 0.0128
+          "p": 0.9864
         },
         {
           "label": "a college student",
-          "p": 0.0114
+          "p": 0.0077
+        },
+        {
+          "label": "a person at the beach",
+          "p": 0.0047
         },
         {
           "label": "a toaster",
-          "p": 0.0017
+          "p": 0.0006
         },
         {
           "label": "a sunset",
-          "p": 0.001
+          "p": 0.0005
         },
         {
-          "label": "a golden retriever",
+          "label": "a dog",
           "p": 0.0
         }
       ],
-      "retriever": [
+      "dog": [
         {
-          "label": "a golden retriever",
-          "p": 0.4728
-        },
-        {
-          "label": "a college student",
-          "p": 0.3813
+          "label": "a dog",
+          "p": 0.8169
         },
         {
           "label": "a person at the beach",
-          "p": 0.088
+          "p": 0.0887
+        },
+        {
+          "label": "a college student",
+          "p": 0.0837
         },
         {
           "label": "a sunset",
-          "p": 0.0479
-        },
-        {
-          "label": "a toaster",
-          "p": 0.0093
+          "p": 0.0094
         },
         {
           "label": "a potato",
-          "p": 0.0007
+          "p": 0.001
+        },
+        {
+          "label": "a toaster",
+          "p": 0.0004
         }
       ],
       "toaster": [
         {
           "label": "a toaster",
-          "p": 0.9931
+          "p": 0.986
         },
         {
           "label": "a college student",
-          "p": 0.0041
+          "p": 0.0096
         },
         {
           "label": "a person at the beach",
-          "p": 0.0023
+          "p": 0.0033
         },
         {
           "label": "a sunset",
-          "p": 0.0003
+          "p": 0.0008
         },
         {
           "label": "a potato",
-          "p": 0.0001
+          "p": 0.0003
         },
         {
-          "label": "a golden retriever",
-          "p": 0.0001
+          "label": "a dog",
+          "p": 0.0
         }
       ]
     }

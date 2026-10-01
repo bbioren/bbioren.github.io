@@ -19,7 +19,7 @@ from transformers import CLIPModel, CLIPProcessor
 ROOT = Path(__file__).resolve().parents[1]
 # photo id -> (file, where the name tag goes as fractions of width/height)
 PHOTOS = {
-    "beach": (ROOT / "assets/img/prof_pic_beach.jpg", (0.10, 0.58)),
+    "beach": (ROOT / "assets/img/prof_pic_beach.jpg", (0.14, 0.62)),
 }
 OUT_IMG = ROOT / "assets/img/attack"
 OUT_JSON = ROOT / "_data/clip_attack.json"
@@ -28,7 +28,7 @@ MODEL = "openai/clip-vit-base-patch32"
 # What the sticky note says, keyed by a short id.
 STICKERS = {
     "potato": "POTATO",
-    "retriever": "GOLDEN\nRETRIEVER",
+    "dog": "DOG",
     "toaster": "TOASTER",
 }
 
@@ -38,7 +38,7 @@ LABELS = [
     "a photo of a person at the beach",
     "a photo of a sunset",
     "a photo of a potato",
-    "a photo of a golden retriever",
+    "a photo of a dog",
     "a photo of a toaster",
 ]
 
