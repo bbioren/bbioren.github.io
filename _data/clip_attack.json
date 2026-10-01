@@ -11,105 +11,105 @@
       "clean": [
         {
           "label": "a person at the beach",
-          "p": 0.5419
-        },
-        {
-          "label": "a sunset",
-          "p": 0.3378
+          "p": 0.7441
         },
         {
           "label": "a college student",
-          "p": 0.1015
+          "p": 0.1919
+        },
+        {
+          "label": "a sunset",
+          "p": 0.0546
         },
         {
           "label": "a potato",
-          "p": 0.0081
-        },
-        {
-          "label": "a golden retriever",
-          "p": 0.007
+          "p": 0.0036
         },
         {
           "label": "a toaster",
-          "p": 0.0036
+          "p": 0.0033
+        },
+        {
+          "label": "a golden retriever",
+          "p": 0.0025
         }
       ],
       "potato": [
         {
           "label": "a potato",
-          "p": 0.9858
+          "p": 0.9879
         },
         {
           "label": "a college student",
-          "p": 0.0053
-        },
-        {
-          "label": "a sunset",
-          "p": 0.0036
+          "p": 0.0089
         },
         {
           "label": "a person at the beach",
-          "p": 0.003
+          "p": 0.0019
         },
         {
           "label": "a toaster",
-          "p": 0.0021
+          "p": 0.0008
+        },
+        {
+          "label": "a sunset",
+          "p": 0.0004
         },
         {
           "label": "a golden retriever",
-          "p": 0.0002
+          "p": 0.0
         }
       ],
       "retriever": [
         {
           "label": "a golden retriever",
-          "p": 0.7623
+          "p": 0.4909
         },
         {
           "label": "a college student",
-          "p": 0.1152
-        },
-        {
-          "label": "a sunset",
-          "p": 0.0672
+          "p": 0.3492
         },
         {
           "label": "a person at the beach",
-          "p": 0.0525
+          "p": 0.1162
+        },
+        {
+          "label": "a sunset",
+          "p": 0.0405
         },
         {
           "label": "a toaster",
-          "p": 0.0015
+          "p": 0.0018
         },
         {
           "label": "a potato",
-          "p": 0.0012
+          "p": 0.0015
         }
       ],
       "toaster": [
         {
           "label": "a toaster",
-          "p": 0.9954
+          "p": 0.9941
         },
         {
           "label": "a college student",
-          "p": 0.0028
-        },
-        {
-          "label": "a sunset",
-          "p": 0.0006
+          "p": 0.0045
         },
         {
           "label": "a person at the beach",
-          "p": 0.0005
+          "p": 0.0009
         },
         {
-          "label": "a golden retriever",
-          "p": 0.0004
+          "label": "a sunset",
+          "p": 0.0003
         },
         {
           "label": "a potato",
-          "p": 0.0003
+          "p": 0.0001
+        },
+        {
+          "label": "a golden retriever",
+          "p": 0.0001
         }
       ]
     }
