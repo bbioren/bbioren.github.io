@@ -4,44 +4,29 @@
       {{- site.first_name | downcase }}
       {{ site.last_name | downcase -}}
     </a>
+    {% assign here = page.url %}
+    {% assign items = 'about:/,research:/research/,sketchbook:/blog/,projects:/projects/,teaching:/teaching/,cv:/cv/' | split: ',' %}
     <ul>
-      {% assign here = page.url %}
-      <li>
-        <a
-          href="{{ '/' | relative_url }}"
-          {% if here == '/' %}
-            aria-current="page"
-          {% endif %}
-          >about</a
-        >
-      </li>
-      <li>
-        <a
-          href="{{ '/blog/' | relative_url }}"
-          {% if here contains '/blog/' %}
-            aria-current="page"
-          {% endif %}
-          >sketchbook</a
-        >
-      </li>
-      <li>
-        <a
-          href="{{ '/projects/' | relative_url }}"
-          {% if here contains '/projects/' %}
-            aria-current="page"
-          {% endif %}
-          >projects</a
-        >
-      </li>
-      <li>
-        <a
-          href="{{ '/cv/' | relative_url }}"
-          {% if here contains '/cv/' %}
-            aria-current="page"
-          {% endif %}
-          >cv</a
-        >
-      </li>
+      {% for it in items %}
+        {% assign parts = it | split: ':' %}
+        {% assign label = parts[0] %}
+        {% assign path = parts[1] %}
+        {% if path == '/' %}
+          {% if here == '/' %}{% assign on = true %}{% else %}{% assign on = false %}{% endif %}
+        {% else %}
+          {% if here contains path %}{% assign on = true %}{% else %}{% assign on = false %}{% endif %}
+        {% endif %}
+        <li>
+          <a
+            href="{{ path | relative_url }}"
+            {% if on %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{- label -}}
+          </a>
+        </li>
+      {% endfor %}
     </ul>
   </nav>
 </header>

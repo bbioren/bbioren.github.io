@@ -1,0 +1,68 @@
+---
+layout: default
+---
+{% assign r = site.data.research %}
+
+<div class="page-head">
+  <h1>Research</h1>
+  <span class="hand">{{ page.description }}</span>
+</div>
+
+<h2 class="label">Written up</h2>
+{% for p in r.papers %}
+  <article class="paper">
+    <figure class="paper-fig"><img src="{{ p.figure | relative_url }}" alt="{{ p.figure_alt }}" loading="lazy"></figure>
+    <div class="paper-body">
+      <h3>{{ p.title }}</h3>
+      <p class="authors">
+        {{ p.authors | replace: 'Ben Bioren', '<b>Ben Bioren</b>' }} · <span class="venue">{{ p.venue }}</span>
+      </p>
+      <p>{{ p.summary }}</p>
+      <ul class="findings">
+        {% for f in p.findings %}
+          <li>{{ f }}</li>
+        {% endfor %}
+      </ul>
+      {% if p.detail_figure %}
+        <figure class="detail-fig">
+          <img src="{{ p.detail_figure | relative_url }}" alt="{{ p.detail_alt }}" loading="lazy">
+          <figcaption class="hand">{{ p.detail_alt }}</figcaption>
+        </figure>
+      {% endif %}
+      <p class="links mono">
+        {% for l in p.links -%}
+          <a href="{{ l.url | relative_url }}">{{ l.label }}</a>
+          {%- unless forloop.last %} · {% endunless -%}
+        {%- endfor %}
+      </p>
+    </div>
+  </article>
+{% endfor %}
+
+<h2 class="label">In progress</h2>
+<div class="cards">
+  {% for c in r.current %}
+    {% include nb/research_card.liquid c=c %}
+  {% endfor %}
+</div>
+
+<h2 class="label">Before that</h2>
+<div class="cards">
+  {% for c in r.past %}
+    {% include nb/research_card.liquid c=c done=true %}
+  {% endfor %}
+</div>
+
+<h2 class="label">What's next</h2>
+<p class="hand" style="margin-top: -4px">questions I want to work on, each one left over from something above.</p>
+<div class="problems">
+  {% for q in r.next %}
+    <div class="problem">
+      <div>
+        <b>Question {{ forloop.index }}.</b> {{ q.question }}
+      </div>
+      <span class="stamp">open</span>
+    </div>
+    <p class="mono muted from">from {{ q.from }}</p>
+  {% endfor %}
+</div>

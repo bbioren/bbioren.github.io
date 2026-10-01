@@ -1,0 +1,61 @@
+---
+layout: default
+---
+<div class="page-head">
+  <h1>Teaching</h1>
+  <span class="hand">{{ page.description }}</span>
+</div>
+
+<div class="shelf" id="shelf">
+  {% for b in site.data.teaching %}
+    <button
+      type="button"
+      class="spine{% if b.marble %} marble{% endif %}"
+      style="--c: {{ b.color }}; --h: {{ b.height }}px; --w: {{ b.width }}px"
+      aria-expanded="false"
+      aria-controls="leaf-{{ forloop.index }}"
+      data-i="{{ forloop.index }}"
+      aria-label="{{ b.title }}"
+    >
+      <span class="tapel">{{ b.spine }}</span>
+    </button>
+  {% endfor %}
+</div>
+<div class="board" aria-hidden="true"></div>
+
+<div class="opened" id="opened">
+  <div class="leaf empty" id="leaf-0">nothing open yet. click a spine above.</div>
+  {% for b in site.data.teaching %}
+    <div class="book" id="leaf-{{ forloop.index }}" hidden>
+      <div class="leaf">
+        <h3>{{ b.title }}</h3>
+        <p class="role mono">{{ b.spine }} · {{ b.where }}</p>
+        <p class="hand">{{ b.role }}</p>
+      </div>
+      <div class="leaf">
+        {% if b.about %}
+          <p>{{ b.about }}</p>
+        {% endif %}
+        {% if b.notes.size > 0 %}
+          <p class="role mono">notes</p>
+          <ul>
+            {% for n in b.notes %}
+              <li>
+                {% if n.url -%}
+                  <a href="{{ n.url | relative_url }}">{{ n.label }}</a>
+                {%- else -%}
+                  {{- n.label -}}
+                {%- endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if b.link %}
+          <p class="mono"><a href="{{ b.link }}">course page →</a></p>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script src="{{ '/assets/notebook/shelf.js' | relative_url | bust_file_cache }}" defer></script>

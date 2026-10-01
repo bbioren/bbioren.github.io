@@ -1,0 +1,39 @@
+# Teaching shelf on /teaching/. Add your own notes or materials under `notes`
+# (each item can have a `label` and an optional `url`); empty notes stay hidden.
+- spine: CSE 422
+  title: Advanced Algorithms
+  role: Teaching assistant
+  where: Paul G. Allen School, UW
+  color: "#3d5a80"
+  height: 228
+  width: 60
+  marble: true
+  link: https://courses.cs.washington.edu/courses/cse422/
+  notes: []
+- spine: CSE 332
+  title: Data Structures & Parallelism
+  role: Teaching assistant, two quarters
+  where: Paul G. Allen School, UW
+  color: "#9b2335"
+  height: 206
+  width: 66
+  link: https://courses.cs.washington.edu/courses/cse332/
+  notes: []
+- spine: Calc
+  title: Calculus series
+  role: Lead tutor, three quarters
+  where: University of Washington
+  color: "#2a7f62"
+  height: 186
+  width: 54
+  notes: []
+- spine: SROP
+  title: Research mentoring
+  role: SROP research mentor, since Aug 2025
+  where: Seattle Science Lab
+  color: "#c9a227"
+  height: 214
+  width: 58
+  marble: true
+  about: Weekly sessions guiding high school students from underrepresented backgrounds through a hands-on robotics research project.
+  notes: []

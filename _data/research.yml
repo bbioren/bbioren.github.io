@@ -1,0 +1,90 @@
+# Research page content. Each list renders as figure-led cards on /research/.
+
+papers:
+  - title: "Minimal Perturbation Attacks in VLMs: Turning Embedding Distance into an Attack Metric"
+    authors: Ben Bioren, Justin Zhou
+    venue: Project report, 2026
+    figure: /assets/img/research/typographic-attacks-grid.jpg
+    figure_alt: The same photo with the text "This is a bird." pasted on at different sizes and rotations.
+    summary: >-
+      Typographic attacks paste text onto an image and the model believes the text over the picture.
+      Earlier work found that how close the attacked image sits to the text in embedding space predicts
+      whether the attack works. We asked whether you could skip the visible text entirely and just
+      optimize the pixels toward that embedding.
+    findings:
+      - Across 10,800 attacks on LLaVA-1.5, BLIP-2 and Fuyu-8B, success rates differ by almost 9x between models (5.0% vs 44.2%), but the effect of font size and rotation is the same for all of them.
+      - PGD gets the perturbed image to cosine similarity 0.988 or more with the visible attack, and OCR stops seeing any text (77.3% → 6.0% detected).
+      - The model still mostly ignores it. At the largest budget the invisible version succeeds 31.3% of the time, against 98.0% for the visible text.
+    detail_figure: /assets/img/research/embedding-distance-vs-asr.png
+    detail_alt: Attack success rate falls as embedding distance grows, for all three models.
+    links:
+      - label: pdf
+        url: /assets/pdf/papers/minimal-perturbation-attacks-vlms.pdf
+      - label: code
+        url: https://github.com/bbioren/minimal-perturbation-typographic-attacks
+
+current:
+  - title: Catching hallucinations before they happen
+    where: RAIVN Lab
+    since: June 2026
+    figure: /assets/img/research/attention-decay.svg
+    figure_alt: Attention to the image drops over chain-of-thought steps.
+    summary: >-
+      Vision-language models look at the image less and less as they reason. I study how that decay and the
+      intrinsic dimension of the latent states relate to hallucination, and built a detector that flags a
+      likely hallucination during prefill with over 80% accuracy. The same signal can be used to steer the
+      model back toward the image, without retraining or extra data.
+  - title: Typographic attacks on closed models
+    where: Allen School, with Sewoong Oh
+    since: January 2026
+    figure: /assets/img/attack/beach-potato.jpg
+    figure_alt: A photo of Ben with a name tag reading POTATO.
+    summary: >-
+      A gradient-free search over character-level saliency and font rendering that finds small typographic
+      edits which transfer to GPT-4o, Gemini and Claude. On the defense side, an OCR-consistency and
+      attention-entropy check cuts attack success from 94% to under 30% without hurting normal accuracy.
+      The photo on my home page is a toy version of this.
+  - title: Lean that reads like math
+    where: Math AI Lab
+    since: January 2026
+    lean: |
+      theorem separating_hyperplane
+          (C D : Set (Fin n → ℝ))
+          (hC : IsConvexSet C) (hD : IsConvexSet D)
+          (hne : C ∩ D = ∅) ... :
+          ∃ a : Fin n → ℝ, ∃ b : ℝ, a ≠ 0 ∧
+            IsSeparatingHyperplane a b C D
+    lean_note: Boyd & Vandenberghe §2.5.1, stated in Lean. Proofs in progress.
+    summary: >-
+      An abstraction layer over Lean 4 so that frontier LLMs can write proofs in notation a working
+      mathematician would recognize, with grammar-constrained decoding and type-aware beam search to keep
+      the output valid. With graduate mathematicians it cut formalization time by about 3x. I'm also
+      formalizing chapter 2 of Boyd's Convex Optimization.
+    links:
+      - label: boyd in lean
+        url: https://github.com/bbioren/lean-gcd-convex-opt
+
+past:
+  - title: Pathology reports to predictions
+    where: Department of Radiation Oncology, with Sunan Cui and Jie Fu
+    since: Feb 2024 – Dec 2025
+    figure: /assets/img/research/report-to-prediction.svg
+    figure_alt: A pathology report turns into structured features and then a prediction.
+    summary: >-
+      NLP pipelines that pull clinically relevant features out of unstructured pathology reports, and
+      multi-task sequence models that line up with how oncologists reason, for interpretable tumor
+      characterization.
+    links:
+      - label: tcga code
+        url: https://github.com/bbioren/TCGA-Classification
+
+# "What's next" open questions, in the home page's problem style.
+next:
+  - question: Matching the embedding of a visible attack wasn't enough to make the model comply. What is the language model reading off the image that the CLIP embedding doesn't capture?
+    from: the minimal perturbation paper
+  - question: The signal that predicts a hallucination shows up while the model is still reading the image. Can we steer on it early enough that the model never commits to the wrong answer?
+    from: RAIVN
+  - question: Do hallucination detectors built on everyday photos still work on medical images, where a wrong answer costs much more?
+    from: RAIVN and Rad Onc
+  - question: How much of a textbook can be formalized in notation a mathematician would recognize, and where does Lean force you to write something no textbook would?
+    from: Math AI Lab

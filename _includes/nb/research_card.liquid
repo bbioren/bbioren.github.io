@@ -1,0 +1,32 @@
+{% assign c = include.c %}
+<article class="rcard">
+  <div class="rcard-fig">
+    {% if c.lean %}
+      <pre class="lean"><code>{{ c.lean | escape }}</code></pre>
+      {% if c.lean_note %}
+        <p class="mono muted">{{ c.lean_note }}</p>
+      {% endif %}
+    {% elsif c.figure %}
+      <img src="{{ c.figure | relative_url }}" alt="{{ c.figure_alt }}" loading="lazy">
+    {% endif %}
+  </div>
+  <div>
+    <h3>{{ c.title }}</h3>
+    <p class="mono muted">
+      {{ c.where }} · {{ c.since -}}
+      {%- if include.done -%}
+      {%- else %}
+        · <span class="stamp-inline">in progress</span>
+      {%- endif %}
+    </p>
+    <p>{{ c.summary }}</p>
+    {% if c.links %}
+      <p class="links mono">
+        {% for l in c.links -%}
+          <a href="{{ l.url | relative_url }}">{{ l.label }}</a>
+          {%- unless forloop.last %} · {% endunless -%}
+        {%- endfor %}
+      </p>
+    {% endif %}
+  </div>
+</article>
