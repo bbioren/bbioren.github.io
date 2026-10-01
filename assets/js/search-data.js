@@ -9,7 +9,18 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "post-the-convex-conjugate-is-a-list-of-supporting-lines",
+  },{id: "post-markov-chebyshev-chernoff",
+      
+        title: "markov, chebyshev, chernoff",
+      
+      description: "three tail bounds, one trick, and how much each extra assumption buys you",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/markov-chebyshev-chernoff/";
+        
+      },
+    },{id: "post-the-convex-conjugate-is-a-list-of-supporting-lines",
       
         title: "the convex conjugate is a list of supporting lines",
       
