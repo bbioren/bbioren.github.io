@@ -1,11 +1,18 @@
 <footer class="sheet foot">
-  <div class="track" title="hover me">
-    <svg viewBox="0 0 64 40" aria-hidden="true">
-      <circle class="ink" cx="14" cy="28" r="10" />
-      <circle class="ink" cx="50" cy="28" r="10" />
+  <div class="track" id="track" title="hover the line">
+    <svg viewBox="0 0 64 40" aria-hidden="true" id="bike">
+      <g class="wheel" data-cx="14" data-cy="28">
+        <circle class="ink" cx="14" cy="28" r="10" />
+        <path class="spoke" d="M14.00 18.00 L14.00 38.00 M22.66 23.00 L5.34 33.00 M22.66 33.00 L5.34 23.00" />
+      </g>
+      <g class="wheel" data-cx="50" data-cy="28">
+        <circle class="ink" cx="50" cy="28" r="10" />
+        <path class="spoke" d="M50.00 18.00 L50.00 38.00 M58.66 23.00 L41.34 33.00 M58.66 33.00 L41.34 23.00" />
+      </g>
       <path class="ink" d="M14 28 L26 14 L42 14 L50 28 M26 14 L32 28 L42 14 M32 28 L14 28 M24 9 L30 9 M42 14 L40 8 L46 8" />
     </svg>
   </div>
+  <script src="{{ '/assets/notebook/bike.js' | relative_url | bust_file_cache }}" defer></script>
   <div class="links">
     <span>
       {% if site.data.socials.email -%}

@@ -543,10 +543,13 @@ blockquote {
   left: 0;
   width: 64px;
   height: 40px;
-  transition: left 2.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
-.track:hover svg {
-  left: calc(100% - 64px);
+.track .spoke {
+  stroke: var(--ink);
+  stroke-width: 1.2;
+  fill: none;
+  opacity: 0.6;
 }
 .ink {
   stroke: var(--ink);
