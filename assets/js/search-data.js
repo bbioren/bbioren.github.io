@@ -27,7 +27,7 @@ ninja.data = [{
       
         title: "the convex conjugate is a list of supporting lines",
       
-      description: "for each slope, how far down do you push a line before it fits under the graph?",
+      description: "for each slope, how far down a line has to go before it fits under the graph",
       section: "Posts",
       handler: () => {
         
@@ -38,7 +38,7 @@ ninja.data = [{
       
         title: "linearity of expectation needs nothing",
       
-      description: "you don&#39;t need independence to add expectations, and here&#39;s a table that shows why",
+      description: "adding expectations doesn&#39;t need independence, shown with a table of returned hats",
       section: "Posts",
       handler: () => {
         
@@ -49,7 +49,7 @@ ninja.data = [{
       
         title: "which way does kl point?",
       
-      description: "forward and reverse kl fit the same bimodal target in very different ways, and ml uses both",
+      description: "fitting one gaussian to a two-bump distribution with forward and reverse kl gives two very different answers",
       section: "Posts",
       handler: () => {
         
@@ -60,7 +60,7 @@ ninja.data = [{
       
         title: "where the root pi comes from",
       
-      description: "why there&#39;s a pi in the normal distribution, and the circle you can see from above",
+      description: "where the pi in the normal distribution comes from",
       section: "Posts",
       handler: () => {
         
@@ -82,7 +82,7 @@ ninja.data = [{
       
         title: "why n minus one",
       
-      description: "the degree of freedom you lose is a direction you can draw",
+      description: "the lost degree of freedom is a direction you can draw",
       section: "Posts",
       handler: () => {
         
@@ -104,7 +104,7 @@ ninja.data = [{
       
         title: "lagrange multipliers are a tangency condition",
       
-      description: "why the gradients line up at a constrained optimum, and what lambda is measuring",
+      description: "why the gradients line up at a constrained optimum, and what lambda means",
       section: "Posts",
       handler: () => {
         
@@ -115,7 +115,7 @@ ninja.data = [{
       
         title: "why the gradient points uphill",
       
-      description: "a list of partial derivatives somehow knows the steepest direction, and a cosine explains why",
+      description: "where the directional derivative formula comes from and what it says about steepest ascent",
       section: "Posts",
       handler: () => {
         
@@ -126,7 +126,7 @@ ninja.data = [{
       
         title: "jensen&#39;s inequality is a picture",
       
-      description: "if you can draw a bowl and a line, you can remember which way jensen goes",
+      description: "why the average of a convex function sits above the function of the average",
       section: "Posts",
       handler: () => {
         
