@@ -140,21 +140,46 @@ ninja.data = [{
           description: "Per-app volume mixer for macOS using CoreAudio taps",
           section: "Projects",handler: () => {
               window.location.href = "/projects/app_mixer/";
+            },},{id: "projects-buffon-39-s-needle",
+          title: 'Buffon&amp;#39;s Needle',
+          description: "drop needles on lined paper and watch them count out pi",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/buffons-needle/";
             },},{id: "projects-area-of-a-circle",
           title: 'Area of a Circle',
           description: "Visual intuition for the area of a circle!",
           section: "Projects",handler: () => {
               window.location.href = "/projects/circ_area/";
+            },},{id: "projects-fourier-epicycles",
+          title: 'Fourier Epicycles',
+          description: "spinning circles stacked end to end that trace any closed curve",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/fourier-epicycles/";
+            },},{id: "projects-galton-board",
+          title: 'Galton Board',
+          description: "a live galton board that grows a bell curve",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/galton-board/";
             },},{id: "projects-gradescope-extension",
           title: 'Gradescope Extension',
           description: "Chrome extension for viewing grade statistics on Gradescope",
           section: "Projects",handler: () => {
               window.location.href = "/projects/gradescope_extension/";
+            },},{id: "projects-matchvision",
+          title: 'MatchVision',
+          description: "Berkeley AI Hackathon 2026 winner (Best Use of Terac). A voice-first soccer companion for blind and low-vision fans.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/match_vision/";
             },},{id: "projects-patch-39-n-play",
           title: 'Patch &amp;#39;n Play',
           description: "Community soccer net repair project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/patch_n_play/";
+            },},{id: "projects-pythagoras-by-rearrangement",
+          title: 'Pythagoras by Rearrangement',
+          description: "slide four triangles around a square and watch a² + b² = c² fall out",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/pythagoras-rearrangement/";
             },},{id: "projects-speedup-extension",
           title: 'Speedup Extension',
           description: "Chrome extension to control playback speed on any website",

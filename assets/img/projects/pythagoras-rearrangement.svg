@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#ffffff"/>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="60" y="110" width="300" height="300" fill="#feebc8"/>
+    <g fill="#bee3f8" stroke="#2456a6" stroke-width="3">
+      <polygon points="60,410 240,410 60,290"/>
+      <polygon points="360,410 360,230 240,410"/>
+      <polygon points="360,110 180,110 360,230"/>
+      <polygon points="60,110 60,290 180,110"/>
+    </g>
+    <polygon points="240,410 360,230 180,110 60,290" fill="none" stroke="#dd6b20" stroke-width="3"/>
+    <rect x="60" y="110" width="300" height="300" fill="none" stroke="#1d2a44" stroke-width="4"/>
+
+    <rect x="440" y="110" width="300" height="300" fill="#feebc8"/>
+    <g fill="#bee3f8" stroke="#2456a6" stroke-width="3">
+      <polygon points="740,410 740,230 620,410"/>
+      <polygon points="620,230 620,410 740,230"/>
+      <polygon points="440,230 620,230 440,110"/>
+      <polygon points="620,110 440,110 620,230"/>
+    </g>
+    <rect x="440" y="230" width="180" height="180" fill="none" stroke="#dd6b20" stroke-width="3"/>
+    <rect x="620" y="110" width="120" height="120" fill="none" stroke="#dd6b20" stroke-width="3"/>
+    <rect x="440" y="110" width="300" height="300" fill="none" stroke="#1d2a44" stroke-width="4"/>
+
+    <path d="M378 260 L422 260 M408 248 L422 260 L408 272" fill="none" stroke="#1d2a44" stroke-width="3"/>
+  </g>
+  <g font-family="monospace" font-weight="bold" text-anchor="middle" fill="#dd6b20">
+    <text x="210" y="270" font-size="34">c²</text>
+    <text x="530" y="330" font-size="34">a²</text>
+    <text x="680" y="182" font-size="30">b²</text>
+  </g>
+  <text x="400" y="70" font-family="monospace" font-size="32" text-anchor="middle" fill="#1d2a44">a² + b² = c²</text>
+  <g font-family="monospace" font-size="22" text-anchor="middle" fill="#1d2a44">
+    <text x="150" y="445">a</text>
+    <text x="300" y="445">b</text>
+    <text x="530" y="445">a</text>
+    <text x="680" y="445">b</text>
+  </g>
+</svg>
