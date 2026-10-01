@@ -9,21 +9,7 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-blog",
-          title: "blog",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/blog/";
-          },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "Some projects I have worked on.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/projects/";
-          },
-        },{id: "post-the-convex-conjugate-is-a-list-of-supporting-lines",
+  },{id: "post-the-convex-conjugate-is-a-list-of-supporting-lines",
       
         title: "the convex conjugate is a list of supporting lines",
       
