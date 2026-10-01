@@ -7,31 +7,33 @@ layout: default
     <span class="hand">{{ page.description }}</span>
   {%- endif %}
   {% if page.cv_pdf %}
-    <p class="mono" style="margin-top: 14px"><a href="{{ page.cv_pdf | relative_url }}">download pdf</a></p>
+    <p class="mono" style="margin-top: 14px"><a href="{{ page.cv_pdf | relative_url }}" download="Ben_Bioren_resume.pdf">download pdf</a></p>
   {% endif %}
 </div>
-{% for section in site.data.cv %}
-  {% unless section.title == 'General Information' %}
-    <section class="cv-section">
-      <h2 class="label">{{ section.title }}</h2>
-      {% for item in section.contents %}
-        <div class="cv-item">
-          <div class="when">{{ item.year }}</div>
-          <div>
-            <div class="what">{{ item.title }}</div>
-            {% if item.institution %}
-              <div class="where">{{ item.institution }}</div>
-            {% endif %}
-            {% if item.description %}
-              <ul>
-                {% for d in item.description %}
-                  <li>{{ d }}</li>
-                {% endfor %}
-              </ul>
-            {% endif %}
+<div class="cv-sheet">
+  {% for section in site.data.cv %}
+    {% unless section.title == 'General Information' %}
+      <section class="cv-section">
+        <h2 class="label">{{ section.title }}</h2>
+        {% for item in section.contents %}
+          <div class="cv-item">
+            <div class="when">{{ item.year }}</div>
+            <div>
+              <div class="what">{{ item.title }}</div>
+              {% if item.institution %}
+                <div class="where">{{ item.institution }}</div>
+              {% endif %}
+              {% if item.description %}
+                <ul>
+                  {% for d in item.description %}
+                    <li>{{ d }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
           </div>
-        </div>
-      {% endfor %}
-    </section>
-  {% endunless %}
-{% endfor %}
+        {% endfor %}
+      </section>
+    {% endunless %}
+  {% endfor %}
+</div>

@@ -973,3 +973,26 @@ blockquote {
     max-width: 360px;
   }
 }
+
+/* ---------- cv sheet: text on a solid page, not raw on the grid ---------- */
+.cv-sheet {
+  position: relative;
+  margin-top: 26px;
+  padding: 10px 32px 26px;
+  background: var(--card);
+  border-radius: 4px;
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.12);
+}
+.cv-sheet .cv-section:first-child {
+  margin-top: 18px;
+}
+.cv-sheet .label {
+  margin-top: 30px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--grid);
+}
+@media (max-width: 600px) {
+  .cv-sheet {
+    padding: 6px 18px 20px;
+  }
+}
