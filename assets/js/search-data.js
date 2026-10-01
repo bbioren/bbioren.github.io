@@ -27,7 +27,7 @@ ninja.data = [{
       
         title: "the convex conjugate is a list of supporting lines",
       
-      description: "for each slope, how far down do you have to push a line so it supports the graph?",
+      description: "for each slope, how far down do you push a line before it fits under the graph?",
       section: "Posts",
       handler: () => {
         
@@ -38,7 +38,7 @@ ninja.data = [{
       
         title: "linearity of expectation needs nothing",
       
-      description: "why adding expectations never requires independence, and how indicator variables turn hard counting into bookkeeping",
+      description: "you don&#39;t need independence to add expectations, and here&#39;s a table that shows why",
       section: "Posts",
       handler: () => {
         
@@ -49,7 +49,7 @@ ninja.data = [{
       
         title: "which way does kl point?",
       
-      description: "forward kl covers every mode, reverse kl picks one, and the two most common objectives in machine learning point in opposite directions",
+      description: "forward and reverse kl fit the same bimodal target in very different ways, and ml uses both",
       section: "Posts",
       handler: () => {
         
@@ -60,7 +60,7 @@ ninja.data = [{
       
         title: "where the root pi comes from",
       
-      description: "the gaussian integral, and the circle hiding inside every bell curve",
+      description: "why there&#39;s a pi in the normal distribution, and the circle you can see from above",
       section: "Posts",
       handler: () => {
         
@@ -71,7 +71,7 @@ ninja.data = [{
       
         title: "bayes&#39; theorem in a square",
       
-      description: "conditioning is zooming in, and the base rate decides what you see when you get there",
+      description: "a positive test for a rare disease, drawn to scale",
       section: "Posts",
       handler: () => {
         
@@ -82,7 +82,7 @@ ninja.data = [{
       
         title: "why n minus one",
       
-      description: "the degree of freedom you lose to the sample mean is literally a dimension",
+      description: "the degree of freedom you lose is a direction you can draw",
       section: "Posts",
       handler: () => {
         
@@ -93,7 +93,7 @@ ninja.data = [{
       
         title: "cauchy–schwarz is a shadow",
       
-      description: "why a projection is never longer than the vector it came from",
+      description: "a projection is never longer than the vector it came from",
       section: "Posts",
       handler: () => {
         
@@ -104,7 +104,7 @@ ninja.data = [{
       
         title: "lagrange multipliers are a tangency condition",
       
-      description: "why the gradients line up at a constrained optimum, and what the multiplier is actually measuring",
+      description: "why the gradients line up at a constrained optimum, and what lambda is measuring",
       section: "Posts",
       handler: () => {
         
@@ -115,7 +115,7 @@ ninja.data = [{
       
         title: "why the gradient points uphill",
       
-      description: "the vector of partials is the steepest direction because, up close, every function is a plane",
+      description: "a list of partial derivatives somehow knows the steepest direction, and a cosine explains why",
       section: "Posts",
       handler: () => {
         
@@ -126,7 +126,7 @@ ninja.data = [{
       
         title: "jensen&#39;s inequality is a picture",
       
-      description: "chords lie above convex curves, and that is the whole inequality",
+      description: "if you can draw a bowl and a line, you can remember which way jensen goes",
       section: "Posts",
       handler: () => {
         
