@@ -195,6 +195,11 @@ ninja.data = [{
           description: "Chrome extension to control playback speed on any website",
           section: "Projects",handler: () => {
               window.location.href = "/projects/speedup_extension/";
+            },},{id: "projects-systolic-array",
+          title: 'Systolic Array',
+          description: "how ML accelerators multiply matrices, one cycle at a time",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/systolic-array/";
             },},{id: "projects-three-ways-to-shard",
           title: 'Three Ways to Shard',
           description: "Data, tensor, and pipeline parallelism on 4 devices, animated.",
