@@ -150,6 +150,11 @@ ninja.data = [{
           description: "Visual intuition for the area of a circle!",
           section: "Projects",handler: () => {
               window.location.href = "/projects/circ_area/";
+            },},{id: "projects-consistent-hashing",
+          title: 'Consistent Hashing',
+          description: "Why a hash ring moves far fewer keys than hash mod N when servers come and go.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/consistent-hashing/";
             },},{id: "projects-fourier-epicycles",
           title: 'Fourier Epicycles',
           description: "spinning circles stacked end to end that trace any closed curve",
@@ -185,6 +190,16 @@ ninja.data = [{
           description: "Chrome extension to control playback speed on any website",
           section: "Projects",handler: () => {
               window.location.href = "/projects/speedup_extension/";
+            },},{id: "projects-three-ways-to-shard",
+          title: 'Three Ways to Shard',
+          description: "Data, tensor, and pipeline parallelism on 4 devices, animated.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/three-ways-to-shard/";
+            },},{id: "projects-tiled-matrix-multiply",
+          title: 'Tiled Matrix Multiply',
+          description: "Why loading tiles into on-chip memory makes matmul fast",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/tiled-matmul/";
             },},{
         id: 'social-email',
         title: 'email',
