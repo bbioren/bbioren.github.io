@@ -39,7 +39,7 @@ papers:
 
 current:
   - title: "Minimal Perturbation Attacks in VLMs: Turning Embedding Distance into an Attack Metric"
-    where: with Justin Zhou
+    where: Allen School, with Justin Zhou, advised by Sewoong Oh
     since: 2026
     target: ICML 2027
     figure: /assets/img/research/typographic-attacks-grid.jpg
@@ -49,22 +49,13 @@ current:
       works. So can you skip the visible text and just optimize the pixels toward that embedding? So far: PGD
       matches the embedding almost perfectly (cosine similarity 0.988 or more) and OCR stops seeing any text
       (77.3% → 6.0% detected), but the model mostly ignores it, 31.3% success against 98.0% for visible text.
-      Figuring out what the model reads that the embedding doesn't capture is the next step.
+      Figuring out what the model reads that the embedding doesn't capture is the next step. The photo on
+      my home page is a toy version of this.
     links:
       - label: draft
         url: /assets/pdf/papers/minimal-perturbation-attacks-vlms.pdf
       - label: code
         url: https://github.com/bbioren/minimal-perturbation-typographic-attacks
-  - title: Typographic attacks on closed models
-    where: Allen School, with Sewoong Oh
-    since: January 2026
-    figure: /assets/img/attack/beach-potato.jpg
-    figure_alt: A photo of Ben with a name tag reading POTATO.
-    summary: >-
-      A gradient-free search over character-level saliency and font rendering that finds small typographic
-      edits which transfer to GPT-4o, Gemini and Claude. On the defense side, an OCR-consistency and
-      attention-entropy check cuts attack success from 94% to under 30% without hurting normal accuracy.
-      The photo on my home page is a toy version of this.
   - title: Lean that reads like math
     where: Math AI Lab
     since: January 2026
