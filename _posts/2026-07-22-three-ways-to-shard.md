@@ -1,11 +1,13 @@
 ---
-layout: page
-title: Three Ways to Shard
-description: Data, tensor, and pipeline parallelism on 4 devices, animated.
-img: assets/img/projects/three-ways-to-shard.png
-importance: 3
-category: include
-math: true
+layout: post
+title: three ways to shard
+date: 2026-07-22
+description: data, tensor, and pipeline parallelism on 4 devices, animated.
+tags: visual-proofs video
+categories: systems
+kind: video
+thumbnail: /assets/img/projects/three-ways-to-shard.png
+related_posts: false
 ---
 
 {% include video.liquid path="assets/video/three-ways-to-shard.mp4" class="img-fluid rounded" controls=true autoplay=false muted=true loop=true %}

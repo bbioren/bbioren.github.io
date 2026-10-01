@@ -1,11 +1,13 @@
 ---
-layout: page
-title: Consistent Hashing
-description: Why a hash ring moves far fewer keys than hash mod N when servers come and go.
-img: assets/img/projects/consistent-hashing.png
-importance: 3
-category: include
-math: true
+layout: post
+title: consistent hashing
+date: 2026-08-19
+description: why a hash ring moves far fewer keys than hash mod N when servers come and go.
+tags: visual-proofs video
+categories: systems
+kind: video
+thumbnail: /assets/img/projects/consistent-hashing.png
+related_posts: false
 ---
 
 {% include video.liquid path="assets/video/consistent-hashing.mp4" class="img-fluid rounded" controls=true autoplay=false muted=true loop=true %}

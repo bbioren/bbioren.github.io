@@ -1,11 +1,13 @@
 ---
-layout: page
-title: Pythagoras by Rearrangement
+layout: post
+title: pythagoras by rearrangement
+date: 2026-01-28
 description: slide four triangles around a square and watch a² + b² = c² fall out
-img: assets/img/projects/pythagoras-rearrangement.svg
-importance: 2
-category: include
-math: true
+tags: visual-proofs interactive
+categories: math
+kind: interactive
+thumbnail: /assets/img/projects/pythagoras-rearrangement.svg
+related_posts: false
 ---
 
 <div class="viz" id="pythagoras-rearrangement"></div>

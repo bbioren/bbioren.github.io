@@ -1,11 +1,13 @@
 ---
-layout: page
-title: Area of a Circle
-description: Visual intuition for the area of a circle!
-img: assets/img/circAreaVisual.png
-importance: 1
-category: include
-related_publications: false
+layout: post
+title: area of a circle
+date: 2025-11-10
+description: visual intuition for the area of a circle!
+tags: visual-proofs video
+categories: math
+kind: video
+thumbnail: /assets/img/circAreaVisual.png
+related_posts: false
 ---
 
 <div class="col-sm mt-3 mt-md-0">

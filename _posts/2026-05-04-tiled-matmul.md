@@ -1,11 +1,13 @@
 ---
-layout: page
-title: Tiled Matrix Multiply
-description: Why loading tiles into on-chip memory makes matmul fast
-img: assets/img/projects/tiled-matmul.png
-importance: 3
-category: include
-math: true
+layout: post
+title: tiled matrix multiply
+date: 2026-05-04
+description: why loading tiles into on-chip memory makes matmul fast
+tags: visual-proofs video
+categories: systems
+kind: video
+thumbnail: /assets/img/projects/tiled-matmul.png
+related_posts: false
 ---
 
 {% include video.liquid path="assets/video/tiled-matmul.mp4" class="img-fluid rounded" controls=true autoplay=false muted=true loop=true %}

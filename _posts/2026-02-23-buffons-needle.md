@@ -1,11 +1,13 @@
 ---
-layout: page
-title: Buffon's Needle
+layout: post
+title: buffon's needle
+date: 2026-02-23
 description: drop needles on lined paper and watch them count out pi
-img: assets/img/projects/buffons-needle.svg
-importance: 2
-category: include
-math: true
+tags: visual-proofs interactive
+categories: math
+kind: interactive
+thumbnail: /assets/img/projects/buffons-needle.svg
+related_posts: false
 ---
 
 <div class="viz" id="buffons-needle"></div>

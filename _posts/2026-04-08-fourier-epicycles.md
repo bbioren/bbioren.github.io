@@ -1,11 +1,13 @@
 ---
-layout: page
-title: Fourier Epicycles
+layout: post
+title: fourier epicycles
+date: 2026-04-08
 description: spinning circles stacked end to end that trace any closed curve
-img: assets/img/projects/fourier-epicycles.svg
-importance: 2
-category: include
-math: true
+tags: visual-proofs interactive
+categories: math
+kind: interactive
+thumbnail: /assets/img/projects/fourier-epicycles.svg
+related_posts: false
 ---
 
 <div class="viz" id="fourier-epicycles"></div>

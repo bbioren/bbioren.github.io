@@ -703,3 +703,12 @@ blockquote {
 .post-body figure {
   max-width: 100%;
 }
+
+/* ---------- sketchbook card kind label ---------- */
+.sk .kind {
+  color: var(--pen);
+}
+.sk .thumb:has(img[src*="/projects/"][src$=".png"]),
+.sk .thumb:has(img[src$="circAreaVisual.png"]) {
+  background: #000;
+}

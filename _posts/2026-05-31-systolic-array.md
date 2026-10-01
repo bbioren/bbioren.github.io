@@ -1,11 +1,13 @@
 ---
-layout: page
-title: Systolic Array
+layout: post
+title: systolic array
+date: 2026-05-31
 description: how ML accelerators multiply matrices, one cycle at a time
-img: assets/img/projects/systolic-array.png
-importance: 3
-category: include
-math: true
+tags: visual-proofs video
+categories: systems
+kind: video
+thumbnail: /assets/img/projects/systolic-array.png
+related_posts: false
 ---
 
 {% include video.liquid path="assets/video/systolic-array.mp4" class="img-fluid rounded" controls=true autoplay=false muted=true loop=true %}

@@ -1,11 +1,13 @@
 ---
-layout: page
-title: FlashAttention
-description: Exact attention without ever storing the N by N score matrix
-img: assets/img/projects/flash-attention.png
-importance: 3
-category: include
-math: true
+layout: post
+title: flash attention
+date: 2026-06-25
+description: exact attention without ever storing the N by N score matrix
+tags: visual-proofs video
+categories: systems
+kind: video
+thumbnail: /assets/img/projects/flash-attention.png
+related_posts: false
 ---
 
 {% include video.liquid path="assets/video/flash-attention.mp4" class="img-fluid rounded" controls=true autoplay=false muted=true loop=true %}

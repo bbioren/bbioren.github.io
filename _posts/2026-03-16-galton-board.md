@@ -1,11 +1,13 @@
 ---
-layout: page
-title: Galton Board
+layout: post
+title: galton board
+date: 2026-03-16
 description: a live galton board that grows a bell curve
-img: assets/img/projects/galton-board.svg
-importance: 2
-category: include
-math: true
+tags: visual-proofs interactive
+categories: math
+kind: interactive
+thumbnail: /assets/img/projects/galton-board.svg
+related_posts: false
 ---
 
 <div class="viz" id="galton-board"></div>

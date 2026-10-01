@@ -10,5 +10,10 @@
     {% endif %}
   </span>
   <span class="t">{{ p.title }}</span>
-  <small>{{ p.date | date: '%b %Y' | downcase }}</small>
+  <small>
+    {{- p.date | date: '%b %Y' | downcase -}}
+    {%- if p.kind %}
+      · <span class="kind">{{ p.kind }}</span>
+    {%- endif -%}
+  </small>
 </a>
