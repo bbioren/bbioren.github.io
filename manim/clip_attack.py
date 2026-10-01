@@ -20,7 +20,6 @@ ROOT = Path(__file__).resolve().parents[1]
 # photo id -> (file, where the name tag goes as fractions of width/height)
 PHOTOS = {
     "beach": (ROOT / "assets/img/prof_pic_beach.jpg", (0.20, 0.67)),
-    "selfie": (ROOT / "assets/img/prof_pic_selfie.jpg", (0.17, 0.66)),
 }
 OUT_IMG = ROOT / "assets/img/attack"
 OUT_JSON = ROOT / "_data/clip_attack.json"
