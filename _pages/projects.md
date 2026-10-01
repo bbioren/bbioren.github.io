@@ -22,7 +22,9 @@ permalink: /projects/
         {% if project.img %}
           {% assign base = project.img | remove: '.png' | remove: '.jpg' | remove: '.jpeg' %}
           <picture>
-            <source srcset="{{ base | append: '-800.webp' | relative_url }}" type="image/webp">
+            {% unless project.img contains '.svg' %}
+              <source srcset="{{ base | append: '-800.webp' | relative_url }}" type="image/webp">
+            {% endunless %}
             <img src="{{ project.img | relative_url }}" alt="" loading="lazy">
           </picture>
         {% endif %}

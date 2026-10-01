@@ -4,7 +4,7 @@ title: about
 permalink: /
 note: senior at UW, BS/MS (MS in June 2028)
 profile:
-  image: prof_pic.jpg
+  image: prof_pic_beach.jpg
   caption: hi!
 ---
 

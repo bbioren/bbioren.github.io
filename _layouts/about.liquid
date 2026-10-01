@@ -20,22 +20,40 @@ layout: default
     </div>
   </div>
   {% if page.profile.image %}
-    <figure class="polaroid">
-      <span class="tape" aria-hidden="true"></span>
-      <picture>
-        {% assign base = page.profile.image | prepend: 'assets/img/' | remove: '.jpg' | remove: '.png' %}
-        <source srcset="{{ base | append: '-480.webp' | relative_url }}" type="image/webp">
+    <div class="photo-col">
+      {% assign attack = site.data.clip_attack %}
+      <figure class="polaroid" id="polaroid">
+        <span class="tape" aria-hidden="true"></span>
         <img
-          src="{{ page.profile.image | prepend: 'assets/img/' | relative_url }}"
+          id="attack-img"
+          src="{{ '/assets/img/attack/beach-clean.jpg' | relative_url }}"
           alt="{{ site.first_name }} {{ site.last_name }}"
-          width="400"
-          height="400"
+          width="900"
+          height="900"
         >
-      </picture>
-      {% if page.profile.caption %}
-        <figcaption>{{ page.profile.caption }}</figcaption>
-      {% endif %}
-    </figure>
+        {% if page.profile.caption %}
+          <figcaption>{{ page.profile.caption }}</figcaption>
+        {% endif %}
+      </figure>
+      <div class="vlm">
+        <p class="mono vlm-head">what CLIP thinks this is:</p>
+        <ol class="bars mono" id="bars" aria-live="polite"></ol>
+        <div class="tags" role="group" aria-label="Stick a name tag on the photo">
+          <span class="hand">stick on a name tag:</span>
+          {% for st in attack.stickers %}
+            <button type="button" class="attack" data-key="{{ st[0] }}" aria-pressed="false">{{ st[1] }}</button>
+          {% endfor %}
+        </div>
+        <p class="hand vlm-note" id="vlm-note" hidden>
+          a name tag is enough to change what the model sees. this is a typographic attack, and it's part of what I study.
+        </p>
+        <p class="mono vlm-src">real {{ attack.model | remove: 'openai/' }} zero-shot scores over {{ attack.labels.size }} labels</p>
+      </div>
+      <script type="application/json" id="clip-data">
+        {{ attack | jsonify }}
+      </script>
+    </div>
+    <script src="{{ '/assets/notebook/vlm.js' | relative_url }}" defer></script>
   {% endif %}
 </section>
 

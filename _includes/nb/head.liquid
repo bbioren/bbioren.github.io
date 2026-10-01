@@ -29,7 +29,7 @@
   href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;1,400;1,600&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap"
 >
 <link rel="stylesheet" href="{{ '/assets/notebook/notebook.css' | relative_url | bust_file_cache }}">
-{% if page.layout == 'post' %}
+{% if page.layout == 'post' or page.math %}
   <script>
     window.MathJax = {
       tex: { tags: 'ams', inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
