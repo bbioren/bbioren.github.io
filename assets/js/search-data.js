@@ -20,6 +20,17 @@ ninja.data = [{
           window.location.href = "/blog/2026/convex-conjugate-supporting-lines/";
         
       },
+    },{id: "post-consistent-hashing",
+      
+        title: "consistent hashing",
+      
+      description: "why a hash ring moves far fewer keys than hash mod N when servers come and go.",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/consistent-hashing/";
+        
+      },
     },{id: "post-linearity-of-expectation-needs-nothing",
       
         title: "linearity of expectation needs nothing",
@@ -29,6 +40,17 @@ ninja.data = [{
       handler: () => {
         
           window.location.href = "/blog/2026/linearity-of-expectation-needs-nothing/";
+        
+      },
+    },{id: "post-three-ways-to-shard",
+      
+        title: "three ways to shard",
+      
+      description: "data, tensor, and pipeline parallelism on 4 devices, animated.",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/three-ways-to-shard/";
         
       },
     },{id: "post-which-way-does-kl-point",
@@ -42,6 +64,17 @@ ninja.data = [{
           window.location.href = "/blog/2026/which-way-kl/";
         
       },
+    },{id: "post-flash-attention",
+      
+        title: "flash attention",
+      
+      description: "exact attention without ever storing the N by N score matrix",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/flash-attention/";
+        
+      },
     },{id: "post-where-the-root-pi-comes-from",
       
         title: "where the root pi comes from",
@@ -51,6 +84,17 @@ ninja.data = [{
       handler: () => {
         
           window.location.href = "/blog/2026/where-the-root-pi-comes-from/";
+        
+      },
+    },{id: "post-systolic-array",
+      
+        title: "systolic array",
+      
+      description: "how ML accelerators multiply matrices, one cycle at a time",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/systolic-array/";
         
       },
     },{id: "post-bayes-39-theorem-in-a-square",
@@ -64,6 +108,17 @@ ninja.data = [{
           window.location.href = "/blog/2026/bayes-theorem-in-a-square/";
         
       },
+    },{id: "post-tiled-matrix-multiply",
+      
+        title: "tiled matrix multiply",
+      
+      description: "why loading tiles into on-chip memory makes matmul fast",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/tiled-matmul/";
+        
+      },
     },{id: "post-why-n-minus-one",
       
         title: "why n minus one",
@@ -73,6 +128,17 @@ ninja.data = [{
       handler: () => {
         
           window.location.href = "/blog/2026/why-n-minus-one/";
+        
+      },
+    },{id: "post-fourier-epicycles",
+      
+        title: "fourier epicycles",
+      
+      description: "spinning circles stacked end to end that trace any closed curve",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/fourier-epicycles/";
         
       },
     },{id: "post-cauchy-schwarz-is-a-shadow",
@@ -86,6 +152,17 @@ ninja.data = [{
           window.location.href = "/blog/2026/cauchy-schwarz-shadows/";
         
       },
+    },{id: "post-galton-board",
+      
+        title: "galton board",
+      
+      description: "a live galton board that grows a bell curve",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/galton-board/";
+        
+      },
     },{id: "post-lagrange-multipliers-are-a-tangency-condition",
       
         title: "lagrange multipliers are a tangency condition",
@@ -95,6 +172,17 @@ ninja.data = [{
       handler: () => {
         
           window.location.href = "/blog/2026/lagrange-multipliers-tangency/";
+        
+      },
+    },{id: "post-buffon-39-s-needle",
+      
+        title: "buffon&#39;s needle",
+      
+      description: "drop needles on lined paper and watch them count out pi",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/buffons-needle/";
         
       },
     },{id: "post-why-the-gradient-points-uphill",
@@ -108,6 +196,17 @@ ninja.data = [{
           window.location.href = "/blog/2026/why-the-gradient-points-uphill/";
         
       },
+    },{id: "post-pythagoras-by-rearrangement",
+      
+        title: "pythagoras by rearrangement",
+      
+      description: "slide four triangles around a square and watch a² + b² = c² fall out",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2026/pythagoras-rearrangement/";
+        
+      },
     },{id: "post-jensen-39-s-inequality-is-a-picture",
       
         title: "jensen&#39;s inequality is a picture",
@@ -117,6 +216,17 @@ ninja.data = [{
       handler: () => {
         
           window.location.href = "/blog/2026/jensens-inequality/";
+        
+      },
+    },{id: "post-area-of-a-circle",
+      
+        title: "area of a circle",
+      
+      description: "visual intuition for the area of a circle!",
+      section: "Posts",
+      handler: () => {
+        
+          window.location.href = "/blog/2025/area-of-a-circle/";
         
       },
     },{id: "post-the-bicycle",
@@ -140,36 +250,6 @@ ninja.data = [{
           description: "Per-app volume mixer for macOS using CoreAudio taps",
           section: "Projects",handler: () => {
               window.location.href = "/projects/app_mixer/";
-            },},{id: "projects-buffon-39-s-needle",
-          title: 'Buffon&amp;#39;s Needle',
-          description: "drop needles on lined paper and watch them count out pi",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/buffons-needle/";
-            },},{id: "projects-area-of-a-circle",
-          title: 'Area of a Circle',
-          description: "Visual intuition for the area of a circle!",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/circ_area/";
-            },},{id: "projects-consistent-hashing",
-          title: 'Consistent Hashing',
-          description: "Why a hash ring moves far fewer keys than hash mod N when servers come and go.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/consistent-hashing/";
-            },},{id: "projects-flashattention",
-          title: 'FlashAttention',
-          description: "Exact attention without ever storing the N by N score matrix",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/flash-attention/";
-            },},{id: "projects-fourier-epicycles",
-          title: 'Fourier Epicycles',
-          description: "spinning circles stacked end to end that trace any closed curve",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/fourier-epicycles/";
-            },},{id: "projects-galton-board",
-          title: 'Galton Board',
-          description: "a live galton board that grows a bell curve",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/galton-board/";
             },},{id: "projects-gradescope-extension",
           title: 'Gradescope Extension',
           description: "Chrome extension for viewing grade statistics on Gradescope",
@@ -185,31 +265,11 @@ ninja.data = [{
           description: "Community soccer net repair project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/patch_n_play/";
-            },},{id: "projects-pythagoras-by-rearrangement",
-          title: 'Pythagoras by Rearrangement',
-          description: "slide four triangles around a square and watch a² + b² = c² fall out",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/pythagoras-rearrangement/";
             },},{id: "projects-speedup-extension",
           title: 'Speedup Extension',
           description: "Chrome extension to control playback speed on any website",
           section: "Projects",handler: () => {
               window.location.href = "/projects/speedup_extension/";
-            },},{id: "projects-systolic-array",
-          title: 'Systolic Array',
-          description: "how ML accelerators multiply matrices, one cycle at a time",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/systolic-array/";
-            },},{id: "projects-three-ways-to-shard",
-          title: 'Three Ways to Shard',
-          description: "Data, tensor, and pipeline parallelism on 4 devices, animated.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/three-ways-to-shard/";
-            },},{id: "projects-tiled-matrix-multiply",
-          title: 'Tiled Matrix Multiply',
-          description: "Why loading tiles into on-chip memory makes matmul fast",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/tiled-matmul/";
             },},{
         id: 'social-email',
         title: 'email',
