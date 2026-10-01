@@ -6,6 +6,7 @@ description: a projection is never longer than the vector it came from
 tags: visual-proofs linear-algebra inequalities
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/cauchy-schwarz-shadows/projection-shadow.svg
 ---
 
 In $$\mathbb{R}^2$$ the Cauchy–Schwarz inequality $$\vert \langle u, v \rangle \vert \le \Vert u \Vert \, \Vert v \Vert$$ is just the statement that $$\vert \cos\theta \vert \le 1$$, since $$\langle u, v \rangle = \Vert u \Vert \Vert v \Vert \cos\theta$$. There isn't much there to prove. (I'm writing $$\langle u, v \rangle$$ for the inner product, which in $$\mathbb{R}^2$$ is the plain dot product.)

@@ -1,0 +1,27 @@
+<footer class="sheet foot">
+  <div class="track" title="hover me">
+    <svg viewBox="0 0 64 40" aria-hidden="true">
+      <circle class="ink" cx="14" cy="28" r="10" />
+      <circle class="ink" cx="50" cy="28" r="10" />
+      <path class="ink" d="M14 28 L26 14 L42 14 L50 28 M26 14 L32 28 L42 14 M32 28 L14 28 M24 9 L30 9 M42 14 L40 8 L46 8" />
+    </svg>
+  </div>
+  <div class="links">
+    <span>
+      {% if site.data.socials.email -%}
+        <a href="mailto:{{ site.data.socials.email }}">{{ site.data.socials.email }}</a> ·
+      {%- endif %}
+      {% if site.data.socials.github_username -%}
+        <a href="https://github.com/{{ site.data.socials.github_username }}">github</a> ·
+      {%- endif %}
+      {% if site.data.socials.linkedin_username -%}
+        <a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}">linkedin</a>
+      {%- endif %}
+    </span>
+    <span
+      >© {{ 'now' | date: '%Y' }}
+      {{ site.first_name }}
+      {{ site.last_name -}}
+    </span>
+  </div>
+</footer>

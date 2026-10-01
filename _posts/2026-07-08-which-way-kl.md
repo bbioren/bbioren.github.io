@@ -6,6 +6,7 @@ description: fitting one gaussian to a two-bump distribution with forward and re
 tags: visual-proofs information-theory machine-learning
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/which-way-kl/forward-vs-reverse-kl-fits.svg
 ---
 
 Take a distribution with two bumps, one centered at $$-2$$ and one at $$2$$, and try to fit a single Gaussian to it. What does the best Gaussian look like? Well, it depends on which way you point the KL divergence. If the target goes in the first slot, you get a wide Gaussian that sits over both bumps and the gap between them. If the Gaussian goes in the first slot, you get a narrow one that sits on just one bump. Maximum likelihood uses one direction and variational inference uses the other. So it's worth working out why the two fits differ.

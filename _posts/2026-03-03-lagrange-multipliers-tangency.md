@@ -6,6 +6,7 @@ description: why the gradients line up at a constrained optimum, and what lambda
 tags: visual-proofs optimization calculus
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/lagrange-multipliers-tangency/level-lines-kiss-circle.svg
 ---
 
 Suppose you want to make $$x + y$$ as big as possible, but the point $$(x, y)$$ has to stay on the unit circle $$x^2 + y^2 = 1$$. What does the answer look like? Well, the level sets of $$f(x,y) = x + y$$ are the parallel lines $$x + y = k$$. So the problem is really asking for the largest $$k$$ where the line $$x + y = k$$ still touches the circle. If you draw it, the answer is pretty clear. The line slides up and to the right until it is just barely touching the circle, and any bigger $$k$$ misses the circle completely.

@@ -6,6 +6,7 @@ description: where the pi in the normal distribution comes from
 tags: visual-proofs calculus probability
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/where-the-root-pi-comes-from/rings-top-down.svg
 ---
 
 The integral of $$e^{-x^2}$$ over the whole real line comes out to exactly $$\sqrt{\pi}$$:

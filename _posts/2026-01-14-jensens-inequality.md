@@ -6,6 +6,7 @@ description: why the average of a convex function sits above the function of the
 tags: visual-proofs probability convexity
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/jensens-inequality/chord-above-curve.svg
 ---
 
 Take $$f(x) = x^2$$ and let $$X$$ be $$+1$$ or $$-1$$, each with probability one half. The average of $$X$$ is $$0$$, so if you average first and then square, you get $$f(\mathbb{E}[X]) = 0$$. If you square first, $$X^2$$ is $$1$$ no matter which value comes up, so the average of the squares is $$\mathbb{E}[X^2] = 1$$. Why do the two orders give different answers? Because averaging first throws away the fact that $$X$$ was spread out, and squaring first keeps it. Jensen's inequality says the square-first number is always at least as big, as long as $$f$$ is convex and $$X$$ is a random variable with a finite mean:

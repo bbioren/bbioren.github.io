@@ -6,6 +6,7 @@ description: adding expectations doesn't need independence, shown with a table o
 tags: visual-proofs probability combinatorics
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/linearity-of-expectation-needs-nothing/hat-check-grid.svg
 ---
 
 At a party, $$n$$ people check their hats, and at the end of the night the hats are handed back in a completely random order. On average, how many people get their own hat back?

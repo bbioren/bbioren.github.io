@@ -6,6 +6,7 @@ description: for each slope, how far down a line has to go before it fits under 
 tags: visual-proofs convex-optimization duality
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/convex-conjugate-supporting-lines/supporting-line-exp.svg
 ---
 
 The convex conjugate shows up in Boyd and Vandenberghe (§3.3) as a one-line definition,

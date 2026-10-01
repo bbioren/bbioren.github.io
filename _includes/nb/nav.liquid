@@ -1,0 +1,47 @@
+<header class="sheet">
+  <nav class="nav" aria-label="Main">
+    <a class="home" href="{{ '/' | relative_url }}">
+      {{- site.first_name | downcase }}
+      {{ site.last_name | downcase -}}
+    </a>
+    <ul>
+      {% assign here = page.url %}
+      <li>
+        <a
+          href="{{ '/' | relative_url }}"
+          {% if here == '/' %}
+            aria-current="page"
+          {% endif %}
+          >about</a
+        >
+      </li>
+      <li>
+        <a
+          href="{{ '/blog/' | relative_url }}"
+          {% if here contains '/blog/' %}
+            aria-current="page"
+          {% endif %}
+          >sketchbook</a
+        >
+      </li>
+      <li>
+        <a
+          href="{{ '/projects/' | relative_url }}"
+          {% if here contains '/projects/' %}
+            aria-current="page"
+          {% endif %}
+          >projects</a
+        >
+      </li>
+      <li>
+        <a
+          href="{{ '/cv/' | relative_url }}"
+          {% if here contains '/cv/' %}
+            aria-current="page"
+          {% endif %}
+          >cv</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -6,6 +6,7 @@ description: a positive test for a rare disease, drawn to scale
 tags: visual-proofs probability bayes
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/bayes-theorem-in-a-square/unit-square-to-scale.svg
 ---
 
 Say a disease affects 1% of people. There's a test for it that comes back positive for 90% of the people who have it, and for 9% of the people who don't. If you test positive, what is the chance you actually have the disease?

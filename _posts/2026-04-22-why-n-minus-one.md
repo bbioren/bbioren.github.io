@@ -6,6 +6,7 @@ description: the lost degree of freedom is a direction you can draw
 tags: visual-proofs statistics linear-algebra
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/why-n-minus-one/projection-onto-ones.svg
 ---
 
 Let $$X_1, \dots, X_n$$ be iid with mean $$\mu$$ and variance $$\sigma^2$$, with $$n \ge 2$$, and let $$\bar X = \frac{1}{n}\sum_i X_i$$ be the sample mean. The sample variance is

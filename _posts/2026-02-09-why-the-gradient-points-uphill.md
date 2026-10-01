@@ -6,6 +6,7 @@ description: where the directional derivative formula comes from and what it say
 tags: visual-proofs calculus optimization
 categories: math
 related_posts: false
+thumbnail: /assets/img/blog/why-the-gradient-points-uphill/gradient-fan-on-contours.svg
 ---
 
 If $$f : \mathbb{R}^n \to \mathbb{R}$$ is differentiable at a point $$p$$ and $$u$$ is a unit vector, then the rate at which $$f$$ changes as you move away from $$p$$ in the direction $$u$$ is
