@@ -1,1 +1,0 @@
-!function(){var t=document.getElementById("visits");t&&window.fetch&&fetch("https://bbioren.goatcounter.com/counter/TOTAL.json").then((function(t){if(!t.ok)throw new Error(t.status);return t.json()})).then((function(n){n&&n.count&&(t.textContent="this notebook has been opened "+n.count+" times",t.hidden=!1)})).catch((function(){}))}();
