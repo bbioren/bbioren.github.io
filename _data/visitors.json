@@ -1,0 +1,20 @@
+{
+  "simulated": true,
+  "note": "SIMULATED sample data for designing the map. Replaced by scripts/fetch_visitors.py once a GoatCounter API token is set up. The map only renders in production when simulated is false.",
+  "updated": "2026-10-05",
+  "total": 652,
+  "countries": [
+    { "iso": "US", "count": 412 },
+    { "iso": "DE", "count": 58 },
+    { "iso": "IN", "count": 47 },
+    { "iso": "GB", "count": 33 },
+    { "iso": "CA", "count": 29 },
+    { "iso": "CN", "count": 21 },
+    { "iso": "FR", "count": 15 },
+    { "iso": "KR", "count": 12 },
+    { "iso": "JP", "count": 10 },
+    { "iso": "BR", "count": 6 },
+    { "iso": "AU", "count": 5 },
+    { "iso": "NL", "count": 4 }
+  ]
+}

@@ -178,6 +178,7 @@ kramdown:
 include: ["_pages", "_scripts"]
 exclude:
   - manim/
+  - scripts/
   - bin/
   - CONTRIBUTING.md
   - CUSTOMIZE.md

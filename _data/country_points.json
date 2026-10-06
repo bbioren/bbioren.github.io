@@ -1,0 +1,881 @@
+{
+  "width": 1000,
+  "height": 394,
+  "countries": {
+    "FJ": {
+      "x": 994.4,
+      "y": 282.5,
+      "name": "Fiji"
+    },
+    "TZ": {
+      "x": 597.1,
+      "y": 249.9,
+      "name": "Tanzania"
+    },
+    "EH": {
+      "x": 464.9,
+      "y": 166.6,
+      "name": "W. Sahara"
+    },
+    "CA": {
+      "x": 216.9,
+      "y": 65.7,
+      "name": "Canada"
+    },
+    "US": {
+      "x": 229.2,
+      "y": 123.4,
+      "name": "United States of America"
+    },
+    "KZ": {
+      "x": 690.8,
+      "y": 97.0,
+      "name": "Kazakhstan"
+    },
+    "UZ": {
+      "x": 677.8,
+      "y": 117.4,
+      "name": "Uzbekistan"
+    },
+    "PG": {
+      "x": 899.8,
+      "y": 248.9,
+      "name": "Papua New Guinea"
+    },
+    "ID": {
+      "x": 783.0,
+      "y": 235.7,
+      "name": "Indonesia"
+    },
+    "AR": {
+      "x": 321.7,
+      "y": 326.0,
+      "name": "Argentina"
+    },
+    "CL": {
+      "x": 299.1,
+      "y": 338.9,
+      "name": "Chile"
+    },
+    "CD": {
+      "x": 565.2,
+      "y": 238.2,
+      "name": "Dem. Rep. Congo"
+    },
+    "SO": {
+      "x": 625.5,
+      "y": 223.2,
+      "name": "Somalia"
+    },
+    "KE": {
+      "x": 605.3,
+      "y": 231.5,
+      "name": "Kenya"
+    },
+    "SD": {
+      "x": 581.3,
+      "y": 187.8,
+      "name": "Sudan"
+    },
+    "TD": {
+      "x": 551.8,
+      "y": 191.1,
+      "name": "Chad"
+    },
+    "HT": {
+      "x": 299.4,
+      "y": 179.6,
+      "name": "Haiti"
+    },
+    "DO": {
+      "x": 303.7,
+      "y": 180.1,
+      "name": "Dominican Rep."
+    },
+    "RU": {
+      "x": 624.1,
+      "y": 71.4,
+      "name": "Russia"
+    },
+    "BS": {
+      "x": 285.7,
+      "y": 159.8,
+      "name": "Bahamas"
+    },
+    "FK": {
+      "x": 336.8,
+      "y": 376.3,
+      "name": "Falkland Is."
+    },
+    "NO": {
+      "x": 526.9,
+      "y": 62.8,
+      "name": "Norway"
+    },
+    "GL": {
+      "x": 390.7,
+      "y": 26.9,
+      "name": "Greenland"
+    },
+    "TF": {
+      "x": 692.0,
+      "y": 369.9,
+      "name": "Fr. S. Antarctic Lands"
+    },
+    "TL": {
+      "x": 849.6,
+      "y": 257.5,
+      "name": "Timor-Leste"
+    },
+    "ZA": {
+      "x": 565.7,
+      "y": 315.5,
+      "name": "South Africa"
+    },
+    "LS": {
+      "x": 578.5,
+      "y": 314.9,
+      "name": "Lesotho"
+    },
+    "MX": {
+      "x": 215.9,
+      "y": 166.7,
+      "name": "Mexico"
+    },
+    "UY": {
+      "x": 344.5,
+      "y": 324.5,
+      "name": "Uruguay"
+    },
+    "BR": {
+      "x": 362.3,
+      "y": 266.6,
+      "name": "Brazil"
+    },
+    "BO": {
+      "x": 320.6,
+      "y": 279.3,
+      "name": "Bolivia"
+    },
+    "PE": {
+      "x": 297.5,
+      "y": 269.1,
+      "name": "Peru"
+    },
+    "CO": {
+      "x": 296.7,
+      "y": 223.7,
+      "name": "Colombia"
+    },
+    "PA": {
+      "x": 276.8,
+      "y": 208.9,
+      "name": "Panama"
+    },
+    "CR": {
+      "x": 266.5,
+      "y": 205.1,
+      "name": "Costa Rica"
+    },
+    "NI": {
+      "x": 263.7,
+      "y": 197.9,
+      "name": "Nicaragua"
+    },
+    "HN": {
+      "x": 258.6,
+      "y": 192.0,
+      "name": "Honduras"
+    },
+    "SV": {
+      "x": 253.1,
+      "y": 195.1,
+      "name": "El Salvador"
+    },
+    "GT": {
+      "x": 248.6,
+      "y": 191.5,
+      "name": "Guatemala"
+    },
+    "BZ": {
+      "x": 253.6,
+      "y": 185.3,
+      "name": "Belize"
+    },
+    "VE": {
+      "x": 320.6,
+      "y": 213.1,
+      "name": "Venezuela"
+    },
+    "GY": {
+      "x": 336.3,
+      "y": 218.9,
+      "name": "Guyana"
+    },
+    "SR": {
+      "x": 344.7,
+      "y": 221.6,
+      "name": "Suriname"
+    },
+    "FR": {
+      "x": 507.1,
+      "y": 103.5,
+      "name": "France"
+    },
+    "EC": {
+      "x": 282.8,
+      "y": 236.6,
+      "name": "Ecuador"
+    },
+    "PR": {
+      "x": 315.3,
+      "y": 182.5,
+      "name": "Puerto Rico"
+    },
+    "JM": {
+      "x": 285.2,
+      "y": 182.7,
+      "name": "Jamaica"
+    },
+    "CU": {
+      "x": 283.4,
+      "y": 173.9,
+      "name": "Cuba"
+    },
+    "ZW": {
+      "x": 583.1,
+      "y": 285.5,
+      "name": "Zimbabwe"
+    },
+    "BW": {
+      "x": 567.2,
+      "y": 294.4,
+      "name": "Botswana"
+    },
+    "NA": {
+      "x": 547.5,
+      "y": 290.2,
+      "name": "Namibia"
+    },
+    "SN": {
+      "x": 458.9,
+      "y": 191.1,
+      "name": "Senegal"
+    },
+    "ML": {
+      "x": 494.3,
+      "y": 181.2,
+      "name": "Mali"
+    },
+    "MR": {
+      "x": 472.9,
+      "y": 178.7,
+      "name": "Mauritania"
+    },
+    "BJ": {
+      "x": 506.5,
+      "y": 204.4,
+      "name": "Benin"
+    },
+    "NE": {
+      "x": 526.4,
+      "y": 184.7,
+      "name": "Niger"
+    },
+    "NG": {
+      "x": 520.8,
+      "y": 206.9,
+      "name": "Nigeria"
+    },
+    "CM": {
+      "x": 534.6,
+      "y": 220.3,
+      "name": "Cameroon"
+    },
+    "TG": {
+      "x": 502.9,
+      "y": 208.6,
+      "name": "Togo"
+    },
+    "GH": {
+      "x": 497.1,
+      "y": 211.7,
+      "name": "Ghana"
+    },
+    "CI": {
+      "x": 484.5,
+      "y": 212.3,
+      "name": "C\u00f4te d'Ivoire"
+    },
+    "GN": {
+      "x": 472.2,
+      "y": 203.6,
+      "name": "Guinea"
+    },
+    "GW": {
+      "x": 459.7,
+      "y": 199.3,
+      "name": "Guinea-Bissau"
+    },
+    "LR": {
+      "x": 473.7,
+      "y": 215.2,
+      "name": "Liberia"
+    },
+    "SL": {
+      "x": 467.3,
+      "y": 209.2,
+      "name": "Sierra Leone"
+    },
+    "BF": {
+      "x": 496.2,
+      "y": 197.9,
+      "name": "Burkina Faso"
+    },
+    "CF": {
+      "x": 558.1,
+      "y": 213.7,
+      "name": "Central African Rep."
+    },
+    "CG": {
+      "x": 544.2,
+      "y": 232.7,
+      "name": "Congo"
+    },
+    "GA": {
+      "x": 532.9,
+      "y": 234.3,
+      "name": "Gabon"
+    },
+    "GQ": {
+      "x": 525.0,
+      "y": 226.6,
+      "name": "Eq. Guinea"
+    },
+    "ZM": {
+      "x": 573.3,
+      "y": 273.7,
+      "name": "Zambia"
+    },
+    "MW": {
+      "x": 593.4,
+      "y": 270.2,
+      "name": "Malawi"
+    },
+    "MZ": {
+      "x": 605.1,
+      "y": 271.8,
+      "name": "Mozambique"
+    },
+    "SZ": {
+      "x": 587.4,
+      "y": 306.7,
+      "name": "eSwatini"
+    },
+    "AO": {
+      "x": 550.0,
+      "y": 266.9,
+      "name": "Angola"
+    },
+    "BI": {
+      "x": 583.1,
+      "y": 242.3,
+      "name": "Burundi"
+    },
+    "IL": {
+      "x": 596.8,
+      "y": 147.3,
+      "name": "Israel"
+    },
+    "LB": {
+      "x": 600.0,
+      "y": 138.4,
+      "name": "Lebanon"
+    },
+    "MG": {
+      "x": 629.7,
+      "y": 284.8,
+      "name": "Madagascar"
+    },
+    "PS": {
+      "x": 598.0,
+      "y": 144.2,
+      "name": "Palestine"
+    },
+    "GM": {
+      "x": 458.3,
+      "y": 195.2,
+      "name": "Gambia"
+    },
+    "TN": {
+      "x": 525.0,
+      "y": 139.6,
+      "name": "Tunisia"
+    },
+    "DZ": {
+      "x": 507.8,
+      "y": 157.1,
+      "name": "Algeria"
+    },
+    "JO": {
+      "x": 601.0,
+      "y": 147.6,
+      "name": "Jordan"
+    },
+    "AE": {
+      "x": 651.5,
+      "y": 168.0,
+      "name": "United Arab Emirates"
+    },
+    "QA": {
+      "x": 642.1,
+      "y": 163.0,
+      "name": "Qatar"
+    },
+    "KW": {
+      "x": 631.4,
+      "y": 151.5,
+      "name": "Kuwait"
+    },
+    "IQ": {
+      "x": 620.2,
+      "y": 141.2,
+      "name": "Iraq"
+    },
+    "OM": {
+      "x": 659.3,
+      "y": 171.7,
+      "name": "Oman"
+    },
+    "VU": {
+      "x": 963.6,
+      "y": 275.7,
+      "name": "Vanuatu"
+    },
+    "KH": {
+      "x": 790.3,
+      "y": 198.0,
+      "name": "Cambodia"
+    },
+    "TH": {
+      "x": 780.8,
+      "y": 190.2,
+      "name": "Thailand"
+    },
+    "LA": {
+      "x": 784.8,
+      "y": 179.2,
+      "name": "Laos"
+    },
+    "MM": {
+      "x": 766.1,
+      "y": 173.2,
+      "name": "Myanmar"
+    },
+    "VN": {
+      "x": 792.7,
+      "y": 172.8,
+      "name": "Vietnam"
+    },
+    "KP": {
+      "x": 851.2,
+      "y": 122.4,
+      "name": "North Korea"
+    },
+    "KR": {
+      "x": 855.9,
+      "y": 132.1,
+      "name": "South Korea"
+    },
+    "MN": {
+      "x": 789.3,
+      "y": 105.4,
+      "name": "Mongolia"
+    },
+    "IN": {
+      "x": 720.4,
+      "y": 170.1,
+      "name": "India"
+    },
+    "BD": {
+      "x": 749.1,
+      "y": 165.9,
+      "name": "Bangladesh"
+    },
+    "BT": {
+      "x": 750.1,
+      "y": 156.7,
+      "name": "Bhutan"
+    },
+    "NP": {
+      "x": 732.3,
+      "y": 154.6,
+      "name": "Nepal"
+    },
+    "PK": {
+      "x": 690.4,
+      "y": 151.7,
+      "name": "Pakistan"
+    },
+    "AF": {
+      "x": 684.7,
+      "y": 138.3,
+      "name": "Afghanistan"
+    },
+    "TJ": {
+      "x": 701.6,
+      "y": 127.1,
+      "name": "Tajikistan"
+    },
+    "KG": {
+      "x": 707.0,
+      "y": 117.5,
+      "name": "Kyrgyzstan"
+    },
+    "TM": {
+      "x": 663.0,
+      "y": 122.5,
+      "name": "Turkmenistan"
+    },
+    "IR": {
+      "x": 652.6,
+      "y": 143.8,
+      "name": "Iran"
+    },
+    "SY": {
+      "x": 606.3,
+      "y": 135.9,
+      "name": "Syria"
+    },
+    "AM": {
+      "x": 624.4,
+      "y": 120.8,
+      "name": "Armenia"
+    },
+    "SE": {
+      "x": 552.8,
+      "y": 50.3,
+      "name": "Sweden"
+    },
+    "BY": {
+      "x": 578.9,
+      "y": 83.7,
+      "name": "Belarus"
+    },
+    "UA": {
+      "x": 589.3,
+      "y": 95.1,
+      "name": "Ukraine"
+    },
+    "PL": {
+      "x": 554.1,
+      "y": 88.8,
+      "name": "Poland"
+    },
+    "AT": {
+      "x": 539.3,
+      "y": 101.2,
+      "name": "Austria"
+    },
+    "HU": {
+      "x": 554.0,
+      "y": 102.4,
+      "name": "Hungary"
+    },
+    "MD": {
+      "x": 579.1,
+      "y": 101.5,
+      "name": "Moldova"
+    },
+    "RO": {
+      "x": 569.4,
+      "y": 106.2,
+      "name": "Romania"
+    },
+    "LT": {
+      "x": 566.9,
+      "y": 80.2,
+      "name": "Lithuania"
+    },
+    "LV": {
+      "x": 570.7,
+      "y": 74.7,
+      "name": "Latvia"
+    },
+    "EE": {
+      "x": 571.9,
+      "y": 70.1,
+      "name": "Estonia"
+    },
+    "DE": {
+      "x": 526.9,
+      "y": 91.7,
+      "name": "Germany"
+    },
+    "BG": {
+      "x": 569.9,
+      "y": 115.1,
+      "name": "Bulgaria"
+    },
+    "GR": {
+      "x": 560.3,
+      "y": 123.5,
+      "name": "Greece"
+    },
+    "TR": {
+      "x": 595.9,
+      "y": 123.9,
+      "name": "Turkey"
+    },
+    "AL": {
+      "x": 555.9,
+      "y": 120.3,
+      "name": "Albania"
+    },
+    "HR": {
+      "x": 545.5,
+      "y": 106.0,
+      "name": "Croatia"
+    },
+    "CH": {
+      "x": 520.7,
+      "y": 103.4,
+      "name": "Switzerland"
+    },
+    "LU": {
+      "x": 516.9,
+      "y": 95.1,
+      "name": "Luxembourg"
+    },
+    "BE": {
+      "x": 513.3,
+      "y": 92.2,
+      "name": "Belgium"
+    },
+    "NL": {
+      "x": 515.6,
+      "y": 87.6,
+      "name": "Netherlands"
+    },
+    "PT": {
+      "x": 477.0,
+      "y": 123.2,
+      "name": "Portugal"
+    },
+    "ES": {
+      "x": 490.4,
+      "y": 121.8,
+      "name": "Spain"
+    },
+    "IE": {
+      "x": 478.3,
+      "y": 85.8,
+      "name": "Ireland"
+    },
+    "NC": {
+      "x": 958.6,
+      "y": 291.5,
+      "name": "New Caledonia"
+    },
+    "SB": {
+      "x": 942.1,
+      "y": 255.3,
+      "name": "Solomon Is."
+    },
+    "NZ": {
+      "x": 980.0,
+      "y": 343.4,
+      "name": "New Zealand"
+    },
+    "AU": {
+      "x": 872.4,
+      "y": 300.0,
+      "name": "Australia"
+    },
+    "LK": {
+      "x": 724.2,
+      "y": 212.0,
+      "name": "Sri Lanka"
+    },
+    "CN": {
+      "x": 795.4,
+      "y": 142.9,
+      "name": "China"
+    },
+    "TW": {
+      "x": 835.7,
+      "y": 167.4,
+      "name": "Taiwan"
+    },
+    "IT": {
+      "x": 530.8,
+      "y": 109.0,
+      "name": "Italy"
+    },
+    "DK": {
+      "x": 525.1,
+      "y": 77.8,
+      "name": "Denmark"
+    },
+    "GB": {
+      "x": 494.1,
+      "y": 82.1,
+      "name": "United Kingdom"
+    },
+    "IS": {
+      "x": 448.1,
+      "y": 53.3,
+      "name": "Iceland"
+    },
+    "AZ": {
+      "x": 631.1,
+      "y": 121.0,
+      "name": "Azerbaijan"
+    },
+    "GE": {
+      "x": 621.5,
+      "y": 116.9,
+      "name": "Georgia"
+    },
+    "PH": {
+      "x": 840.2,
+      "y": 202.0,
+      "name": "Philippines"
+    },
+    "MY": {
+      "x": 816.2,
+      "y": 226.1,
+      "name": "Malaysia"
+    },
+    "BN": {
+      "x": 818.2,
+      "y": 220.7,
+      "name": "Brunei"
+    },
+    "SI": {
+      "x": 541.4,
+      "y": 105.3,
+      "name": "Slovenia"
+    },
+    "FI": {
+      "x": 575.8,
+      "y": 57.6,
+      "name": "Finland"
+    },
+    "SK": {
+      "x": 552.9,
+      "y": 97.9,
+      "name": "Slovakia"
+    },
+    "CZ": {
+      "x": 542.7,
+      "y": 94.7,
+      "name": "Czechia"
+    },
+    "ER": {
+      "x": 606.3,
+      "y": 189.3,
+      "name": "Eritrea"
+    },
+    "JP": {
+      "x": 884.6,
+      "y": 132.8,
+      "name": "Japan"
+    },
+    "PY": {
+      "x": 332.9,
+      "y": 293.2,
+      "name": "Paraguay"
+    },
+    "YE": {
+      "x": 627.4,
+      "y": 190.5,
+      "name": "Yemen"
+    },
+    "SA": {
+      "x": 624.2,
+      "y": 167.0,
+      "name": "Saudi Arabia"
+    },
+    "-99": {
+      "x": 629.8,
+      "y": 206.9,
+      "name": "Somaliland"
+    },
+    "CY": {
+      "x": 591.9,
+      "y": 136.2,
+      "name": "Cyprus"
+    },
+    "MA": {
+      "x": 480.0,
+      "y": 145.3,
+      "name": "Morocco"
+    },
+    "EG": {
+      "x": 581.8,
+      "y": 160.4,
+      "name": "Egypt"
+    },
+    "LY": {
+      "x": 550.0,
+      "y": 159.2,
+      "name": "Libya"
+    },
+    "ET": {
+      "x": 608.6,
+      "y": 210.8,
+      "name": "Ethiopia"
+    },
+    "DJ": {
+      "x": 618.1,
+      "y": 199.8,
+      "name": "Djibouti"
+    },
+    "UG": {
+      "x": 591.5,
+      "y": 227.6,
+      "name": "Uganda"
+    },
+    "RW": {
+      "x": 583.6,
+      "y": 238.3,
+      "name": "Rwanda"
+    },
+    "BA": {
+      "x": 550.2,
+      "y": 110.7,
+      "name": "Bosnia and Herz."
+    },
+    "MK": {
+      "x": 559.9,
+      "y": 117.8,
+      "name": "North Macedonia"
+    },
+    "RS": {
+      "x": 557.7,
+      "y": 110.5,
+      "name": "Serbia"
+    },
+    "ME": {
+      "x": 553.2,
+      "y": 114.3,
+      "name": "Montenegro"
+    },
+    "XK": {
+      "x": 557.9,
+      "y": 114.9,
+      "name": "Kosovo"
+    },
+    "TT": {
+      "x": 330.8,
+      "y": 202.6,
+      "name": "Trinidad and Tobago"
+    },
+    "SS": {
+      "x": 584.4,
+      "y": 213.0,
+      "name": "S. Sudan"
+    }
+  }
+}

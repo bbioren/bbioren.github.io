@@ -1023,3 +1023,54 @@ blockquote {
   text-align: right;
   transform: rotate(-1deg);
 }
+
+/* ---------- visitor map ---------- */
+.vmap {
+  position: relative;
+  margin-top: 10px;
+}
+.vmap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.vmap .stamps {
+  position: absolute;
+  inset: 0;
+}
+.world .land path {
+  fill: var(--card);
+  stroke: var(--pencil);
+  stroke-width: 0.7;
+  stroke-linejoin: round;
+}
+.stamp-mark circle {
+  fill: none;
+  stroke: #d62828;
+  stroke-width: 2;
+  opacity: 0.85;
+}
+.stamp-mark circle.inner {
+  fill: #d62828;
+  fill-opacity: 0.18;
+  stroke-width: 1;
+  stroke-dasharray: 3 2;
+}
+.vtop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  font-size: 12px;
+}
+.vfoot {
+  font-size: 11px;
+  margin-top: 4px;
+}
+.sim {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: #d62828;
+}
