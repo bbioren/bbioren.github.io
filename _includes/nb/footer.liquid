@@ -3,6 +3,10 @@
     {% include nb/bike.liquid id="bike" %}
   </div>
   <script src="{{ '/assets/notebook/bike.js' | relative_url | bust_file_cache }}" defer></script>
+  <p class="visits hand" id="visits" hidden></p>
+  {% if jekyll.environment == 'production' %}
+    <script src="{{ '/assets/notebook/visits.js' | relative_url | bust_file_cache }}" defer></script>
+  {% endif %}
   <div class="links">
     <span>
       {% if site.data.socials.email -%}
