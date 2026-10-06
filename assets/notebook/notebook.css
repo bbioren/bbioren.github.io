@@ -1024,50 +1024,80 @@ blockquote {
   transform: rotate(-1deg);
 }
 
-/* ---------- visitor map ---------- */
-.vmap {
-  position: relative;
-  margin-top: 10px;
+/* ---------- visitor map: dot map + flag counter ---------- */
+.dotmap {
+  margin: 10px 0 0;
 }
-.vmap svg {
+.dotmap svg {
   display: block;
   width: 100%;
   height: auto;
 }
-.vmap .stamps {
-  position: absolute;
-  inset: 0;
+.dotmap circle {
+  fill: var(--pencil);
+  fill-opacity: 0.35;
 }
-.world .land path {
-  fill: var(--card);
-  stroke: var(--pencil);
-  stroke-width: 0.7;
-  stroke-linejoin: round;
+.flagc {
+  position: relative;
+  max-width: 420px;
+  margin: 26px auto 0;
+  padding: 18px 18px 12px;
+  background: var(--card);
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: rotate(-0.6deg);
 }
-.stamp-mark circle {
-  fill: none;
-  stroke: #d62828;
-  stroke-width: 2;
-  opacity: 0.85;
+.flagc .tape {
+  left: calc(50% - 36px);
 }
-.stamp-mark circle.inner {
-  fill: #d62828;
-  fill-opacity: 0.18;
-  stroke-width: 1;
-  stroke-dasharray: 3 2;
-}
-.vtop {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 18px;
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0;
+.flagc-head {
   font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1.5px dashed var(--pencil);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+.flagc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 26px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.flagc-list li {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 3px 0;
+  break-inside: avoid;
+}
+.flagc-list img {
+  display: block;
+  width: 20px;
+  height: 15px;
+  object-fit: cover;
+  border: 1px solid rgb(0 0 0 / 0.15);
+}
+.flagc-list .n {
+  text-align: right;
+}
+.flagc-foot {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1.5px dashed var(--pencil);
+  font-size: 11px;
+  color: var(--ink-soft);
 }
 .vfoot {
   font-size: 11px;
-  margin-top: 4px;
+  margin-top: 10px;
+  text-align: center;
 }
 .sim {
   font-family: var(--f-mono);

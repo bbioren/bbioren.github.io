@@ -1,44 +1,54 @@
 {% assign v = site.data.visitors %}
 {% assign geo = site.data.country_points %}
+{% assign dm = site.data.dot_map %}
 {% if v and v.countries.size > 0 %}
   {% if v.simulated != true or jekyll.environment != 'production' %}
+    {% assign maxc = v.countries[0].count | times: 1.0 %}
     <h2 class="label">Who's been reading</h2>
     <p class="hand" style="margin-top: -4px">
-      a stamp for every country that's opened this notebook.
+      every dot is a bit of the world, and the inked ones have opened this notebook.
       {%- if v.simulated %}
         <span class="sim">(simulated data, only visible locally)</span>
       {%- endif %}
     </p>
+
     <style>
-      {% for c in v.countries %}.world path[data-iso="{{ c.iso }}"]{fill:rgb(214 40 40 / {{ forloop.length | minus: forloop.index0 | times: 0.03 | plus: 0.08 }})}{% endfor %}
+      {% for c in v.countries %}
+        {% assign share = c.count | divided_by: maxc %}
+        {% if share >= 0.5 %}{% assign op = 1 %}{% elsif share >= 0.15 %}{% assign op = 0.8 %}{% elsif share >= 0.04 %}{% assign op = 0.6 %}{% else %}{% assign op = 0.45 %}{% endif %}
+        .dotmap .c-{{ c.iso }} { fill: var(--pen); fill-opacity: {{ op }}; }
+      {% endfor %}
     </style>
-    <div class="vmap">
-      {% include nb/world_map.svg %}
-      <svg class="stamps" viewBox="0 0 {{ geo.width }} {{ geo.height }}" aria-hidden="true">
-        {% assign maxc = v.countries[0].count | times: 1.0 %}
-        {% for c in v.countries %}
-          {% assign pt = geo.countries[c.iso] %}
-          {% if pt %}
-            {% assign frac = c.count | divided_by: maxc %}
-            {% assign r = frac | times: 9 | plus: 6 %}
-            <g class="stamp-mark" transform="translate({{ pt.x }} {{ pt.y }}) rotate({{ forloop.index | times: 37 | modulo: 30 | minus: 15 }})">
-              <circle r="{{ r }}" />
-              <circle r="{{ r | minus: 3 }}" class="inner" />
-              <title>{{ pt.name }}: {{ c.count }}</title>
-            </g>
-          {% endif %}
+
+    <!-- version 1: dot map -->
+    <figure class="dotmap">
+      <svg
+        viewBox="0 0 {{ dm.cols | times: 10 }} {{ dm.rows | times: 10 }}"
+        role="img"
+        aria-label="Dotted world map; countries with visitors are inked"
+      >
+        {% for d in dm.dots %}
+          <circle cx="{{ d[0] | times: 10 | plus: 5 }}" cy="{{ d[1] | times: 10 | plus: 5 }}" r="3.1" class="c-{{ d[2] }}" />
         {% endfor %}
       </svg>
+    </figure>
+
+    <!-- version 2: flag counter -->
+    <div class="flagc">
+      <span class="tape" aria-hidden="true"></span>
+      <div class="flagc-head mono">visitors</div>
+      <ol class="flagc-list mono">
+        {% for c in v.countries limit: 12 %}
+          {% assign iso = c.iso | downcase %}
+          <li>
+            <img src="{{ '/assets/flags/' | append: iso | append: '.png' | relative_url }}" alt="" width="20" height="15" loading="lazy">
+            <span class="cc">{{ c.iso }}</span>
+            <span class="n">{{ c.count }}</span>
+          </li>
+        {% endfor %}
+      </ol>
+      <div class="flagc-foot mono">pageviews {{ v.total }} · flags collected {{ v.countries.size }}</div>
     </div>
-    <ol class="vtop mono">
-      {% for c in v.countries limit: 5 %}
-        {% assign pt = geo.countries[c.iso] %}
-        <li>
-          {{ pt.name | default: c.iso | downcase }}
-          <span class="muted">{{ c.count }}</span>
-        </li>
-      {% endfor %}
-    </ol>
-    <p class="mono muted vfoot">{{ v.countries.size }} countries · updated {{ v.updated }}</p>
+    <p class="mono muted vfoot">updated {{ v.updated }}</p>
   {% endif %}
 {% endif %}
