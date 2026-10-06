@@ -2,7 +2,7 @@
 {% assign geo = site.data.country_points %}
 {% assign dm = site.data.dot_map %}
 {% if v and v.countries.size > 0 %}
-  {% if v.simulated != true or jekyll.environment != 'production' %}
+  {% if jekyll.environment != 'production' or site.show_visitor_map == true and v.simulated != true %}
     {% assign maxc = v.countries[0].count | times: 1.0 %}
     <h2 class="label">Who's been reading</h2>
     <p class="hand" style="margin-top: -4px">
